@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>   
+    <formatters>
+        <formatter id="0300">
+            <field type="Fixed" id="01" length="4" format="n" compress="true">800</field>
+            <field type="Bmp" id="bmp" compress="true">
+                <field type="NVar"   id="2" nl="2" length="16" format="an" filler="F" compress="true">005002</field>
+                <field type="Fixed"  id="3" length="6"  format="an">01FF00</field>
+                <field type="Fixed"  id="11" length="6"  format="n"   compress="true">005002</field>
+                <field type="Fixed"  id="12" length="6"  format="n"   compress="true">101905</field>
+                <field type="Fixed"  id="13" length="4"  format="n"   compress="true" undofill="false">0924</field>
+                <field type="Fixed"  id="14" length="4"  format="n"   compress="true">1024</field>
+                <field type="Fixed"  id="24" length="3"  format="n"   compress="true">000</field>
+                <field type="Track2" id="35" length="48" format="an"  compress="true" subtype="NVar"  nl="2"  filler="F">374334660029163607=110310112433236110000</field>
+                <field type="Fixed"  id="41" length="8"  format="ans" filler="F" compress="true">0101</field>
+                <field type="NVarGroup" id="48" length="255" nl="3" compress="true">
+                    <field type="Fixed" id="TX_TYPE" length="4" format="n">600</field>
+                    <field type="Fixed" id="DATA_COM_TEC" length="1" format="n">0</field>
+                    <field type="Fixed" id="DATA_PACKET_SEQ" length="4" format="n">0000</field>
+                    <field type="Fixed" id="MORE_DATA" length="1" format="an">N</field>
+                </field>
+                <field type="NVarGroup" id="60" length="840" nl="3" compress="true">
+                    <field type="NVar" id="CTAFROM" length="28" nl="2" format="an">210011182021</field>
+                    <field type="NVar" id="CTATO" length="28" nl="2" format="an">210011182022</field>
+                </field>
+                <field type="NVar" id="61" length="840" nl="3" compress="true"/>
+                <field type="NVar" id="62" length="840" nl="3" compress="true"/>
+                <field type="NVar" id="63" length="256" nl="3" compress="true"/>
+                <field type="NVar" id="64" length="8" nl="3" compress="true"/>
+            </field>
+        </formatter>
+		
+        <formatter id="0800">
+            <field type="Fixed" id="01" length="4" format="n" compress="true">800</field>
+            <field type="Bmp" id="bmp" compress="true">
+                <field type="Fixed" id="11" length="6" format="n" compress="true">005002</field>
+                <field type="Fixed" id="12" length="6" format="n" compress="true">101905</field>
+                <field type="Fixed" id="13" length="4" format="n" compress="true">0924</field>
+                <field type="Fixed" id="24" length="3" format="n" compress="true">000</field>
+                <field type="Fixed" id="41" length="8" format="ans" compress="true">0101</field>
+                <field type="NVarGroup" id="48" length="255" nl="3" compress="true">
+                    <field type="Fixed" id="TX_TYPE" length="4" format="n">600</field>
+                    <field type="Fixed" id="DATA_COM_TEC" length="1" format="n">0</field>
+                    <field type="Fixed" id="DATA_PACKET_SEQ" length="4" format="n">0000</field>
+                    <field type="Fixed" id="MORE_DATA" length="1" format="an">N</field>
+                </field>
+                <field type="NVar" id="61" length="840" nl="3" compress="true"/>
+            </field>
+        </formatter>
+		
+        <formatter id="F-61">
+            <!--1. Cabecera del Mensaje -->
+            <field type="Fixed" id="FORMATO" length="2" format="n">02</field>
+            <field type="Fixed" id="USUCANAL" length="10" format="n">CLIENTEPOS</field>
+            <field type="Fixed" id="CODCLIENTE" length="10" format="n">0000000000</field>
+            <field type="Fixed" id="CIKMAC" length="14" format="n">00000000000000</field>
+            <!--1.1 Datos del Operador-->
+            <field type="Fixed" id="TIP_ID_OPERAD" length="2" format="n">01</field>
+            <field type="Fixed" id="COD_OPERAD" length="19" format="an">8080900000000023FFF</field>
+            <field type="Fixed" id="TIP_ID_INGRESO" length="2" format="n">01</field>
+            <field type="Fixed" id="TIP_ID_CLAVE" length="2" format="n">01</field>
+            <field type="Fixed" id="CLV_OPERAD" length="16" format="an">531E8DDA2F7E605</field>
+            <field type="Fixed" id="VAL_TOKEN_OPE" length="8" format="an">00000000</field>
+            <field type="Fixed" id="MET_CIFRADO" length="2" format="n">00</field>
+            <field type="Fixed" id="KSN_OPE" length="20" format="an">FFFF9876543210E0006E</field>
+            <field type="Fixed" id="TRACKOP_1" length="76" format="an"></field>
+            <field type="Fixed" id="TRACKOP_2" length="37" format="an"></field>
+            <!--1.1 Datos del Supervisor -->
+            <field type="Fixed" id="TIP_ID_SUP" length="2" format="n">01</field>
+            <field type="Fixed" id="COD_SUP" length="19" format="an">8080900000000000023</field>
+            <field type="Fixed" id="TIP_ID_INGRESO_SUP" length="2" format="n">01</field>
+            <field type="Fixed" id="TIP_ID_CLAVE_SUP" length="2" format="n">01</field>
+            <field type="Fixed" id="CLV_SUP" length="16" format="an">DD8F9ED7C49DD1C3</field>
+            <field type="Fixed" id="VAL_TOKEN_SUP" length="8" format="an">00000000</field>
+            <field type="Fixed" id="MET_CIFRADO_SUP" length="2" format="an">00</field>
+            <field type="Fixed" id="KSN_SUP" length="20" format="an">FFFF9876543210E0006E</field>
+            <field type="Fixed" id="TRACKSUP_1" length="76" format="an"></field>
+            <field type="Fixed" id="TRACKSUP_2" length="37" format="an"></field>
+            <!--1.2 Datos Punto de Venta -->
+            <field type="Fixed" id="COD_UBIGEO" length="12" format="an">01010101</field>
+            <field type="Fixed" id="TIP_ID_FISICO" length="2" format="n">01</field>
+            <field type="Fixed" id="NRO_ID_FISICO" length="24" format="an">08155PS110807376</field>
+            <field type="Fixed" id="KOPERA" length="16" format="an">0000000000000000</field>
+            <field type="Fixed" id="IP" length="12" format="an">000000000000</field>
+            <field type="Fixed" id="CIKCFG" length="32" format="an">142d74109de1e9b15e4beaf6d</field>
+            <field type="Fixed" id="CODTERMEQ" length="8" format="an">11111111</field>
+            <field type="Fixed" id="LONGDATA" length="4" format="n">01</field>
+            <!--2 Datos de Control -->
+            <field type="Fixed" id="IDTXNCANAL" length="12" format="an">000000000000</field>
+            <field type="Fixed" id="FECHAINIC" length="8" format="an">00000000</field>
+            <field type="Fixed" id="FECHAFINC" length="8" format="an">00000000</field>
+            <!--2.1 Datos Paginacion -->
+            <field type="Fixed" id="NUMREGC" length="4" format="n">0050</field>
+            <field type="Fixed" id="REGINIC" length="4" format="n">0001</field>
+            <!--3 Datos Variables -->
+            <field id="04" type="Case" casefields="TX_TYPE" >
+                <!-- Caso 800|602 -->
+                <case value="602"/>
+                <!-- Caso 800|603 -->
+                <case value="603">
+                    <field type="Fixed" id="IDSESIONTERM" length="12" format="n">123</field>
+                </case>
+                <!-- Caso 800|604 -->
+                <case value="604">
+                    <field type="Fixed" id="IDSESIONTERM" length="12" format="n">123</field>
+                    <field type="Fixed" id="IDSESIONUSU" length="12" format="n">123456</field>
+                </case>
+                <!-- Caso 300|605 -->
+                <case value="605">
+                    <field type="Fixed" id="01" length="1" format="an">H</field>
+                    <field type="Fixed" id="02" length="1" format="an">I</field>
+                    <field type="Fixed" id="03" length="13" format="n">0000000002301</field>
+                    <field type="Fixed" id="04" length="13" format="n">R</field>
+                    <field type="Fixed" id="05" length="1" format="n">I</field>
+                </case>
+                <!-- Caso 300|607 -->
+                <case value="607">
+                    <field type="Fixed" id="01" length="1" format="an">H</field>
+                    <field type="Fixed" id="02" length="1" format="an">I</field>
+                </case>
+                <!-- Caso 300|610, 800|601 -->
+                <default/>
+            </field>
+        </formatter>
+    </formatters>
+</root>

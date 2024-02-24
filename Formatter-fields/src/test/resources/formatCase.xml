@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : formatVAR.xml
+    Created on : April 19, 2011, 5:49 PM
+    Author     : drequejo
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+    <formatters>
+        <formatter id="T01">
+            <field id="01" type="Fixed" length="4">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" >
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD"/>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6"></field>
+                    <field id="04-1-2" type="Fixed" length="5"></field>
+                    <field id="04-1-3" type="Fixed" length="9"></field>
+                </case>
+                <case value="AAAA|DDD|CC"/>
+                <case value="AAAA|EEE|CC">
+                    <field id="04-2-1" type="Fixed" length="7"></field>
+                    <field id="04-2-2" type="Fixed" length="8"></field>
+                </case>
+                <default>
+                    <field id="04-3-1" type="Fixed" length="3"></field>
+                </default>
+            </field>
+        </formatter>
+        
+        <formatter id="testReadBytesCaseEmptyDefault">
+            <field id="01" type="Fixed" length="4">FFFF</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" >
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD"/>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6">666666</field>
+                    <field id="04-1-2" type="Fixed" length="5">55555</field>
+                    <field id="04-1-3" type="Fixed" length="9">999999999</field>
+                </case>
+                <case value="AAAA|DDD|CC"/>
+                <case value="AAAA|EEE|CC">
+                    <field id="04-2-1" type="Fixed" length="7"></field>
+                    <field id="04-2-2" type="Fixed" length="8"></field>
+                </case>
+                <default/>
+            </field>
+        </formatter>
+        <formatter id="testReadBytesRefUp">
+            <field id="01" type="Fixed" length="4">FFFF</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="NVarGroup" length="200" nl="2">
+                <field id="AA" type="Fixed" length="2">hh</field>
+                <field id="BB" type="Case" casefields="01,03.AA" refUp="1">
+                    <case value="AAAA|BBB"/>
+                    <case value="CCCC|hh">
+                        <field id="04-1-1" type="Fixed" length="4">4444</field>
+                        <field id="04-1-2" type="Fixed" length="2">22</field>
+                        <field id="04-1-3" type="Fixed" length="3">333</field>
+                    </case>
+                    <default/>
+                </field>
+            </field>
+        </formatter>
+        <formatter id="testReadBytesRefUpMoreThanSize">
+            <field id="01" type="Fixed" length="4">FFFF</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="NVarGroup" length="200" nl="2">
+                <field id="AA" type="Fixed" length="2">hh</field>
+                <field id="BB" type="Case" casefields="01,03.AA" refUp="5">
+                    <case value="AAAA|BBB"/>
+                    <case value="CCCC|hh">
+                        <field id="04-1-1" type="Fixed" length="4">4444</field>
+                        <field id="04-1-2" type="Fixed" length="2">22</field>
+                        <field id="04-1-3" type="Fixed" length="3">333</field>
+                    </case>
+                    <default/>
+                </field>
+            </field>
+        </formatter>
+        <formatter id="testReadBytesException">
+            <field id="01" type="Fixed" length="4">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" >
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD"/>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6">666666</field>
+                    <field id="04-1-2" type="Fixed" length="5">55555</field>
+                    <field id="04-1-3" type="Fixed" length="9">999999999</field>
+                </case>
+                <case value="AAAA|DDD|CC"/>
+                <case value="AAAA|EEE|CC">
+                    <field id="04-2-1" type="Fixed" length="7"></field>
+                    <field id="04-2-2" type="Fixed" length="8"></field>
+                </case>
+            </field>
+        </formatter>
+        <formatter id="testFromConfigNoParam">
+            <field id="01" type="Fixed" length="4">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" >
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD"/>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6">666666</field>
+                    <field id="04-1-2" type="Fixed" length="5">55555</field>
+                    <field id="04-1-3" type="Fixed" length="9">999999999</field>
+                </case>
+                <default>
+                    <field id="04-d-1" type="Fixed" length="7"></field>
+                    <field id="04-d-2" type="Fixed" length="8"></field>
+                </default>
+            </field>
+        </formatter>
+        <formatter id="testFromConfigWithParam">
+            <field id="01" type="Fixed" length="4">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" >
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD">
+                    <field id="04-0-1" type="Fixed" length="6">666666</field>
+                    <field id="04-0-2" type="Fixed" length="5">55555</field>
+                </case>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6">666666</field>
+                    <field id="04-1-2" type="Fixed" length="5">55555</field>
+                    <field id="04-1-3" type="Fixed" length="9">999999999</field>
+                </case>
+                <default>
+                    <field id="04-d-1" type="Fixed" length="7"></field>
+                    <field id="04-d-2" type="Fixed" length="8"></field>
+                </default>
+            </field>
+        </formatter>
+        <formatter id="testFromConfigWithCustomParam">
+            <field id="01" type="Fixed" length="4">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" keyParam="caseKey">
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD">
+                    <field id="04-0-1" type="Fixed" length="6">666666</field>
+                    <field id="04-0-2" type="Fixed" length="5">55555</field>
+                </case>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6">666666</field>
+                    <field id="04-1-2" type="Fixed" length="5">55555</field>
+                    <field id="04-1-3" type="Fixed" length="9">999999999</field>
+                </case>
+                <default>
+                    <field id="04-d-1" type="Fixed" length="7"></field>
+                    <field id="04-d-2" type="Fixed" length="8"></field>
+                </default>
+            </field>
+        </formatter>
+        <formatter id="testFromConfigWithCustomParamDefaultCase">
+            <field id="01" type="Fixed" length="4">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" keyParam="caseKey">
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD">
+                    <field id="04-0-1" type="Fixed" length="6">666666</field>
+                    <field id="04-0-2" type="Fixed" length="5">55555</field>
+                </case>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6">666666</field>
+                    <field id="04-1-2" type="Fixed" length="5">55555</field>
+                    <field id="04-1-3" type="Fixed" length="9">999999999</field>
+                </case>
+                <default>
+                    <field id="04-d-1" type="Fixed" length="7">7777777</field>
+                    <field id="04-d-2" type="Fixed" length="8">88888888</field>
+                </default>
+            </field>
+        </formatter>
+        <formatter id="T01Filter">
+            <field id="01" type="Fixed" length="4" protec="HIDDING">AAAA</field>
+            <field id="02" type="Fixed" length="3">BBB</field>
+            <field id="03" type="Fixed" length="2" protec="HIDDING_PLUS">CC</field>
+            <field id="04" type="Case" casefields="01,02,03" protec="HIDDING">
+                <case value="AAAA|BBB|CC"/>
+                <case value="AAAA|BBB|DD"/>
+                <case value="AAAA|BBB|EE"/>
+                <case value="AAAA|BBB|FF">
+                    <field id="04-1-1" type="Fixed" length="6"></field>
+                    <field id="04-1-2" type="Fixed" length="5" protec="HIDDING_REST"></field>
+                    <field id="04-1-3" type="Fixed" length="9"></field>
+                </case>
+                <case value="AAAA|DDD|CC"/>
+                <case value="AAAA|EEE|CC">
+                    <field id="04-2-1" type="Fixed" length="7"></field>
+                    <field id="04-2-2" type="Fixed" length="8"></field>
+                </case>
+                <default>
+                    <field id="04-3-1" type="Fixed" length="3" protec="HIDDING_REST"></field>
+                </default>
+            </field>
+        </formatter>
+    </formatters>
+</root>

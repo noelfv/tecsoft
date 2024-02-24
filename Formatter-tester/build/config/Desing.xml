@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <icons>
+        <icon comp="BT_LOAD_TESTS_FILES" icon="/com/novatronic/formatter/img/read_files_03.png"/>
+        <icon comp="BT_LOAD_SELECT_FILE" icon="/com/novatronic/formatter/img/load_group_01.png"/>
+        <icon comp="BT_SELECT_TEST" icon="/com/novatronic/formatter/img/select_test_01.png"/>
+        <icon comp="BT_SAVE_FRAME_RESULT" icon="/com/novatronic/formatter/img/save.png"/>
+        <icon comp="BT_SAVE_FRAME_TEST" icon="/com/novatronic/formatter/img/save.png"/>
+        <icon comp="BT_TO_FRAME" icon="/com/novatronic/formatter/img/to_frame_01.png"/>
+        <icon comp="BT_TO_INTFORMAT" icon="/com/novatronic/formatter/img/to_if_01.png"/>
+        <icon comp="BT_COMPARE_FRAME" icon="/com/novatronic/formatter/img/compara_trama.png"/>
+        <icon comp="BT_COMPARE_INTFORMAT" icon="/com/novatronic/formatter/img/compara_intfor.png"/>
+        <icon comp="BT_PERF_START_GRAPH" icon="/com/novatronic/formatter/img/perf_engine_start.png"/>
+        <icon comp="BT_PERF_STOP_GRAPH" icon="/com/novatronic/formatter/img/perf_engine_stop.png"/>
+        <icon comp="BT_PERF_PLAY" icon="/com/novatronic/formatter/img/perf_play.png"/>
+        <icon comp="BT_PERF_STOP" icon="/com/novatronic/formatter/img/perf_stop.png"/>
+        <icon comp="BT_PERF_REPORT" icon="/com/novatronic/formatter/img/perf_report.png"/>
+        <icon comp="BT_PERF_EDIT_CONFIG" icon="/com/novatronic/formatter/img/perf_edit_config.png"/>
+        <icon comp="BT_PERF_CANCEL_CONFIG" icon="/com/novatronic/formatter/img/perf_cancel_config.png"/>
+        <icon comp="BT_PERF_SAVE_CONFIG" icon="/com/novatronic/formatter/img/perf_save.png"/>
+        <icon comp="BT_PERF_CLEAN_TEST" icon="/com/novatronic/formatter/img/perf_clean.png"/>
+        <icon comp="BT_INTFORMAT_LOG_TO_XML" icon="/com/novatronic/formatter/img/logToXml3.png"/>
+    </icons>
+    <tooltips>
+        <tooltip comp="BT_LOAD_TESTS_FILES" text="Leer archivos de Prueba"/>
+        <tooltip comp="BT_LOAD_SELECT_FILE" text="Leer grupo de tests del Archivo seleccionado"/>
+        <tooltip comp="BT_SELECT_TEST" text="Seleccionar un test y prepararlo para uso ejecucion"/>
+        <tooltip comp="BT_TO_FRAME" text="Convertir Formato Interno a Trama"/>
+        <tooltip comp="BT_TO_INTFORMAT" text="Convertir la Trama a Formato Interno"/>
+        <tooltip comp="BT_SAVE_FRAME_RESULT" text="Guardar la Trama resultante"/>
+        <tooltip comp="BT_SAVE_FRAME_TEST" text="Guardar la Trama de prueba"/>
+        <tooltip comp="BT_COMPARE_FRAME" text="Comparar la Trama resultante con la Trama esperada"/>
+        <tooltip comp="BT_COMPARE_INTFORMAT" text="Comparar el FI resultante con el FI esperado"/>
+        <tooltip comp="BT_PERF_EDIT_CONFIG" text="Habilita la edición de parámetros de Performance"/>
+        <tooltip comp="BT_PERF_SAVE_CONFIG" text="Valida y Guarda los parámetros editados"/>
+        <tooltip comp="BT_PERF_CANCEL_CONFIG" text="Cancela la edicion realizada"/>
+        <tooltip comp="BT_PERF_PLAY" text="Ejecuta el Test de Performance"/>
+        <tooltip comp="BT_PERF_STOP" text="Detiene el Test de Performance"/>
+        <tooltip comp="BT_PERF_REPORT" text="Genera el Reporte de Performance"/>
+        <tooltip comp="BT_PERF_START_GRAPH" text="Inicia las Gráficas"/>
+        <tooltip comp="BT_PERF_STOP_GRAPH" text="Detiene las Gráficas"/>
+        <tooltip comp="BT_PERF_CLEAN_TEST" text="Limpiar los datos obtenidos del Test"/>
+        <tooltip comp="BT_INTFORMAT_LOG_TO_XML" text="Convierte el FI de log a Xml"/>
+    </tooltips>
+</root>

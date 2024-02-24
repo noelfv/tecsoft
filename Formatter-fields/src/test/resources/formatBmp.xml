@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+-->
+<root>
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+   <formatters>
+      <formatter id="testPutBytes">
+         <field type="Bmp" id="isobmp" compress="true">
+            <field type="NVar"  id="2" length="19" nl="2" >1234567890</field>
+            <field type="Fixed" id="3" length="6">123</field>
+            <field type="Fixed" id="8" length="8">12345678</field>
+            <field type="Fixed" id="10" length="16">1234567890123456</field>
+            <field type="Fixed" id="15" length="16">1234567890123456</field>
+            <field type="Fixed" id="65" length="1">1</field>
+         </field>
+      </formatter>
+      <formatter id="testReadBytes">
+         <field type="Bmp" id="isobmp" compress="true">
+            <field type="NVar"  id="2" length="19" nl="2" >1234567890</field>
+            <field type="Fixed" id="3" length="6">123</field>
+            <field type="Fixed" id="8" length="8">12345678</field>
+            <field type="Fixed" id="10" length="16">1234567890123456</field>
+            <field type="Fixed" id="15" length="16">1234567890123456</field>
+            <field type="Fixed" id="65" length="1">1</field>
+         </field>
+      </formatter>
+      <formatter id="testReadBytesFilter">
+         <field type="Bmp" id="isobmp" compress="true">
+            <field type="NVar"  id="2" length="19" nl="2" protec="HIDDING">1234567890</field>
+            <field type="Fixed" id="3" length="6" protec="HIDDING_PLUS">123</field>
+            <field type="Fixed" id="8" length="8">12345678</field>
+            <field type="Fixed" id="10" length="16">1234567890123456</field>
+            <field type="Fixed" id="15" length="16" >1234567890123456</field>
+            <field type="Fixed" id="65" length="1" protec="HIDDING_REST">1</field>
+         </field>
+      </formatter>
+   </formatters>
+</root>

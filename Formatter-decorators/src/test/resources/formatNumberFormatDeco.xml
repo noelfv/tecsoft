@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+author  : Omar Fernandez
+version : 1.0
+since   : 1.0
+date    : 05 Abr. 2012
+-->
+<root>
+    <formatters>
+        <formatter id="T01">
+            <field type="NumberFormatDeco" subtype="Fixed" id="01" dec="2" 
+                   locale="en_US" length="6" format="n" >04</field>
+            <field type="NumberFormatDeco" subtype="Fixed" id="02" dec="2"
+                   locale="en_US" length="6" format="n" >04</field>
+            <field type="NumberFormatDeco" subtype="Fixed" id="03" dec="2"
+                   length="6" format="n" >04</field>
+        </formatter>
+        <formatter id="testToFieldAllowNull">
+            <field type="NumberFormatDeco" subtype="Fixed" id="01" dec="2" 
+                   locale="en_US" length="6" format="n" allowNull="true" >04</field>
+            <field type="NumberFormatDeco" subtype="Fixed" id="02" dec="2"
+                   locale="en_US" length="6" format="n" >04</field>
+            <field type="NumberFormatDeco" subtype="Fixed" id="03" dec="2"
+                   length="6" format="n" >04</field>
+        </formatter>
+        <formatter id="testFromFieldAllowBlank">
+            <field type="NumberFormatDeco" subtype="Fixed" id="01" dec="2" 
+                   locale="en_US" length="6" allowBlank="true" >04</field>
+            <field type="NumberFormatDeco" subtype="Fixed" id="02" dec="2"
+                   locale="en_US" length="6" format="n" >04</field>
+            <field type="NumberFormatDeco" subtype="Fixed" id="03" dec="2"
+                   length="6" format="n" >04</field>
+        </formatter>
+        <formatter id="testToFieldNumFormat">
+            <field type="NumberFormatDeco" subtype="Fixed" id="01" dec="2" 
+                   locale="en_US" length="6" numFormat="#0.0#">04</field>
+        </formatter>
+    </formatters>
+</root>

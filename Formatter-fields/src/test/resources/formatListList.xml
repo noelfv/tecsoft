@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : formatGroupField.xml
+    Created on : April 18, 2011, 4:49 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+   <formatters>
+      <formatter id="fmtListList">
+         <field type="Fixed" id="01" length="2">01</field>
+         <field type="ListList" id="02" refId="01">
+            <field type="Fixed" id="01" length="3">TT</field>
+            <field type="Fixed" id="02" length="4">A</field>
+         </field>
+      </formatter>
+      <formatter id="testCtes">
+         <field type="Fixed" id="01" length="2">01</field>
+         <field type="ListList" id="02" refId="01">
+            <field type="Fixed" id="01" length="3">TT</field>
+            <field type="Fixed" id="02" length="4">A</field>
+            <field type="Fixed" id="03" length="2">BB</field>
+            <field type="Fixed" id="04" length="3">CCC</field>
+         </field>
+      </formatter>
+      <formatter id="testCtesException">
+         <field type="Fixed" id="01" length="2">01</field>
+         <field type="ListList" id="02" refId="01">
+            <field type="Fixed" id="01" length="3">TT</field>
+            <field type="Fixed" id="02" length="4" null="true">A</field>
+            <field type="Fixed" id="03" length="2">BB</field>
+            <field type="Fixed" id="04" length="3">CCC</field>
+         </field>
+      </formatter>
+      <formatter id="testListEmptyOrNull">
+         <field type="Fixed" id="01" length="2" format="n">01</field>
+         <field type="ListList" id="02" refId="01">
+            <field type="Fixed" id="01" length="3">TT</field>
+            <field type="Fixed" id="02" length="4" null="true">A</field>
+            <field type="Fixed" id="03" length="2">BB</field>
+            <field type="Fixed" id="04" length="3">CCC</field>
+         </field>
+      </formatter>
+      <formatter id="fmtListListFilter">
+         <field type="Fixed" id="1" length="2" protec="HIDDING">01</field>
+         <field type="ListList" id="2" refId="1" protec="HIDDING_PLUS">
+            <field type="Fixed" id="1" length="3">TT</field>
+            <field type="Fixed" id="2" length="4" protec="HIDDING">A</field>
+            <field type="Fixed" id="3" length="1" protec="HIDDING">0</field>
+            <field type="ListList" id="4" refId="3" protec="HIDDING_REST">
+                <field type="Fixed" id="1" length="3" protec="HIDDING_PLUS">TT</field>
+                <field type="Fixed" id="2" length="4">A</field>
+             </field>
+         </field>
+      </formatter>
+   </formatters>
+</root>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : formatGroupField.xml
+    Created on : April 18, 2011, 4:49 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+   <formatters>
+      <formatter id="fmt1">
+         <field type="NVarGroup" id="01" nl="2" compress="true">
+            <field type="Fixed" id="01" length="3">TT</field>
+            <field type="Fixed" id="02" length="4" format="n">23</field>
+         </field>
+      </formatter>
+      <formatter id="fmt2">
+         <field type="NVarGroup" id="01" nl="2" compress="true">
+            <field type="Fixed" id="01" length="15">Hola a todos</field>
+            <field type="Fixed" id="02" length="4" format="n">3</field>
+         </field>
+      </formatter>
+      <formatter id="testReadBytesFilter">
+         <field type="NVarGroup" id="01" nl="2" compress="true" protec="HIDDING">
+            <field type="Fixed" id="01" length="15" protec="HIDDING">Hola a todos</field>
+            <field type="Fixed" id="02" length="4" format="n">3</field>
+         </field>
+      </formatter>
+   </formatters>
+</root>

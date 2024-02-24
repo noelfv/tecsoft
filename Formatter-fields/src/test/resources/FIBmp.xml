@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+author  : Omar Fernandez
+version : 1.0
+since   : 1.0
+date    : 05 Abr. 2012
+-->
+<intformats>
+    <!-- INIT - Test para agregar mas campos con creacion de if-->
+    <intformat mapId="testPutBytes">
+        <field id="isobmp">
+            <field id="2">1234567890</field>
+            <field id="3">123</field>
+            <field id="8">12345678</field>
+            <field id="10">1234567890123456</field>
+            <field id="15">1234567890123456</field>
+            <field id="65">1</field>
+        </field>
+    </intformat>
+    <intformat mapId="testReadBytes">
+        <field id="isobmp">
+            <field id="2">1234567890</field>
+            <field id="3">1....6</field>
+            <field id="65">1</field>
+        </field>
+    </intformat>
+    <intformat mapId="testReadBytesFilter">
+        <field id="isobmp">
+            <field id="2">1234567890</field>
+            <field id="3">1....6</field>
+            <field id="65">1</field>
+        </field>
+    </intformat>
+</intformats>

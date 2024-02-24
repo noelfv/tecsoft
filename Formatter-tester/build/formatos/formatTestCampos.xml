@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>   
+    <formatters>
+        <formatter id="test">
+            <field type="Fixed"  id="1" length="4" format="n">0200</field>
+            <field type="Fixed"  id="4" length="12" format="n" compress="true">500</field>
+            <field type="Fixed"  id="41" length="8"  format="ans" filler="F" compress="true">0101</field>
+        </formatter>
+    </formatters>
+</root>

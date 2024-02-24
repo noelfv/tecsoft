@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests formatconfig="formatFinancieras.xml">
+    <test id="91FFTT" formatid="0200" desc="Financ.Ret/Disp:0200-91FFTT">
+        <frame.test>$HEX{0200703C058028E89A580600500239314646545400000000050000500210190509241024001100000240374334660029163607D1103101124332361100000018470909100101FFFF01111FFFFFFFFFFF41562E2043414D494E4F532044454C20494E434120373737202D204C494D41202D20504520202020394A6F7365204D617269612045736372696261202D2033373433333436363030323931363336303706041234567890123456FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1234567890123456001612345678901234560010123456789000283132323130303131313832303231313232313030313131383230323206033032434C49454E5445504F533030303030303030303030303030303030303030303030303031383038303930303030303030303032334646463031303135333145384444413246374536303520303030303030303030304646464639383736353433323130453030303645202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202030313830383039303030303030303030303030323330313031444438463945443743343944443143333030303030303030303046464646393837363534333231304530303036452020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020303130313031303120202020303130383135355053313130383037333736202020202020202030303030303030303030303030303030303030303030303030303030313432643734313039646531653962313565346265616636642020202020202031313131313131313030303130303030303030303030303030303030303030303030303030303030303035303030303134353637323133343132333533333333202020202020202020202020303030303030303030313030303020203438344D584E303031}</frame.test>
+        <frame.exp>$HEX{0200703C058028E89A580600500239314646545400000000050000500210190509241024001100000240374334660029163607D1103101124332361100000018470909100101FFFF01111FFFFFFFFFFF41562E2043414D494E4F532044454C20494E434120373737202D204C494D41202D20504520202020394A6F7365204D617269612045736372696261202D2033373433333436363030323931363336303706041234567890123456FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1234567890123456001612345678901234560010123456789000283132323130303131313832303231313232313030313131383230323206033032434C49454E5445504F533030303030303030303030303030303030303030303030303031383038303930303030303030303032334646463031303135333145384444413246374536303520303030303030303030304646464639383736353433323130453030303645202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202030313830383039303030303030303030303030323330313031444438463945443743343944443143333030303030303030303046464646393837363534333231304530303036452020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020303130313031303120202020303130383135355053313130383037333736202020202020202030303030303030303030303030303030303030303030303030303030313432643734313039646531653962313565346265616636642020202020202031313131313131313030303130303030303030303030303030303030303030303030303030303030303035303030303134353637323133343132333533333333202020202020202020202020303030303030303030313030303020203438344D584E303031}</frame.exp>
+        <intformat.test>
+            <field id="TT">200</field>
+            <field id="bmp">
+                <field id="2">005002</field>
+                <field id="3">91FFTT</field>
+                <field id="4">500</field>
+                <field id="11">005002</field>
+                <field id="12">101905</field>
+                <field id="13">0924</field>
+                <field id="14">1024</field>
+                <field id="22">011</field>
+                <field id="24">000</field>
+                <field id="25">02</field>
+                <field id="35">374334660029163607=110310112433236110000</field>
+                <field id="37">001847090910</field>
+                <field id="41">0101</field>
+                <field id="42">1111</field>
+                <field id="43">AV. CAMINOS DEL INCA 777 - LIMA - PE</field>
+                <field id="45">Jose Maria Escriba - 374334660029163607</field>
+                <!--Se indica que el campo 48 no debe usarse -->
+                <field id="49">604</field>
+                <field id="52">1234567890123456</field>
+                <field id="53">1234567890123456</field>
+                <field id="55">1234567890123456</field>
+                <field id="58">1234567890</field>
+                <field id="60">
+                    <field id="CTAFROM">210011182021</field>
+                    <field id="CTATO">210011182022</field>
+                </field>
+                <field id="61">
+                    <!--1. Cabecera del Mensaje -->
+                    <field id="FORMATO">02</field>
+                    <field id="USUCANAL">CLIENTEPOS</field>
+                    <field id="CODCLIENTE">0000000000</field>
+                    <field id="CIKMAC">00000000000000</field>
+                    <!--1.1 Datos del Operador-->
+                    <field id="TIP_ID_OPERAD">01</field>
+                    <field id="COD_OPERAD">8080900000000023FFF</field>
+                    <field id="TIP_ID_INGRESO">01</field>
+                    <field id="TIP_ID_CLAVE">01</field>
+                    <field id="CLV_OPERAD">531E8DDA2F7E605</field>
+                    <field id="VAL_TOKEN_OPE">00000000</field>
+                    <field id="MET_CIFRADO">00</field>
+                    <field id="KSN_OPE">FFFF9876543210E0006E</field>
+                    <field id="TRACKOP_1"></field>
+                    <field id="TRACKOP_2"></field>
+                    <!--1.2 Datos del Supervisor -->
+                    <field id="TIP_ID_SUP">01</field>
+                    <field id="COD_SUP">8080900000000000023</field>
+                    <field id="TIP_ID_INGRESO_SUP">01</field>
+                    <field id="TIP_ID_CLAVE_SUP">01</field>
+                    <field id="CLV_SUP">DD8F9ED7C49DD1C3</field>
+                    <field id="VAL_TOKEN_SUP">00000000</field>
+                    <field id="MET_CIFRADO_SUP">00</field>
+                    <field id="KSN_SUP">FFFF9876543210E0006E</field>
+                    <field id="TRACKSUP_1"></field>
+                    <field id="TRACKSUP_2"></field>
+                    <!--1.3 Datos Punto de Venta -->
+                    <field id="COD_UBIGEO">01010101</field>
+                    <field id="TIP_ID_FISICO">01</field>
+                    <field id="NRO_ID_FISICO">08155PS110807376</field>
+                    <field id="KOPERA">0000000000000000</field>
+                    <field id="IP">000000000000</field>
+                    <field id="CIKCFG">142d74109de1e9b15e4beaf6d</field>
+                    <field id="CODTERMEQ">11111111</field>
+                    <field id="LONGDATA">01</field>
+                    <!--2 Datos de Control -->
+                    <field id="IDTXNCANAL">000000000000</field>
+                    <field id="FECHAINIC">00000000</field>
+                    <field id="FECHAFINC">00000000</field>
+                    <!--2.1 Datos Paginacion -->
+                    <field id="NUMREGC">0050</field>
+                    <field id="REGINIC">0001</field>
+                    <!--3 Datos Variables -->
+                    <field id="CASE_FINAN">
+                        <!-- 0200|91FFTT -->
+                        <field id="CUENTACARGO">4567213412353333</field>
+                        <field id="MONTOPAGAR">00000000010000</field>
+                        <field id="CODMONEDA">484</field>
+                        <field id="SIMBMON">MXN</field>
+                        <field id="MEDIO">001</field>
+                    </field>
+                    
+                </field>
+            </field>
+        </intformat.test>
+        <intformat.exp>
+            <field id="TT">200</field>
+            <field id="bmp">
+                <field id="2">005002</field>
+                <field id="3">91FFTT</field>
+                <field id="4">500</field>
+                <field id="11">5002</field>
+                <field id="12">101905</field>
+                <field id="13">0924</field>
+                <field id="14">1024</field>
+                <field id="22">11</field>
+                <field id="24"></field>
+                <field id="25">2</field>
+                <field id="35">374334660029163607=110310112433236110000</field>
+                <field id="37">001847090910</field>
+                <field id="41">0101</field>
+                <field id="42">01111</field>
+                <field id="43">AV. CAMINOS DEL INCA 777 - LIMA - PE</field>
+                <field id="45">Jose Maria Escriba - 374334660029163607</field>
+                <!--Se indica que el campo 48 no debe usarse -->
+                <field id="49">604</field>
+                <field id="52">1234567890123456</field>
+                <field id="53">1234567890123456</field>
+                <field id="55">1234567890123456</field>
+                <field id="58">1234567890</field>
+                <field id="60">
+                    <field id="CTAFROM">210011182021</field>
+                    <field id="CTATO">210011182022</field>
+                </field>
+                <field id="61">
+                    <!--1. Cabecera del Mensaje -->
+                    <field id="FORMATO">2</field>
+                    <field id="USUCANAL">CLIENTEPOS</field>
+                    <field id="CODCLIENTE"></field>
+                    <field id="CIKMAC"></field>
+                    <!--1.1 Datos del Operador-->
+                    <field id="TIP_ID_OPERAD">1</field>
+                    <field id="COD_OPERAD">8080900000000023FFF</field>
+                    <field id="TIP_ID_INGRESO">1</field>
+                    <field id="TIP_ID_CLAVE">1</field>
+                    <field id="CLV_OPERAD">531E8DDA2F7E605</field>
+                    <field id="VAL_TOKEN_OPE">00000000</field>
+                    <field id="MET_CIFRADO"></field>
+                    <field id="KSN_OPE">FFFF9876543210E0006E</field>
+                    <field id="TRACKOP_1"></field>
+                    <field id="TRACKOP_2"></field>
+                    <!--1.2 Datos del Supervisor -->
+                    <field id="TIP_ID_SUP">1</field>
+                    <field id="COD_SUP">8080900000000000023</field>
+                    <field id="TIP_ID_INGRESO_SUP">1</field>
+                    <field id="TIP_ID_CLAVE_SUP">1</field>
+                    <field id="CLV_SUP">DD8F9ED7C49DD1C3</field>
+                    <field id="VAL_TOKEN_SUP">00000000</field>
+                    <field id="MET_CIFRADO_SUP">00</field>
+                    <field id="KSN_SUP">FFFF9876543210E0006E</field>
+                    <field id="TRACKSUP_1"></field>
+                    <field id="TRACKSUP_2"></field>
+                    <!--1.3 Datos Punto de Venta -->
+                    <field id="COD_UBIGEO">01010101</field>
+                    <field id="TIP_ID_FISICO">1</field>
+                    <field id="NRO_ID_FISICO">08155PS110807376</field>
+                    <field id="KOPERA">0000000000000000</field>
+                    <field id="IP">000000000000</field>
+                    <field id="CIKCFG">142d74109de1e9b15e4beaf6d</field>
+                    <field id="CODTERMEQ">11111111</field>
+                    <field id="LONGDATA">1</field>
+                    <!--2 Datos de Control -->
+                    <field id="IDTXNCANAL">000000000000</field>
+                    <field id="FECHAINIC">00000000</field>
+                    <field id="FECHAFINC">00000000</field>
+                    <!--2.1 Datos Paginacion -->
+                    <field id="NUMREGC">50</field>
+                    <field id="REGINIC">1</field>
+                    <!--3 Datos Variables -->
+                    <field id="CASE_FINAN">
+                        <!-- 0200|91FFTT -->
+                        <field id="CUENTACARGO">4567213412353333</field>
+                        <field id="MONTOPAGAR">00000000010000</field>
+                        <field id="CODMONEDA">484</field>
+                        <field id="SIMBMON">MXN</field>
+                        <field id="MEDIO">001</field>
+                    </field>
+                    
+                </field>
+            </field>
+        </intformat.exp>
+    </test>
+	
+</tests>

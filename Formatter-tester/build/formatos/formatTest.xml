@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>   
+    <formatters>
+        <formatter id="test">
+            <field type="Fixed" id="TT" length="4" format="n" compress="true">0200</field>
+            <field type="Bmp" id="bmp" compress="true">
+                <field type="Fixed"  id="2" length="16" >005002</field>
+                <field type="Fixed"  id="3" length="6"  >01FF00</field>
+                <field type="Fixed"  id="4" length="12" >500</field>
+                <field type="Fixed"  id="11" length="6"  >005002</field>
+                <field type="Fixed"  id="12" length="6">101905</field>
+                <field type="Fixed"  id="13" length="4">0924</field>
+                <field type="Fixed"  id="14" length="4">1024</field>
+                <field type="Fixed"  id="22" length="3">011</field>
+                <field type="Fixed"  id="24" length="3">000</field>
+                <field type="Fixed"  id="25" length="2">02</field>
+                <field type="Track2" id="35" length="48" subtype="Fixed">374334660029163607=110310112433236110000</field>
+                <field type="Fixed"  id="37" length="12">001847090910</field>
+                <field type="Fixed"  id="41" length="8">0101</field>
+                <field type="Fixed"  id="42" length="15">1111</field>
+                <field type="Fixed"  id="43" length="40">AV. CAMINOS DEL INCA 777 - LIMA - PE</field>
+                <field type="NVar"   id="45" nl="2" length="76">Jose Maria Escriba - 374334660029163607</field>
+                <!--Se indica que el campo 48 no debe usarse -->
+                <field type="Fixed"  id="49" length="3">777</field>
+                <field type="Fixed"  id="52" length="64">1234567890123456</field>
+                <field type="Fixed"  id="53" length="16">1234567890123456</field>
+                <field type="NVar"   id="55" nl="3" length="255">1234567890123456</field>
+                <field type="NVar"   id="58" nl="3" length="21">1234567890</field>
+                <field type="NVar"   id="60" nl="3" length="21">1234567890</field>
+                <field type="NVar"   id="61" length="840" nl="3" compress="true">123456</field>
+            </field>
+        </formatter>
+    </formatters>
+</root>

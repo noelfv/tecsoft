@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+<root>   
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+    <formatters>
+        <formatter id="testPutBytes">
+            <field type="Fixed" id="01" length="4" format="n" compress="true">0200</field>
+            <field type="Fixed" id="02" length="7" format="a">hoy dia</field>
+            <field type="Fixed" id="03" length="4" format="n">0210</field>
+            <field type="Fixed" id="04" length="8" format="an">0210</field>
+        </formatter>
+        <formatter id="testReadBytes">
+            <field type="Fixed" id="01" length="4" format="n" compress="true">56</field>
+            <field type="Fixed" id="02" length="12" format="an">hoy dia</field>
+            <field type="Fixed" id="03" length="4" format="n">0210</field>
+        </formatter>
+        <formatter id="testReadBytesCompress">
+            <field type="Fixed" id="01" length="3" format="n" compress="true">123</field>
+        </formatter>
+        <formatter id="testPutBytesFilter">
+            <field type="Fixed" id="01" length="4" format="n" compress="true">0200</field>
+            <field type="Fixed" id="02" length="7" format="a" protec="HIDDING">hoy dia</field>
+            <field type="Fixed" id="03" length="4" format="n">0210</field>
+            <field type="Fixed" id="04" length="8" format="an" protec="HIDDING">0210</field>
+        </formatter>
+        <formatter id="testReadBytesFilter">
+            <field type="Fixed" id="01" length="4" format="n" compress="true" protec="HIDDING">56</field>
+            <field type="Fixed" id="02" length="12" format="an">hoy dia</field>
+            <field type="Fixed" id="03" length="4" format="n" protec="HIDDING">0210</field>
+        </formatter>
+        <formatter id="testReadBytesCompressFilter">
+            <field type="Fixed" id="01" length="3" format="n" compress="true" protec="HIDDING">123</field>
+        </formatter>
+    </formatters>
+</root>

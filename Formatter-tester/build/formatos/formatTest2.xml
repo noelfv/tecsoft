@@ -1,0 +1,23 @@
+<root>
+   <formatters>
+      <formatter id="EJEM-05">
+         <field type="Bmp" id="bmp" compress="true">
+            <field type="NVar" id="2" nl="2" length="16" format="an"
+                   filler="F" compress="true">005002</field>
+            <field type="Fixed" id="3" length="6" format="an">01FF00</field>
+            <field type="Fixed"  id="11" length="6"  format="n"
+                   compress="true">005002</field>
+            <field type="Fixed"  id="12" length="6"  format="n"   
+                   compress="true">101905</field>
+            <field type="Fixed"  id="13" length="4"  format="n"
+                   compress="true" undofill="false">0924</field>
+            <field type="Fixed"  id="14" length="4"  format="n"   
+                   compress="true">1024</field>
+            <field type="Fixed"  id="24" length="3"  format="n"   
+                   compress="true">000</field>
+            <field type="NVar" id="61" length="840" nl="3" compress="true"/>
+            <field type="NVar" id="85" length="8" nl="3" compress="true"/>
+         </field>
+      </formatter>
+   </formatters>
+</root>

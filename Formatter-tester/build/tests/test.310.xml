@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests formatconfig="format310Resp.xml">
+    <test id="320000" formatid="0310Data" desc="Test William">
+        <frametest>61002CLIENTEPOS00000000000020110920124132457000000000105010000RESULTADO OK                                                                    00010000000000000000000000000000005000010028002800000000000000000000000000000000000000000000000000000000000000000000000000000000000028MIBANCO S.A.                            JR. AYACUCHO 353 - PIURA                0001BOTICA NESTAREZ                         001BOTICA NESTAREZ                         2001  1021000006122426001          021000006122426001          56CC09E7CFDC4CEF56CC09E7CFDC4CEF56CC09E7CFDC4CEFT010017050014325201     8080900180809000000000150000000000000010000000000020101KOE000360400000500000000050000000005000000KOE000160400000500000000050000000005000000KOI000260400000500000000050000000005000000KOE000260400000500000000050000000005000000KXE000160400000500000000050000000005000000KXE000260400000500000000050000000005000000KXE000360400000500000000050000000005000000KXI000160400000500000000050000000005000000KXI000260400000500000000050000000005000000KXT000160400000500000000050000000005000000KXT000260400000500000000050000000005000000KXI000460400000500000000050000000005000000KOI000760400003000000000300000000030000000KXI000760400001000000000050000000005000000KXI000360400001000000000050000000005000000KTX000260400000500000000050000000005000000KTX000560400000500000000050000000005000000KOA000160400000500000000050000000005000000KXI000560400000500000000050000000005000000KXI000660400000500000000050000000005000000KOT000160400000500000000050000000005000000KOT000260400000500000000050000000005000000KOI000460400000500000000050000000005000000KOI000660400000500000000050000000005000000KOI000360400003000000000300000000030000000KOI000560400003000000000300000000030000000KAC000160400007777000000777700000077770000KOI000160400000500000000050000000005000000</frametest>
+        <frameexp>61002CLIENTEPOS00000000000020110920124132457000000000105010000RESULTADO OK                                                                    00010000000000000000000000000000005000010028002800000000000000000000000000000000000000000000000000000000000000000000000000000000000028MIBANCO S.A.                            JR. AYACUCHO 353 - PIURA                0001BOTICA NESTAREZ                         001BOTICA NESTAREZ                         2001  1021000006122426001          021000006122426001          56CC09E7CFDC4CEF56CC09E7CFDC4CEF56CC09E7CFDC4CEFT010017050014325201     8080900180809000000000150000000000000010000000000020101KOE000360400000500000000050000000005000000KOE000160400000500000000050000000005000000KOI000260400000500000000050000000005000000KOE000260400000500000000050000000005000000KXE000160400000500000000050000000005000000KXE000260400000500000000050000000005000000KXE000360400000500000000050000000005000000KXI000160400000500000000050000000005000000KXI000260400000500000000050000000005000000KXT000160400000500000000050000000005000000KXT000260400000500000000050000000005000000KXI000460400000500000000050000000005000000KOI000760400003000000000300000000030000000KXI000760400001000000000050000000005000000KXI000360400001000000000050000000005000000KTX000260400000500000000050000000005000000KTX000560400000500000000050000000005000000KOA000160400000500000000050000000005000000KXI000560400000500000000050000000005000000KXI000660400000500000000050000000005000000KOT000160400000500000000050000000005000000KOT000260400000500000000050000000005000000KOI000460400000500000000050000000005000000KOI000660400000500000000050000000005000000KOI000360400003000000000300000000030000000KOI000560400003000000000300000000030000000KAC000160400007777000000777700000077770000KOI000160400000500000000050000000005000000</frameexp>
+        <intformattest>
+            <field id="TT">200</field>
+            <field id="bmp">
+                <field id="2">005002</field>
+                <field id="3">01FF00</field>
+                <field id="4">500</field>
+                <field id="11">005002</field>
+                <field id="12">101905</field>
+                <field id="13">0924</field>
+                <field id="14">1024</field>
+                <field id="22">011</field>
+                <field id="24">000</field>
+                <field id="25">02</field>
+                <field id="35">374334660029163607=110310112433236110000</field>
+                <field id="37">001847090910</field>
+                <field id="41">0101</field>
+                <field id="42">1111</field>
+                <field id="43">AV. CAMINOS DEL INCA 777 - LIMA - PE</field>
+                <field id="45">Jose Maria Escriba - 374334660029163607</field>
+                <field id="49">604</field>
+                <field id="52">1234567890123456</field>
+                <field id="53">1234567890123456</field>
+                <field id="55">1234567890123456</field>
+                <field id="58">1234567890</field>
+                <field id="60">
+                    <field id="CTAFROM">210011182021</field>
+                    <field id="CTATO">210011182022</field>
+                </field>
+                <field id="61">
+                    <field id="FORMATO">02</field>
+                    <field id="USUCANAL">CLIENTEPOS</field>
+                    <field id="CODCLIENTE">0000000000</field>
+                    <field id="CIKMAC">00000000000000</field>
+                    <field id="TIP_ID_OPERAD">01</field>
+                    <field id="COD_OPERAD">8080900000000023FFF</field>
+                    <field id="TIP_ID_INGRESO">01</field>
+                    <field id="TIP_ID_CLAVE">01</field>
+                    <field id="CLV_OPERAD">531E8DDA2F7E605</field>
+                    <field id="VAL_TOKEN_OPE">00000000</field>
+                    <field id="MET_CIFRADO">00</field>
+                    <field id="KSN_OPE">FFFF9876543210E0006E</field>
+                    <field id="TRACKOP_1"></field>
+                    <field id="TRACKOP_2"></field>
+                    <field id="TIP_ID_SUP">01</field>
+                    <field id="COD_SUP">8080900000000000023</field>
+                    <field id="TIP_ID_INGRESO_SUP">01</field>
+                    <field id="TIP_ID_CLAVE_SUP">01</field>
+                    <field id="CLV_SUP">DD8F9ED7C49DD1C3</field>
+                    <field id="VAL_TOKEN_SUP">00000000</field>
+                    <field id="MET_CIFRADO_SUP">00</field>
+                    <field id="KSN_SUP">FFFF9876543210E0006E</field>
+                    <field id="TRACKSUP_1"></field>
+                    <field id="TRACKSUP_2"></field>
+                    <field id="COD_UBIGEO">01010101</field>
+                    <field id="TIP_ID_FISICO">01</field>
+                    <field id="NRO_ID_FISICO">08155PS110807376</field>
+                    <field id="KOPERA">0000000000000000</field>
+                    <field id="IP">000000000000</field>
+                    <field id="CIKCFG">142d74109de1e9b15e4beaf6d</field>
+                    <field id="CODTERMEQ">11111111</field>
+                    <field id="LONGDATA">01</field>
+                    <field id="IDTXNCANAL">000000000000</field>
+                    <field id="FECHAINIC">00000000</field>
+                    <field id="FECHAFINC">00000000</field>
+                    <field id="NUMREGC">0050</field>
+                    <field id="REGINIC">0001</field>
+                    <field id="CASE_FINAN">
+                        <field id="CODPLAZATERM">150101</field>
+                        <field id="TIPOCUENTA">10</field>
+                        <field id="NUMCUOTAS">12</field>
+                        <field id="CCV2">602</field>
+                    </field>
+                </field>
+            </field>
+        </intformattest>
+        <intformatexp>
+            <field id="TT">200</field>
+            <field id="bmp">
+                <field id="2">005002</field>
+                <field id="3">01FF00</field>
+                <field id="4">500</field>
+                <field id="11">005002</field>
+                <field id="12">101905</field>
+                <field id="13">0924</field>
+                <field id="14">1024</field>
+                <field id="22">011</field>
+                <field id="24">000</field>
+                <field id="25">02</field>
+                <field id="35">374334660029163607=110310112433236110000</field>
+                <field id="37">001847090910</field>
+                <field id="41">0101</field>
+                <field id="42">1111</field>
+                <field id="43">AV. CAMINOS DEL INCA 777 - LIMA - PE</field>
+                <field id="45">Jose Maria Escriba - 374334660029163607</field>
+                <field id="49">604</field>
+                <field id="52">1234567890123456</field>
+                <field id="53">1234567890123456</field>
+                <field id="55">1234567890123456</field>
+                <field id="58">1234567890</field>
+                <field id="60">
+                    <field id="CTAFROM">210011182021</field>
+                    <field id="CTATO">210011182022</field>
+                </field>
+                <field id="61">
+                    <field id="FORMATO">02</field>
+                    <field id="USUCANAL">CLIENTEPOS</field>
+                    <field id="CODCLIENTE">0000000000</field>
+                    <field id="CIKMAC">00000000000000</field>
+                    <field id="TIP_ID_OPERAD">01</field>
+                    <field id="COD_OPERAD">8080900000000023FFF</field>
+                    <field id="TIP_ID_INGRESO">01</field>
+                    <field id="TIP_ID_CLAVE">01</field>
+                    <field id="CLV_OPERAD">531E8DDA2F7E605</field>
+                    <field id="VAL_TOKEN_OPE">00000000</field>
+                    <field id="MET_CIFRADO">00</field>
+                    <field id="KSN_OPE">FFFF9876543210E0006E</field>
+                    <field id="TRACKOP_1"></field>
+                    <field id="TRACKOP_2"></field>
+                    <field id="TIP_ID_SUP">01</field>
+                    <field id="COD_SUP">8080900000000000023</field>
+                    <field id="TIP_ID_INGRESO_SUP">01</field>
+                    <field id="TIP_ID_CLAVE_SUP">01</field>
+                    <field id="CLV_SUP">DD8F9ED7C49DD1C3</field>
+                    <field id="VAL_TOKEN_SUP">00000000</field>
+                    <field id="MET_CIFRADO_SUP">00</field>
+                    <field id="KSN_SUP">FFFF9876543210E0006E</field>
+                    <field id="TRACKSUP_1"></field>
+                    <field id="TRACKSUP_2"></field>
+                    <field id="COD_UBIGEO">01010101</field>
+                    <field id="TIP_ID_FISICO">01</field>
+                    <field id="NRO_ID_FISICO">08155PS110807376</field>
+                    <field id="KOPERA">0000000000000000</field>
+                    <field id="IP">000000000000</field>
+                    <field id="CIKCFG">142d74109de1e9b15e4beaf6d</field>
+                    <field id="CODTERMEQ">11111111</field>
+                    <field id="LONGDATA">01</field>
+                    <field id="IDTXNCANAL">000000000000</field>
+                    <field id="FECHAINIC">00000000</field>
+                    <field id="FECHAFINC">00000000</field>
+                    <field id="NUMREGC">0050</field>
+                    <field id="REGINIC">0001</field>
+                    <field id="CASE_FINAN">
+                        <field id="CODPLAZATERM">150101</field>
+                        <field id="TIPOCUENTA">10</field>
+                        <field id="NUMCUOTAS">12</field>
+                        <field id="CCV2">602</field>
+                    </field>
+                </field>
+            </field>
+        </intformatexp>
+    </test>
+</tests>

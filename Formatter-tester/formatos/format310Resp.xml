@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>   
+    <formatters>
+        <formatter id="0310Data">
+            <!--1. Cabecera del Mensaje -->
+            <field type="Fixed" id="TTI" length="3" format="n" />
+			
+            <field type="Fixed" id="FORMATO" length="2" format="n" />
+            <field type="Fixed" id="USUCANAL" length="10" format="an" />
+            <field type="Fixed" id="CODCLIENTE" length="10" format="an" />
+            <field type="Fixed" id="ACCION" length="2" format="an" />
+            <field type="Fixed" id="FECTXNHOST" length="8" format="an" />
+            <field type="Fixed" id="HORTXNHOST" length="9" format="an" />
+            <field type="Fixed" id="NUMREFHOST" length="10" format="an" />
+            <field type="Fixed" id="ORIRESP" length="2" format="an" />
+            <field type="Fixed" id="ORICOMPRESP" length="2" format="an" />
+            <field type="Fixed" id="CODRES" length="4" format="an" />
+            <field type="Fixed" id="DESRESP" length="80" format="an" />
+            <field type="Fixed" id="LONGDATA" length="4" format="n" />
+			
+            <field type="Fixed" id="IDTXNCANAL" length="12" format="an" />
+            <field type="Fixed" id="FECHAINIC" length="8" format="an" />
+            <field type="Fixed" id="FECHAFINC" length="8" format="an" />
+            <!--2.1 Datos Paginacion -->
+            <field type="Fixed" id="NUMREGC" length="4" format="n" />
+            <field type="Fixed" id="REGINIC" length="4" format="n" />
+            <field type="Fixed" id="NUMREGENV" length="4" format="n" />
+            <field type="Fixed" id="NUMREGTOT" length="4" format="n" />
+            <!--3 Datos del autorizador USO Futuro -->
+            <field type="Fixed" id="AUTORIZADORFUTURO" length="68" format="an" />
+            <!--3 Datos Variables -->
+            <field type="Case"  id="CASE_FINAN"  casefields="TTI" >	
+                <!--Solicitud de Atributo -->
+                <case value="610">
+                    <field type="Fixed" id="PORCADSUP" length="16" format="an" />
+                    <field type="Fixed" id="NUMTXNS" length="2" format="an" />
+                    <field type="Fixed" id="PSF" length="40" format="an" />
+                    <field type="Fixed" id="DIRECCION" length="40" format="an" />
+                    <field type="Fixed" id="CODCOMERCIO" length="4" format="an" />
+                    <field type="Fixed" id="NOMCOMERCIO" length="40" format="an" />
+                    <field type="Fixed" id="CODTIENDA" length="3" format="an" />
+                    <field type="Fixed" id="NOMTIENDA" length="40" format="an" />
+                    <!--<field type="Fixed" id="CODTERMINAL" length="16" format="an" />-->
+                    <field type="Fixed" id="CODPLAZATERM" length="6" format="an" />
+                    <field type="Fixed" id="ESTADO" length="1" format="an" />
+                    <field type="Fixed" id="CUENTASOL" length="28" format="an" />
+                    <field type="Fixed" id="CUENTADOL" length="28" format="an" />
+                    <field type="Fixed" id="WORKKEY1" length="16" format="an" />
+                    <field type="Fixed" id="WORKKEY2" length="16" format="an" />
+                    <field type="Fixed" id="WORKKEY3" length="16" format="an" />
+                    <field type="Fixed" id="CODAGENCIA" length="12" format="an" />
+                    <field type="Fixed" id="TELEFONO" length="12" format="an" />
+                    <field type="Fixed" id="BINTARJETA" length="6" format="an" />
+                    <field type="Fixed" id="NUMTARSUP" length="2" format="an" />
+                    <field type="Fixed" id="TARJESUPER" length="19" format="an" />
+                    <field type="Fixed" id="IDSESIONTERM" length="12" format="an" />
+                    <field type="Fixed" id="IDSESIONUSU" length="12" format="an" />
+                    <!-- FIXME falta el arreglo de transacciones con sus limites, pero dicha data no es relevante para APP-POS  -->
+                    <field type="ListList" id="LISTA" refId="NUMREGENV">
+                        <field type="Fixed"  id="CODTXN" length="7" format="an" />
+                        <field type="Fixed"  id="CODMON" length="3" format="an" />
+                        <field type="Fixed"  id="IMPEFECTIVO" length="10" format="n" />
+                        <field type="Fixed"  id="IMPCARGCTA" length="10" format="n" />
+                        <field type="Fixed"  id="IMPTARJ" length="10" format="n" />
+                        <field type="Fixed"  id="FLG1" length="1" format="an" />
+                        <field type="Fixed"  id="FLG2" length="1" format="an" />
+                    </field>
+                </case>
+                <!--Consulta Terminal -->
+                <case value="605">
+                    <field type="Fixed" id="LINEA" length="40" format="an" />
+                </case>
+                <!--Consulta Consulta X D�a -->
+                <case value="607">
+                    <field type="Fixed" id="LINEA" length="40" format="an" />
+                </case>
+                <default/>
+            </field>
+        </formatter>
+    </formatters>
+</root>

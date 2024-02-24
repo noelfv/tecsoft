@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : formatGroupField.xml
+    Created on : April 18, 2011, 4:49 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+    <formatters>
+        <formatter id="testPutBytes">
+            <field type="Group" id="01">
+               <field type="Fixed" id="01" length="2"/>
+               <field type="Fixed" id="02" length="4"/>
+               <field type="Fixed" id="03" length="3"/>
+            </field>
+        </formatter>
+        <formatter id="testReadBytes">
+            <field type="Group" id="01">
+               <field type="Fixed" id="01" length="2"/>
+               <field type="Fixed" id="02" length="4"/>
+               <field type="Fixed" id="03" length="3"/>
+            </field>
+        </formatter>
+        <formatter id="testReadBytesFilter">
+            <field type="Group" id="01" protec="HIDDING">
+               <field type="Fixed" id="01" length="2"/>
+               <field type="Fixed" id="02" length="4" protec="HIDDING"/>
+               <field type="Fixed" id="03" length="3"/>
+            </field>
+        </formatter>
+    </formatters>
+</root>

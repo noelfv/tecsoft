@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <actions>
+        <!-- Acciones del Tester-->
+        <action compId="FR_MAIN" compClass="javax.swing.JFrame" actionClass="com.novatronic.formatter.gui.actions.tester.CloseAction"/>
+        <action compId="MI_CLEAN_TEST_LOG" compClass="javax.swing.JMenuItem" actionClass="com.novatronic.formatter.gui.actions.tester.CleanLogAction"/>
+        
+        <!-- Acciones de herramientas-->
+<!--        <action compId="BT_INTFORMAT_LOG_TO_XML" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.tools.LogToXmlAction"/>-->
+        <action compId="BT_LOAD_FMTCFG" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.tools.LoadFmtConfigAction"/>
+        <action compId="BT_LOAD_FMTIDS" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.tools.LoadFmtIdsAction"/>
+        <action compId="BT_FMTLOG_TO_XML" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.tools.FmtLogToXmlAction"/>
+        <action compId="BT_XML_TO_FRAME" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.tools.XmlToFrameAction"/>
+        <action compId="BT_FRAME_TO_XMLANDLOG" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.tools.FrameToXmlandLogAction"/>
+        
+        <!-- Acciones de carga de Datos del Test-->
+        <action compId="BT_LOAD_TESTS_FILES" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.load.LoadTestsFileAction"/>
+        <action compId="BT_LOAD_SELECT_FILE" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.load.LoadTestGroupAction"/>
+        <action compId="BT_SELECT_TEST" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.load.LoadTestAction"/>
+        
+        <!-- Acciones asociadas con el formateador con el test ya cargado-->
+        <action compId="BT_SAVE_FRAME_TEST" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.format.SaveFrameTestAction"/>
+        <action compId="BT_SAVE_FRAME_RESULT" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.format.SaveFrameResultAction"/>
+        <action compId="BT_TO_FRAME" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.format.ToFrameAction"/>
+        <action compId="BT_TO_INTFORMAT" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.format.ToIntFormatAction"/>
+        <action compId="BT_COMPARE_FRAME" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.format.CompareFramesAction"/>
+        <action compId="BT_COMPARE_INTFORMAT" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.format.CompareIFsAction"/>
+        
+        <!-- Acciones asociadas con el test de performance -->
+        <action compId="BT_PERF_EDIT_CONFIG" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.EditPerfConfigAction"/>
+        <action compId="BT_PERF_CANCEL_CONFIG" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.CancelPerfConfigAction"/>
+        <action compId="BT_PERF_SAVE_CONFIG" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfSaveAction"/>
+        <action compId="BT_PERF_START_GRAPH" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfStartGraphAction"/>
+        <action compId="BT_PERF_STOP_GRAPH" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfStopGraphAction"/>
+        <action compId="BT_PERF_PLAY" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfPlayAction"/>
+        <action compId="BT_PERF_STOP" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfStopAction"/>
+        <action compId="BT_PERF_CLEAN_TEST" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfCleanAction"/>
+        <action compId="BT_PERF_REPORT" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.perf.PerfReportAction"/>
+        
+        <!-- Acciones de Validaciones -->
+        <action compId="TF_PERF_THREAD_SIZE" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.support.ValidateNumberAction"/>
+        <action compId="TF_PERF_EXEC_BY_THREAD" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.support.ValidateNumberAction"/>
+        <action compId="TF_PERF_GRAPH_REFRESH" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.support.ValidateNumberAction"/>
+        <action compId="TF_PERF_THREAD_DELAY" compClass="javax.swing.JButton" actionClass="com.novatronic.formatter.gui.actions.support.ValidateNumberAction"/>
+    </actions>
+</root>

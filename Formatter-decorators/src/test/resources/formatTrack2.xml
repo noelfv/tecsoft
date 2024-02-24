@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : formatVAR.xml
+    Created on : April 19, 2011, 5:49 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <formatters>
+        <formatter id="FMTPAMCOM">
+            <field type="Track2" id="01" compress="true" subtype="NVar" 
+                length="16" nl="2" format="an" filler="F">1234567=1234567</field>
+        </formatter>
+        <formatter id="FMTPAM">
+            <field type="Track2" id="01" subtype="Fixed" length="15" >1234567=1234567</field>
+        </formatter>
+    </formatters>
+</root>
