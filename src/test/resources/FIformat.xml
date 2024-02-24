@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<intformats>
+    <intformat mapId="testGetInternalFieldByPath">
+        <field id="01">1111</field>
+        <field id="02">22</field>
+        <field id="03">
+            <field id="a">aaaaaaa</field>
+            <field id="b">bbbbb</field>
+            <field id="c">
+                <field id="A">AAAA</field>
+                <field id="B">BB</field>
+            </field>
+            <field id="d">ddd</field>
+            <field id="e">
+                <field id="A">AAAAAA</field>
+                <field id="B">BBBBBBBBB</field>
+            </field>
+        </field>
+        <field id="04">4444</field>
+    </intformat>
+    <intformat mapId="testConstrucInternalFormatFromMap">
+        <field id="01">1111</field>
+        <field id="02">22</field>
+        <field id="03">
+            <field id="a">aaaaaaa</field>
+            <field id="b">bbbbb</field>
+            <field id="c">
+                <field id="A">AAAA</field>
+                <field id="B">BB</field>
+            </field>
+            <field id="d">ddd</field>
+            <field id="e">
+                <field id="A">AAAAAA</field>
+                <field id="B">BBBBBBBBB</field>
+            </field>
+        </field>
+        <field id="04">4444</field>
+    </intformat>
+    <!-- INIT - Test para agregar mas campos con creacion de if-->
+    <intformat mapId="testAddIFieldByPathFromRootFI">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="a" >cc</field>
+            <field id="b" >cc</field>
+        </field>
+    </intformat>
+    <intformat mapId="testAddIFieldByPathFromRootFI-Exp">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="a" >cc</field>
+            <field id="b" >cc</field>
+        </field>
+        <field id="05" >
+            <field id="ahora" >
+                <field id="test" >123456</field>
+            </field>
+        </field>
+    </intformat>
+    <intformat mapId="testAddIFieldByPathFromActualFI">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="a" >cc</field>
+            <field id="b" >cc</field>
+        </field>
+    </intformat>
+    <intformat mapId="testAddIFieldByPathFromActualFI-Exp">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="a" >cc</field>
+            <field id="b" >cc</field>
+            <field id="05" >
+                <field id="ahora" >
+                    <field id="test" >123456</field>
+                </field>
+            </field>
+        </field>
+    </intformat>
+    <intformat mapId="testAddIFieldByPathFromRootFI_Exist">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="a" >cc</field>
+            <field id="b" >cc</field>
+        </field>
+    </intformat>
+    <intformat mapId="testAddIFieldByPathFromRootFI_Exist-Exp">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="a" >cc</field>
+            <field id="b" >cc</field>
+            <field id="ahora" >
+                <field id="test" >123456</field>
+            </field>
+        </field>
+    </intformat>
+    <!-- END - Test para agregar mas campos con creacion de if-->
+    
+    <intformat mapId="testgetValue">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="01" >cc</field>
+            <field id="02" >cc</field>
+            <field id="03" >
+                <field id="01" >123</field>
+                <field id="02" >456</field>
+            </field>
+        </field>
+    </intformat>
+    
+    <intformat mapId="testGetIF">
+        <field id="01" >aaaa</field>
+        <field id="02" >bbb</field>
+        <field id="03" >cc</field>
+        <field id="04" >
+            <field id="01" >cc</field>
+            <field id="02" >cc</field>
+            <field id="03" >
+                <field id="01" >
+                    <field id="01" >MM</field>
+                    <field id="02" >PP</field>
+                    <field id="03" >QQQ</field>
+                </field>
+                <field id="02" >456</field>
+            </field>
+        </field>
+    </intformat>
+    
+    <intformat mapId="testGetIF-exp1" id="04">
+        <field id="01" >cc</field>
+        <field id="02" >cc</field>
+        <field id="03" >
+            <field id="01" >
+                <field id="01" >MM</field>
+                <field id="02" >PP</field>
+                <field id="03" >QQQ</field>
+            </field>
+            <field id="02" >456</field>
+        </field>
+    </intformat>
+    <intformat mapId="testGetIF-exp2" id="01">
+        <field id="01" >MM</field>
+        <field id="02" >PP</field>
+        <field id="03" >QQQ</field>
+    </intformat>
+    <intformat mapId="testEntrySet" id="01">
+        <field id="lista_cuenta" >
+            <field id="0" >
+                <field id="cod_res" >0000</field>
+                <field id="des_res" >Operacion Satisfactoria</field>
+                <field id="moneda" >S/.</field>
+                <field id="sal_cont" >1500</field>
+                <field id="sal_disp" >400</field>
+                <field id="cuenta" >cuenta01</field>
+            </field>
+            <field id="1" >
+                <field id="cod_res" >0000</field>
+                <field id="des_res" >Operacion Satisfactoria</field>
+                <field id="moneda" >S/.</field>
+                <field id="sal_cont" >1200</field>
+                <field id="sal_disp" >300</field>
+                <field id="cuenta" >cuenta02</field>
+            </field>
+        </field>
+    </intformat>
+    <intformat mapId="testGetPath" >
+        <field id="path01" >
+            <field id="filed01" >001</field>
+            <field id="path02" >
+                <field id="filed0102" >001</field>
+                <field id="path03" >
+                    <field id="path04" >
+                        <field id="path05" >
+                            <field id="filed0102030405" >001</field>
+                        </field>
+                    </field>
+                </field>
+            </field>
+        </field>
+    </intformat>
+    <intformat mapId="testMakePath" >
+        <field id="path01" >
+            <field id="filed01" >001</field>
+            <field id="path02" >
+                <field id="filed0102" >001</field>
+                <field id="path03" >
+                    <field id="path04" >
+                        <field id="path05" >
+                            <field id="filed0102030405" >001</field>
+                        </field>
+                    </field>
+                </field>
+            </field>
+        </field>
+    </intformat>
+</intformats>

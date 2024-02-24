@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<intformats>
+    <intformat mapId="IF-Test">
+        <field id="01">aaaa</field>
+        <field id="02">bbb</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="01">dd</field>
+            <field id="02">eeee</field>
+        </field>
+        <field id="05">f  f  </field>
+        <field id="06">  $HEX{676767} </field>
+        <field id="07">
+            <field id="01">aaaa</field>
+            <field id="02">
+                <field id="02">bbb</field>
+                <field id="03">cc</field>
+            </field>
+            <field id="03">cc</field>
+        </field>
+    </intformat>
+    <intformat mapId="IF-Comp-1">
+        <field id="01">aaaa</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="02">eeee</field>
+        </field>
+    </intformat>
+    <intformat mapId="IF-Comp-2">
+        <field id="01">aaaa</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="01">dd</field>
+            <field id="02">eeee</field>
+        </field>
+    </intformat>
+    <intformat mapId="IF-Comp-3">
+        <field id="01">aaaa</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="01">dd</field>
+            <field id="02">exxee</field>
+        </field>
+    </intformat>
+    <intformat mapId="IF-Comp-4">
+        <field id="01">aaaa</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="01">
+                <field id="01">aaaa</field>
+                <field id="03">cc</field>
+            </field>
+            <field id="02">exxee</field>
+        </field>
+    </intformat>
+    <intformat mapId="IF-Comp-5">
+        <field id="01">aaaa</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="01">dd</field>
+            <field id="02">eeee</field>
+        </field>
+        <field id="07">
+            <field id="01">aaaa</field>
+            <field id="02">
+                <field id="02">bhb</field>
+                <field id="03">cc</field>
+            </field>
+            <field id="03">cc</field>
+        </field>
+    </intformat>
+</intformats>

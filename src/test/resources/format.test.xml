@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<intformats>
+    <intformat mapId="T-01">
+        <field id="01">aaaa</field>
+        <field id="02">bbb</field>
+        <field id="03">cc</field>
+        <field id="04">
+            <field id="01">dd</field>
+            <field id="02">eeee</field>
+        </field>
+        <field id="05">f  f  </field>
+        <field id="06">  $HEX{676767} </field>
+    </intformat>
+    <intformat mapId="T-02">
+        <field id="01">aaaa</field>
+        <field id="02">bbb</field>
+        <field id="03">cc</field>
+    </intformat>
+</intformats>

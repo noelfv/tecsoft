@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+	
+-->
+<root>
+    <filters>
+        <filter type="Dummy" id="HIDDING" />
+        <filter type="Dummy" id="HIDDING_PLUS" symbol="+" />
+        <filter type="Dummy" id="HIDDING_REST" symbol="-" />
+    </filters>
+    <macros>
+        <macro type="Dummy" parsename="DATEM" />
+    </macros>
+    <formatters>
+        <formatter id="testSingletonFilter">    
+            <field type="Dummy" id="00" length="4"></field>
+            <field type="Dummy" id="01" length="16" protec="HIDDING"></field>
+            <field type="Dummy" id="02" length="10" format="n" ></field>
+            <field type="Dummy" id="04" length="8"></field>
+            <field type="Dummy" id="05" length="8" protec="HIDDING_PLUS"></field>
+            <field type="GDummy" id="06" length="12" nl="3">
+                <field type="Dummy" id="01" length="8" ></field>
+                <field type="Dummy" id="02" length="3" protec="HIDDING_REST"></field>
+                <field type="Dummy" id="03" length="8" protec="HIDDING_PLUS"></field>
+            </field>
+        </formatter>
+        <formatter id="testSingletonFilterAnonymous">    
+            <field type="Dummy" id="00" length="4"></field>
+            <field type="Dummy" id="01" length="16"></field>
+            <field type="Dummy" id="02" length="10"></field>
+            <field type="Dummy" id="03" length="16"></field>
+            <field type="Dummy" id="04" length="8"></field>
+            <field type="Dummy" id="05" length="8" ></field>
+            <field type="GDummy" id="06" length="12" nl="3">
+                <field type="Dummy" id="01" length="8" ></field>
+                <field type="Dummy" id="02" length="3" ></field>
+                <field type="Dummy" id="03" length="8" ></field>
+            </field>
+            <field type="GDummy" id="07" length="12" nl="3">
+                <field type="Dummy" id="01" length="8" protec="HIDDING"></field>
+                <field type="Dummy" id="02" length="3" protec="HIDDING"></field>
+                <field type="Dummy" id="03" length="8" protec="HIDDING"></field>
+            </field>
+        </formatter>
+    </formatters>
+</root>

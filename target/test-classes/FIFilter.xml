@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<intformats>
+    <intformat mapId="testFilter" >
+        <field id="00" >000050</field>
+        <field id="01" >FIX03   </field>
+        <field id="03" >12345678</field>
+    </intformat>
+    <intformat mapId="testFilterWithGroup" >
+        <field id="00" >0200</field>
+        <field id="01" >FABCC28188E0D008</field>
+        <field id="02" >234</field>
+        <field id="04" >5421</field>
+        <field id="06" >
+            <field id="01" >qwerty</field>
+            <field id="02" >89</field>
+        </field>
+    </intformat>
+    <intformat mapId="testFilterWithOutFmtId" >
+        <field id="00" >no aplica filtro</field>
+        <field id="05" >no aplica filtro</field>
+        <field id="06" >
+            <field id="02" >aplicara filtro del campo 06.02</field>
+        </field>
+        <field id="08" >no aplica filtro</field>
+    </intformat>
+    <intformat mapId="testFilterWithMacro" >
+        <field id="00" >000050</field>
+        <field id="01" >FIX03   </field>
+    </intformat>
+    <intformat mapId="testFilterWithMacroDeepField" >
+        <field id="00" >0200</field>
+        <field id="01" >FABCC28188E0D008</field>
+        <field id="02" >234</field>
+        <field id="04" >5421</field>
+        <field id="05" ></field>
+        <field id="06" >
+            <field id="01" >qwerty</field>
+            <field id="02" >89</field>
+            <field id="03" ></field>
+        </field>
+    </intformat>
+    <intformat mapId="testFilterWithFmtIdBasePath" >
+        <field id="01" >qwerty</field>
+        <field id="02" >89</field>
+        <field id="03" ></field>
+    </intformat>
+</intformats>

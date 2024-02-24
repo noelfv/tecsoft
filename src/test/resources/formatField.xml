@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+	
+-->
+<root>
+    <formatters>
+        <formatter id="testGetParamValueNoParam">
+            <field type="Dummy" id="01" length="8" >12345678</field>
+            <field type="Dummy" id="02" length="6">000050</field>
+            <field type="Dummy" id="03" length="8">FIX03   </field>
+        </formatter>
+        <formatter id="testGetParamValueWithParam">
+            <field type="Dummy" id="01" length="8" >12345678</field>
+            <field type="Dummy" id="02" length="6">000050</field>
+            <field type="Dummy" id="03" length="8">FIX03   </field>
+        </formatter>
+        <formatter id="testGetParamValueWithParamAndNoValue">
+            <field type="Dummy" id="01" length="8" >12345678</field>
+            <field type="Dummy" id="02" length="6">000050</field>
+            <field type="Dummy" id="03" length="8">FIX03   </field>
+        </formatter>
+        <formatter id="testPath">
+            <field type="Dummy" id="01" length="8" >12345678</field>
+            <field type="Dummy" id="02" length="6">000050</field>
+            <field type="Dummy" id="03" length="8">FIX03   </field>
+            <field type="GDummy" id="04">
+                <field type="Dummy" id="41" length="8">FIX03   </field>
+                <field type="GDummy" id="42">
+                    <field type="Dummy" id="421" length="8">FIX03   </field>
+                    <field type="Dummy" id="422" length="8">FIX03   </field>
+                </field>
+            </field>
+        </formatter>
+    </formatters>
+</root>
