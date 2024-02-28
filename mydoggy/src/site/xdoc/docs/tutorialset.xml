@@ -1,0 +1,23 @@
+<!DOCTYPE document PUBLIC
+        "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+        "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<document>
+    <properties>
+        <title>MyDoggy - My Java Docking Framework : TutorialSet</title>
+        <author email="adecaro@users.sourceforge.net">Angelo De Caro</author>
+    </properties>
+
+    <body>
+        <section name="TutorialSet">
+            <img src="./../images/demos/mydoggyset.png" alt="MyDoggySet" border="0" hspace="18" align="left"/>
+            <p>
+                Using this application you can learn how to use the api provided by MyDoggy.
+                <br/>
+                In every step, pay attention to the code in green that highlights the new code introduced in that step.
+            </p>
+            <p>
+                Launch <a href="../jnlp/tutorialset.jnlp">TutorialSet</a> using Java Web Start.
+            </p>
+        </section>
+    </body>
+</document>

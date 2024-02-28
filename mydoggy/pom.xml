@@ -1,0 +1,27 @@
+<!-- 22-Nov-2011 AYA : BDT 26587 update profile for the Jenkins build. -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.noos.xing</groupId>
+    <artifactId>mydoggy-builder</artifactId>
+    <version>1.5.1</version>
+    <packaging>pom</packaging>
+    <name>mydoggy-builder</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <modules>
+       <module>mydoggy-api</module>
+        <module>mydoggy-plaf</module>
+        <module>mydoggy-res</module>
+        <module>mydoggy-examples</module>
+    </modules>
+
+    <build>
+
+    </build>
+</project>

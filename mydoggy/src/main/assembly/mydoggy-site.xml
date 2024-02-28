@@ -1,0 +1,61 @@
+<assembly>
+    <id>site</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <moduleSets>
+        <moduleSet>
+            <includes>
+                <include>org.noos.xing:mydoggy-examples</include>
+            </includes>
+            <binaries>
+                <outputDirectory>site/examples/jnlp</outputDirectory>
+                <includeDependencies>true</includeDependencies>
+                <unpack>false</unpack>
+            </binaries>
+        </moduleSet>
+    </moduleSets>
+
+    <fileSets>
+        <fileSet>
+            <directory>target/site</directory>
+            <outputDirectory>site</outputDirectory>
+            <includes/>
+        </fileSet>
+
+        <fileSet>
+            <directory>mydoggy-examples/src/jnlp</directory>
+            <outputDirectory>site/jnlp</outputDirectory>
+            <includes/>
+        </fileSet>
+
+        <fileSet>
+            <directory>target/site/apidocs</directory>
+            <outputDirectory>site/apidocs</outputDirectory>
+            <includes/>
+        </fileSet>
+    </fileSets>
+
+    <files>
+        <file>
+            <source>mydoggy-api/target/mydoggy-api-1.5.0.jar</source>
+            <outputDirectory>site/jnlp</outputDirectory>
+        </file>
+        <file>
+            <source>mydoggy-plaf/target/mydoggy-plaf-1.5.0.jar</source>
+            <outputDirectory>site/jnlp</outputDirectory>
+        </file>
+        <file>
+            <source>mydoggy-res/target/mydoggy-res-1.5.0.jar</source>
+            <outputDirectory>site/jnlp</outputDirectory>
+        </file>
+        <file>
+            <source>mydoggy-examples/target/mydoggy-examples-1.5.0.jar</source>
+            <outputDirectory>site/jnlp</outputDirectory>
+        </file>
+    </files>
+
+</assembly>

@@ -1,0 +1,246 @@
+<!DOCTYPE document PUBLIC
+        "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+        "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<document>
+    <properties>
+        <title>MyDoggy - My Java Docking Framework (PLAF) : ResourceManager</title>
+        <author email="adecaro@users.sourceforge.net">Angelo De Caro</author>
+    </properties>
+
+    <body>
+        <section name="Table of Contents">
+            <ol type="1">
+                <li>
+                    <a href="#ToolWindowManager">What is the ResourceManager?
+                    </a>
+                </li>
+                <li>
+                    <a href="#ToolWindowManager">What is the TransparencyManager?
+                    </a>
+                </li>
+            </ol>
+
+        </section>
+
+
+        <section name="ResourceManager">
+            The ResourceManager interface is used to customize not only icons, colors and internationalization but also
+            ui components creation, with relative customization, and transparency manager.<br/>
+
+            The default implementation is provided by the class
+            <code>org.noos.xing.mydoggy.plaf.ui.look.MyDoggyResourceManager</code><br/>
+            There are two ways to modify the ResourceManager reference used by mydoggy.
+            <ul>
+                <li>
+                    Changing the value of the property "ResourceManager.class" into the "mydoggyplaf.properties" file
+                    that you can found into mydoggy-res module. Note that this file is loaded by MyDoggyToolWindowManager
+                    during the execution of the method <code>initUI()</code>.
+                </li>
+                <li>
+                    Using this code...
+                    <source xml:space="preserve">
+MyDoggyToolWindowManager toolWindowManager = new MyDoggyToolWindowManager(...);
+toolWindowManager.setResourceManager(new ...);</source>
+                </li>
+            </ul>
+        </section>
+
+        <section name="MyDoggyResourceManager">
+            The default implementation, for ResourceManager interface, is provided by the class
+            <code>org.noos.xing.mydoggy.plaf.ui.look.MyDoggyResourceManager</code><br/>
+            This class looks for a file called "resource.properties" in the classloader space. This file contains colors,
+            icons and bundle declaration. But you can also change this declaration using specific methods like
+            <code>putIcon(...)</code><br/>
+            Here is an example of resource.properties file...
+            <source xml:space="preserve">
+Icon.TOOL_SCROLL_BAR_LEFT = org/noos/xing/mydoggy/plaf/ui/icons/arrowLeft.png
+Icon.TOOL_SCROLL_BAR_RIGHT = org/noos/xing/mydoggy/plaf/ui/icons/arrowRight.png
+
+Color.RAB_MOUSE_IN_BORDER = black
+Color.TWTB_ID_BACKGROUND_FLASHING_0 = 183,200,232
+
+ResourceBundle = org/noos/xing/mydoggy/plaf/ui/messages/messages</source>
+        </section>
+
+        <section name="Using ResourceManager">
+            <p>
+            Here are some examples that show how to customize mydoggy. Remember to obtain an instance of ResourceManager
+            you can use the following:
+            </p>
+            <source xml:space="preserve">
+MyDoggyToolWindowManager toolWindowManager = new MyDoggyToolWindowManager(...);
+ResourceManager resourceManager = toolWindowManager.getResourceManager();</source>
+            <p>
+                Look at this page to understand at what i'm referring when i write TitleBar, ToolWindowTab, etc..
+            </p>
+
+            <subsection name="Supported properties">
+                <p>
+                   You can use the following code to set a property value:
+                </p>
+                <source>
+resourceManager.putProperty("drag.icon.transparency.enabled", "false");
+</source>
+                <p>
+                    Here is a list of supported properties.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                Type
+                            </td>
+                            <td>
+                                Description
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                drag.icon.transparency.enabled
+                            </td>
+                            <td>
+                                boolean
+                            </td>
+                            <td>
+                                Used to enable or disable the transparency of the drag icon.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                drag.icon.useDefault
+                            </td>
+                            <td>
+                                boolean
+                            </td>
+                            <td>
+                                Used to enable or disable the use of a simple icon instead of a more complex one during
+                                the a drag phase.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ContentManagerUI.ContentManagerUiListener.import
+                            </td>
+                            <td>
+                                boolean
+                            </td>
+                            <td>
+                                Used to enable or disable the import of all listeners from an unmounting ContentManageUI
+                                to the new mmounted ContentManagerUI.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                drag.toolwindow.asTab
+                            </td>
+                            <td>
+                                boolean
+                            </td>
+                            <td>
+                                Used to enable or disable dragging of toolwindows as tabs.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </subsection>
+
+        </section>
+
+        <section name="TransparencyManager">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="./../images/custom/transparency.png" alt="ToolWindow Transparency" border="0" hspace="18"/>
+                        </td>
+                        <td>
+                            <p>
+                                Using the <code>org.noos.xing.mydoggy.plaf.ui.transparency.TransparencyManager</code> interface
+                                MyDoggy can manage the transparency of any detached window.
+                                <br/>
+                                Specifically, when a toolwindow (with FLOATING of FLOATING_FREE type) or a detached content losts
+                                the focus, it becomes transparent in a few milliseconds.
+                                <br/>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <subsection name="Use JNA">
+                <p>
+                    JNA provides Java programs easy access to native shared libraries (e.g. DLLs on Windows) without
+                    writing anything but Java code, no JNI or native code is required. This functionality is
+                    comparable to Windows' Platform/Invoke and Python's ctypes. Access is dynamic at runtime without
+                    code generation.
+                    <br/>
+                    You can found it at
+                    <a href="https://jna.dev.java.net/">https://jna.dev.java.net/</a><br/>
+
+                    To use JNA for transparency purpose you can use the following class...
+                </p>
+
+                <source xml:space="preserve">
+import com.sun.jna.examples.WindowUtils;
+
+import java.awt.*;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+public class JNAWindowTransparencyManager implements TransparencyManager&lt;Window&gt; {
+
+    private boolean available;
+    private Map&lt;Window, Float&gt; windowTransparencies;
+
+    public JNAWindowTransparencyManager() {
+        initTransparencyManager();
+    }
+
+    public boolean isServiceAvailable() {
+        return available;
+    }
+
+    public void setAlphaModeRatio(Window component, float transparency) {
+        if (available) {
+            windowTransparencies.put(component, transparency);
+            WindowUtils.setWindowAlpha(component, transparency);
+        }
+    }
+
+    public boolean isAlphaModeEnabled(Window component) {
+        if (available) {
+            Float transparency = windowTransparencies.get(component);
+            return transparency != null &amp;&amp; transparency &gt;= 0.0;
+        }
+        return false;
+    }
+
+    protected void initTransparencyManager() {
+        available = false;
+        try {
+            Class.forName("com.sun.jna.examples.WindowUtils");
+            available = WindowUtils.isWindowAlphaSupported();
+            if (available)
+                this.windowTransparencies = new WeakHashMap&lt;Window, Float&gt;();
+        } catch (ClassNotFoundException e) {}
+    }
+
+}</source>
+
+                <p>
+                    To integrate the above manager in MyDoggy use the following.
+                </p>
+                <source xml:space="preserve">
+MyDoggyToolWindowManager myDoggyToolWindowManager = new MyDoggyToolWindowManager(...);
+myDoggyToolWindowManager.getResourceManager().setTransparencyManager(
+        new JNAWindowTransparencyManager()
+);</source>
+            </subsection>
+        </section>
+    </body>
+</document>

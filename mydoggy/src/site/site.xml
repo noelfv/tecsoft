@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="MyDoggy">
+
+    <skin>
+        <groupId>org.noos.xing</groupId>
+        <artifactId>mydoggy-site-skin</artifactId>
+        <version>1.5.0</version>
+    </skin>
+
+    <body>
+        <links>
+            <item name="Maven" href="http://maven.apache.org/"/>
+            <item name="SourceForge" href="http://sourceforge.net/"/>
+            <item name="SF Project page" href="http://sourceforge.net/projects/mydoggy/"/>
+        </links>
+
+        <menu name="MyDoggy">
+            <item name="Introduction" href="index.html"/>
+            <item name="Download" href="download.html"/>
+            <item name="Build Howto" href="buildHowto.html"/>
+            <item name="Contact" href="contact.html"/>
+            <item name="FAQ" href="faq.html"/>
+        </menu>
+
+        <menu name="Demos">
+            <item name="MyDoggySet" href="/docs/mydoggyset.html"/>
+            <item name="TutorialSet" href="/docs/tutorialset.html"/>
+        </menu>
+
+        <menu name="Documentation">
+            <item name="ToolWindowManager" href="/docs/toolwindowManager.html"/>
+            <item name="ContentManager" href="/docs/contentManager.html"/>
+            <item name="ResourceManager" href="/docs/resourceManager.html">
+            </item>
+        </menu>
+
+        ${reports}
+    </body>
+
+</project>

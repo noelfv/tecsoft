@@ -1,0 +1,102 @@
+<!DOCTYPE document PUBLIC
+        "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+        "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<document>
+    <properties>
+        <title>My Java Docking Framework : Introduction</title>
+        <author email="adecaro@users.sourceforge.net">Angelo De Caro</author>
+    </properties>
+
+    <body>
+        <div id="downloadbox">
+            <h5>Get MyDoggy 1.5.0 (Beta 1) Now!!!</h5>
+            <span style="display: block; text-align: right; font-size: smaller">Released: December, 2010</span>
+            <p>
+                <a href="download.html">MyDoggy 1.5.0 (Beta 1)</a>
+            </p>
+            <ul>
+                <li>
+                    <a href="./docs/mydoggyset.html">MyDoggySet</a>
+                    <small>
+                        <a href="./jnlp/mydoggyset.jnlp">(WebStart)</a>,
+                    </small>
+                </li>
+                <li>
+                    <a href="./docs/tutorial.html">TutorialSet</a>
+                    <small>
+                        <a href="./jnlp/tutorialset.jnlp">(WebStart)</a>
+                    </small>
+                </li>
+                <li>
+                    <a href="license.html">License (LGPL)</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact.</a>
+                </li>
+            </ul>
+
+            <div>
+                <a href="http://sourceforge.net">
+                    <img style="border:1px solid black" src="http://sflogo.sourceforge.net/sflogo.php?group_id=178005&amp;type=1" width="88" height="31" alt="SourceForge.net Logo" />
+                </a>
+
+                  <a href="http://maven.apache.org/" title="Maven" >
+                    <img style="border:1px solid black" alt="Maven" src="./images/logos/maven-feather.png"/>
+                </a>
+
+                <script type="text/javascript" src="http://www.ohloh.net/projects/6945/widgets/project_thin_badge"></script>
+            </div>
+        </div>
+
+        <section name="Introduction">
+            <a href="./docs/mydoggyset.html">
+                <img src="./images/mydoggy.png" alt="mydoggy" border="0"
+                     hspace="10" align="left"/>
+            </a>
+
+
+            <p>
+                MyDoggy is a Java docking framework to be used in cross-platform Swing applications.
+                MyDoggy is an IntelliJ Idea like docking framework for managing secondary windows within the main
+                window.
+                MyDoggy allows to move, resize or extract those secondary windows.
+                Also, MyDoggy provides support for content management of the main window.
+                Like Eclipse, MyDoggy supports the concept of "prospective" by using groups.
+            </p>
+            <p>
+                MyDoggy is composed by the following modules:
+            </p>
+            <ul>
+                <li>
+                    <font style="color:green;font-weight:bold">mydoggy-api</font> :
+                    contains the application program interface used to control
+                    the framework.
+                </li>
+                <li>
+                    <font style="color:green;font-weight:bold">mydoggy-plaf</font> :
+                    contains the default implementation of the api.
+                </li>
+                <li>
+                    <font style="color:green;font-weight:bold">mydoggy-res</font> :
+                    contains all the resources (icons, messages and so on...). Look
+                    <a href="./docs/resourceManager.html">here</a>
+                    to see how to customize mydoggy.
+                </li>
+                <li>
+                    <font style="color:green;font-weight:bold">mydoggy-docs</font> :
+                    contains some docs to see mydoggy in action.
+                </li>
+            </ul>
+            <p>
+                Each module correspond to a directory where you can find the sources of the module and other stuff.
+            </p>
+        </section>
+
+        <section name="Work in progress...">
+            Dear user,
+            the site is not complete. So you will probably find some
+            inconsistency during the navigation.
+            Please be patient, I'm updating the site day by day.
+        </section>
+    </body>
+</document>

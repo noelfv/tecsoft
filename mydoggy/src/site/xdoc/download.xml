@@ -1,0 +1,138 @@
+<!DOCTYPE document PUBLIC
+        "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+        "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<document>
+    <properties>
+        <title>MyDoggy - My Java Docking Framework - Download</title>
+        <author email="adecaro@users.sourceforge.net">Angelo De Caro</author>
+    </properties>
+
+    <body>
+        <section name="Download MyDoggy">
+            <subsection name="Releases">
+				<ul>
+					<li>
+						Please see our
+						<a href="license.html">License FAQ</a>
+						before downloading.
+					</li>
+				</ul>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <font>Package</font>
+                            </td>
+                            <td>
+                                <font>Version</font>
+                            </td>
+                            <td>
+                                <font>Release date</font>
+                            </td>
+                            <td>
+                                <font>Category</font>
+                            </td>
+                            <td/>
+                        </tr>
+
+                        <tr valign="top">
+                            <td>MyDoggy</td>
+                            <td>1.5.0 (Beta 1)</td>
+                            <td>December, 2010</td>
+                            <td>Stable</td>
+                            <td>
+                                <em>
+                                    <a href="http://sourceforge.net/project/showfiles.php?group_id=178005">
+                                        Download
+                                    </a>
+                                </em>
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <td>MyDoggy</td>
+                            <td>1.4.2</td>
+                            <td>April, 2008</td>
+                            <td>Stable</td>
+                            <td>
+                                <em>
+                                    <a href="http://sourceforge.net/project/showfiles.php?group_id=178005&amp;package_id=205132&amp;release_id=595738">
+                                        Download
+                                    </a>
+                                </em>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </subsection>
+
+			<a name="requirements"/>
+            <subsection name="System Requirements">
+                <table>
+                    <tbody>
+                        <tr class="b">
+                            <td align="left">
+                                <b>JDK</b>
+                            </td>
+                            <td align="left">1.5 or above
+                            </td>
+                        </tr>
+                        <tr class="a">
+                            <td align="left">
+                                <b>Memory</b>
+                            </td>
+                            <td align="left">No minimum requirement</td>
+                        </tr>
+                        <tr class="b">
+                            <td align="left">
+                                <b>Disk</b>
+                            </td>
+                            <td align="left">The distro is approximately 5MB, but the core jars are approximately 0.7MB
+                            </td>
+                        </tr>
+                        <tr class="a">
+                            <td align="left">
+                                <b>Operating System</b>
+                            </td>
+                            <td align="left">No minimum requirement. Tested on Windows XP, Ubuntu 8.04.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </subsection>
+
+			<a name="usage"/>
+            <subsection name="Usage">
+                <ol type="1">
+                    <li>Unzip
+                        <tt><font style="color:green">mydoggy-1.5.0.zip</font></tt>
+                        to the directory you wish to unzip it.
+                    </li>
+                    <li>To use MyDoggy add to your classpath
+                        <ol type="1">
+                            <li>
+                                <font style="color:red"><tt>mydoggy_1.5.0-api.jar</tt></font>,
+                            </li>
+                            <li>
+                                <font style="color:red"><tt>mydoggy_1.5.0-plaf.jar</tt></font>,
+                            </li>
+                            <li>
+                                <font style="color:red"><tt>mydoggy_1.5.0-res.jar</tt></font>
+                                and
+                            </li>
+                            <li>
+                                <font style="color:red"><tt>TableLayout-20020517.jar</tt></font>.
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+                <p>
+                    You will find these dependencies into the lib folder.
+                </p>
+            </subsection>
+
+        </section>
+    </body>
+</document>
