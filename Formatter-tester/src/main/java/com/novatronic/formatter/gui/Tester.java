@@ -15,16 +15,20 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.noos.xing.mydoggy.ToolWindowManager;
 import org.noos.xing.mydoggy.plaf.MyDoggyToolWindowManager;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /**
  *
  * @author Omar
  */
 public class Tester {
-    private static final Logger log = Logger.getLogger(Tester.class);
+    //private static final Logger log = Logger.getLogger(Tester.class);
+
+    private static final Logger log=LoggerFactory.getLogger(Tester.class);
     private JFrame frame;
     private ToolWindowManager toolWindowManagerTest;
     private ActionsBuilder TestActionsBuilder;
@@ -66,7 +70,7 @@ public class Tester {
         toolWindowManagerTest = ToolWindowTest.buildToolWindow();
         frame.add((MyDoggyToolWindowManager)toolWindowManagerTest);
         
-        log.debug(Components.getInstance());
+        log.debug(""+Components.getInstance());
         TesterIcon.updateTesterIcons(frame);
         TesterEffect.addEffects();
         JTextAreaAppender.addTextArea(Components.getInstance().get(ComponentsID.TA_TEST_LOG, JTextArea.class));
@@ -76,7 +80,7 @@ public class Tester {
         testStateMachine = new StateMachine();
         testStateMachine.setUpStates(Config.SM_TEST_PANEL);
         testStateMachine.init();
-        log.debug(testStateMachine);
+        log.debug(""+testStateMachine);
         
         TestActionsBuilder = new TestActionsBuilder(testStateMachine);
         TestActionsBuilder.setUpActions();

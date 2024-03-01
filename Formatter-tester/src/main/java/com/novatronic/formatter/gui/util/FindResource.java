@@ -5,11 +5,15 @@
 package com.novatronic.formatter.gui.util;
 
 import com.novatronic.formatter.gui.exception.GUIException;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.stream.Collectors;
+
 import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -53,16 +57,24 @@ public class FindResource {
         URL url;
 
         try {
-            classLoader = getTCL();
-            if (classLoader != null) {
+            //String x="classpath*:com/novatronic/formatter/resource/"+resource;
+            //url = FindResource.class.getResource(x);
+            url = ClassLoader.getSystemResource(resource);
+            return url;
+           /* if (classLoader != null) {
                 log.trace("Trying to find [" + resource + "] using context classloader "
                         + classLoader + ".");
-                url = classLoader.getResource(resource);
+               // url = classLoader.getResource("D:\\home\\04.proyectos\\SWP2\\01.Gateway\\0.fuentes\\utils\\tecsoft\\Formatter-tester\\src\\main\\resources\\"+resource);
+                //url = classLoader.getResource("D:\\home\\04.proyectos\\SWP2\\01.Gateway\\0.fuentes\\utils\\tecsoft\\Formatter-tester\\src\\main\\resources\\"+resource);
+                String x="/com/novatronic/formatter/resource/"+resource;
+                url = classLoader.getResource(x);
+                //url = classLoader.resources(resource).collect(Cocllectors.toList()).get(0);
                 if (url != null) {
                     return url;
                 }
-            }
+            }*/
 
+            /*
             // We could not find resource. Let us now try with the classloader that loaded this class.
             classLoader = FindResource.class.getClassLoader();
             if (classLoader != null) {
@@ -82,19 +94,13 @@ public class FindResource {
                     return url;
                 }
             }
-        } catch (IllegalAccessException t) {
-            log.warn(TSTR, t);
-        } catch (InvocationTargetException t) {
-            if (t.getTargetException() instanceof InterruptedException
-                    || t.getTargetException() instanceof InterruptedIOException) {
-                Thread.currentThread().interrupt();
-            }
-            log.warn(TSTR, t);
-        } catch (Throwable t) {
+
+             */
+        }  catch (Exception t) {
             //
             //  can't be InterruptedException or InterruptedIOException
             //    since not declared, must be error or RuntimeError.
-            log.warn(TSTR, t);
+            log.error(TSTR, t);
         }
 
         // Last ditch attempt: get the resource from the class path. It
@@ -103,8 +109,10 @@ public class FindResource {
         // code below.
         log.trace("Trying to find [" + resource + "] using ClassLoader.getSystemResource().");
         return ClassLoader.getSystemResource(resource);
-    }
 
+
+    }
+/*
     private static ClassLoader getTCL() throws IllegalAccessException, InvocationTargetException {
         ClassLoader cl;
         if (System.getSecurityManager() == null) {
@@ -120,5 +128,5 @@ public class FindResource {
                     });
         }
         return cl;
-    }
+    }*/
 }

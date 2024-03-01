@@ -5,6 +5,8 @@
 package com.novatronic.formatter.gui;
 
 import com.novatronic.formatter.gui.util.FindResource;
+
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 import org.apache.log4j.Logger;

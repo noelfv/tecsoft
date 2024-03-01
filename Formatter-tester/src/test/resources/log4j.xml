@@ -2,7 +2,7 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
 <!--
-    Document   : log4j.xml
+    Document   : log4j2.xml
     Created on : 16 de septiembre de 2010, 05:31 PM
     Author     : ofernandez
     Description:

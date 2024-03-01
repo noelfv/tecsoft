@@ -25,17 +25,18 @@ public class TesterIcon {
 
     private static final Logger log = Logger.getLogger(TesterIcon.class);
     private static Element root;
-    private static final String LEAF_ICON = "/com/novatronic/formatter/img/Tree-field_03.png";
-    private static final String CLOSED_ICON = "/com/novatronic/formatter/img/Tree-intF_02.png";
-    private static final String OPEN_ICON = "/com/novatronic/formatter/img/Tree-intF_02.png";
-    private static final String FRAME_ICON = "/com/novatronic/formatter/img/LogoNova.gif";
+   // private static final String LEAF_ICON = "/com/novatronic/formatter/img/Tree-field_03.png";
+    private static final String LEAF_ICON = "img/Tree-field_03.png";
+    private static final String CLOSED_ICON = "img/Tree-intF_02.png";
+    private static final String OPEN_ICON = "img/Tree-intF_02.png";
+    private static final String FRAME_ICON = "img/LogoNova.gif";
 
     public static void updateTesterIcons(JFrame frame) {
         Class clazz;
 
         clazz = frame.getClass();
         updateTreeRender();
-        frame.setIconImage(new ImageIcon(clazz.getResource(FRAME_ICON)).getImage());
+        frame.setIconImage(new ImageIcon(FRAME_ICON).getImage());
 
         readXml(clazz);
     }
@@ -59,7 +60,8 @@ public class TesterIcon {
         button = Components.getInstance().get(componentID, AbstractButton.class);
         log.trace("Componente buscado:" + button);
         if (button != null) {
-            button.setIcon(new ImageIcon(clazz.getResource(resourcePath)));
+         //   button.setIcon(new ImageIcon(clazz.getResource(resourcePath)));
+            button.setIcon(new ImageIcon( resourcePath));
             button.setContentAreaFilled(false);
             button.setFocusPainted(false);
         } else {
@@ -80,8 +82,8 @@ public class TesterIcon {
     private static void updateTreeIcons(JTree jtree) {
         DefaultTreeCellRenderer render;
         render = (DefaultTreeCellRenderer) jtree.getCellRenderer();
-        render.setLeafIcon(new ImageIcon(jtree.getClass().getResource(LEAF_ICON)));
-        render.setClosedIcon(new ImageIcon(jtree.getClass().getResource(CLOSED_ICON)));
-        render.setOpenIcon(new ImageIcon(jtree.getClass().getResource(OPEN_ICON)));
+        render.setLeafIcon(new ImageIcon(LEAF_ICON));
+        render.setClosedIcon(new ImageIcon(CLOSED_ICON));
+        render.setOpenIcon(new ImageIcon(OPEN_ICON));
     }
 }

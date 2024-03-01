@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!--
+    Document   : log4j2.xml
+    Created on : 16 de septiembre de 2010, 05:31 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss,SSS} [%-10t] %-5p (%c{2}) %m - [linea:%L]%n" />
+        </layout>
+    </appender>
+
+ 
+    <root>
+        <priority value="DEBUG" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</log4j:configuration>
+
+
+<!--
+<log4j:configuration name="ConfigTest" status="ERROR" monitorInterval="5">
+    <appenders>
+
+        <systemPropertyArbiter propertyName="env" propertyValue="dev">
+            <Console name="Out">
+                <PatternLayout pattern="%m%n"/>
+            </Console>
+        </systemPropertyArbiter>
+        <systemPropertyArbiter propertyName="env" propertyValue="prod">
+            <List name="Out">
+            </List>
+        </systemPropertyArbiter>
+
+    </appenders>
+    <loggers>
+        <logger name="org.apache.test" level="trace" additivity="false">
+            <appenderRef ref="Out"/>
+        </logger>
+        <root level="error">
+            <appenderRef ref="Out"/>
+        </root>
+    </loggers>
+</log4j:configuration>
+-->

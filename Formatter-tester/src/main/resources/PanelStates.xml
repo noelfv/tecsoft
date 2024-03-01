@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <states>
+        <state id="INIT" class="com.novatronic.formatter.gui.states.InitState" />
+        <state id="TEST_FILES_LOADED" class="com.novatronic.formatter.gui.states.TestFilesLoadedState" />
+        <state id="TEST_GROUP_LOADED" class="com.novatronic.formatter.gui.states.TestGroupLoadedState" />
+        <state id="TEST_SELECTED" class="com.novatronic.formatter.gui.states.TestSelectedState" />
+        <state id="TO_FRAME" class="com.novatronic.formatter.gui.states.ToFrameState" />
+        <state id="TO_INTFORMAT" class="com.novatronic.formatter.gui.states.ToIntFormatState" />
+        <state id="TO_INTFORMAT_AND_FRAME" class="com.novatronic.formatter.gui.states.ToIntFormatAndFrameState" />
+    </states>
+    <stateMachine >
+        <transition from="INIT">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+        </transition>
+        <transition from="TEST_FILES_LOADED">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+            <if actionOn="BT_LOAD_SELECT_FILE" toState="TEST_GROUP_LOADED"/>
+        </transition>
+        <transition from="TEST_GROUP_LOADED">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+            <if actionOn="BT_LOAD_SELECT_FILE" toState="TEST_GROUP_LOADED"/>
+            <if actionOn="BT_SELECT_TEST" toState="TEST_SELECTED"/>
+        </transition>
+        <transition from="TEST_SELECTED">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+            <if actionOn="BT_LOAD_SELECT_FILE" toState="TEST_GROUP_LOADED"/>
+            <if actionOn="BT_SELECT_TEST" toState="TEST_SELECTED"/>
+            <if actionOn="BT_TO_FRAME" toState="TO_FRAME"/>
+            <if actionOn="BT_TO_INTFORMAT" toState="TO_INTFORMAT"/>
+        </transition>
+        <transition from="TO_INTFORMAT">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+            <if actionOn="BT_LOAD_SELECT_FILE" toState="TEST_GROUP_LOADED"/>
+            <if actionOn="BT_SELECT_TEST" toState="TEST_SELECTED"/>
+            <if actionOn="BT_TO_FRAME" toState="TO_INTFORMAT_AND_FRAME"/>
+            <if actionOn="BT_TO_INTFORMAT" toState="TO_INTFORMAT"/>
+            <if actionOn="BT_COMPARE_INTFORMAT" toState="TO_INTFORMAT"/>
+        </transition>
+        <transition from="TO_FRAME">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+            <if actionOn="BT_LOAD_SELECT_FILE" toState="TEST_GROUP_LOADED"/>
+            <if actionOn="BT_SELECT_TEST" toState="TEST_SELECTED"/>
+            <if actionOn="BT_TO_FRAME" toState="TO_FRAME"/>
+            <if actionOn="BT_TO_INTFORMAT" toState="TO_INTFORMAT_AND_FRAME"/>
+            <if actionOn="BT_COMPARE_FRAME" toState="TO_FRAME"/>
+        </transition>
+        <transition from="TO_INTFORMAT_AND_FRAME">
+            <if actionOn="BT_LOAD_TESTS_FILES" toState="TEST_FILES_LOADED"/>
+            <if actionOn="BT_LOAD_SELECT_FILE" toState="TEST_GROUP_LOADED"/>
+            <if actionOn="BT_SELECT_TEST" toState="TEST_SELECTED"/>
+            <if actionOn="BT_TO_FRAME" toState="TO_INTFORMAT_AND_FRAME"/>
+            <if actionOn="BT_TO_INTFORMAT" toState="TO_INTFORMAT_AND_FRAME"/>
+            <if actionOn="BT_COMPARE_INTFORMAT" toState="TO_INTFORMAT_AND_FRAME"/>
+            <if actionOn="BT_COMPARE_FRAME" toState="TO_INTFORMAT_AND_FRAME"/>
+        </transition>
+    </stateMachine>
+</root>
