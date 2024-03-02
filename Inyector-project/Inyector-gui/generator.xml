@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : generator.xml
+    Created on : 12 de noviembre de 2010, 09:47 AM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+		
+	<client id="7963" >
+		<transaction>
+            <transaction-in formatter="001" binary="true" />
+            <transaction-out formatter="001" />
+        </transaction>
+		<transaction>
+            <transaction-in formatter="001" binary="true">
+                <field id="01">11111</field>
+                <field id="04">44444</field>
+            </transaction-in>
+            <transaction-out formatter="001" />
+        </transaction>
+    </client>
+
+-->
+
+<root>
+    <client id="7963">
+		<transaction>
+            <transaction-in formatter="001" >
+				<field id="02">01234</field>
+                <field id="05">23</field>
+			</transaction-in >
+            <transaction-out formatter="002" />
+        </transaction>
+		<transaction>
+            <transaction-in formatter="001" >
+				<field id="02">456</field>
+                <field id="04">0000000001</field>
+			</transaction-in >
+            <transaction-out formatter="002" />
+        </transaction>
+    </client>
+</root>

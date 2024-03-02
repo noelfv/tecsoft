@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : validator.xml.xml
+    Created on : 29 de diciembre de 2010, 01:00 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <format config="formatvalidator.xml" />
+    <rules>
+        <rule id="621000" idFormatterIn="00B1" idFormatterOut="00B1">
+            <field id="MST" />
+			<field id="000" />
+            <field id="002" />
+			<field id="003" />
+            <field id="004" />
+			<field id="007" />
+			<field id="011" />
+			<field id="017" />
+			<field id="037" />
+			<field id="039" />
+			<field id="041" />
+			<field id="049" />
+        </rule>
+    </rules>
+</root>

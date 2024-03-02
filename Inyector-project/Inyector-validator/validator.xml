@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : validator.xml.xml
+    Created on : 29 de diciembre de 2010, 01:00 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <rules>
+        <rule id="AAA" idFormatterIn="001" idFormatterOut="002">
+            <field id="001" />
+            <field id="002" />
+            <field id="003" />
+        </rule>
+    </rules>
+</root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions>
+  <client id="7963">
+    <transaction>
+      <acquirerIn binary="false">0200FABCC28188E0D0080000001234000000005004542123      019qwerty  08920130121</acquirerIn>
+      <acquirerOut binary="false">021009AAAAAAAAA22    </acquirerOut>
+      <autorizedIn />
+      <autorizedOut />
+      <dateChange>21/01/13</dateChange>
+      <dateIn>21/01/13</dateIn>
+      <id>7963</id>
+      <keyTnx />
+      <userChange>EFTRPLYD</userChange>
+      <userIn>EFTRPLYD</userIn>
+    </transaction>
+    <transaction>
+      <acquirerIn binary="false">0200FABCC28188E0D0080000000456000000005110000000000120130121019qwerty  08920130121</acquirerIn>
+      <acquirerOut binary="false">021009AAAAAAAAA22    </acquirerOut>
+      <autorizedIn />
+      <autorizedOut />
+      <dateChange>21/01/13</dateChange>
+      <dateIn>21/01/13</dateIn>
+      <id>7963</id>
+      <keyTnx />
+      <userChange>EFTRPLYD</userChange>
+      <userIn>EFTRPLYD</userIn>
+    </transaction>
+  </client>
+</transactions>
+

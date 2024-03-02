@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.novatronic.tester.domain">
+  <!--Tablas Maestras -->
+  <class table="EFT_TST_TRANSACTION" name="Transaction">
+    <id column="KEY_TXN" name="keyTxn"/>
+    <property column="ID" name="id"/>
+    <property column="ACQUIRER_IN" name="acquirerIn"/>
+    <property column="ACQUIRER_OUT" name="acquirerOut"/>
+    <property column="AUTORIZED_IN" name="autorizedIn"/>
+    <property column="AUTORIZED_OUT" name="autorizedOut"/>
+    <property column="USERIN" name="userIn"/>
+    <property column="DATEIN" name="dateIn"/>
+    <property column="USERCHG" name="userChange"/>
+    <property column="DATECHG" name="dateChange"/>
+  </class>
+</hibernate-mapping>

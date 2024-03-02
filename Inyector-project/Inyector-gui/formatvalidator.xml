@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+<root>   
+    <formatters>
+        <formatter id="00B1">
+            <field type="FIXED" length="4" id="MST" >0210</field>
+            <field type="ISOBITMAP" id="000" />
+            <field type="VAR" id="002" bitmapref="000" length="19" nl="2"/>
+            <field type="FIXED" id="003" bitmapref="000" length="6"/>
+            <field type="FIXED" id="004" bitmapref="000" length="12"/>
+            <field type="FIXED" id="005" bitmapref="000" length="12"/>
+            <field type="FIXED" id="006" bitmapref="000" length="12"/>
+            <field type="FIXED" id="007" bitmapref="000" length="10"/>
+            <field type="FIXED" id="008" bitmapref="000" length="8"/>
+            <field type="FIXED" id="009" bitmapref="000" length="8"/>
+            <field type="FIXED" id="010" bitmapref="000" length="8"/>
+            <field type="FIXED" id="011" bitmapref="000" length="6"/>
+            <field type="FIXED" id="012" bitmapref="000" length="6"/>
+            <field type="FIXED" id="013" bitmapref="000" length="4"/>
+            <field type="FIXED" id="014" bitmapref="000" length="4"/>
+            <field type="FIXED" id="015" bitmapref="000" length="4"/>
+            <field type="FIXED" id="016" bitmapref="000" length="4"/>
+            <field type="FIXED" id="017" bitmapref="000" length="4"/>
+            <field type="FIXED" id="018" bitmapref="000" length="4"/>
+            <field type="FIXED" id="019" bitmapref="000" length="3"/>
+            <field type="FIXED" id="020" bitmapref="000" length="3"/>
+            <field type="FIXED" id="021" bitmapref="000" length="3"/>
+            <field type="FIXED" id="022" bitmapref="000" length="3"/>
+            <field type="FIXED" id="023" bitmapref="000" length="3"/>
+            <field type="FIXED" id="024" bitmapref="000" length="3"/>
+            <field type="FIXED" id="025" bitmapref="000" length="2"/>
+            <field type="FIXED" id="026" bitmapref="000" length="2"/>
+            <field type="FIXED" id="027" bitmapref="000" length="1"/>
+            <field type="FIXED" id="028" bitmapref="000" length="8"/>
+            <field type="FIXED" id="029" bitmapref="000" length="8"/>
+            <field type="FIXED" id="030" bitmapref="000" length="8"/>
+            <field type="FIXED" id="031" bitmapref="000" length="8"/>
+            <field type="VAR" id="032" bitmapref="000" length="11" nl="2"/>
+            <field type="VAR" id="033" bitmapref="000" length="11" nl="2"/>
+            <field type="VAR" id="034" bitmapref="000" length="28" nl="2"/>
+            <field type="VAR" id="035" bitmapref="000" length="37" nl="2"/>
+            <field type="VAR" id="036" bitmapref="000" length="104" nl="2"/>
+            <field type="FIXED" id="037" bitmapref="000" length="12"/>
+            <field type="FIXED" id="038" bitmapref="000" length="6"/>
+            <field type="FIXED" id="039" bitmapref="000" length="2"/>
+            <field type="FIXED" id="040" bitmapref="000" length="3"/>
+            <field type="FIXED" id="041" bitmapref="000" length="8"/>
+            <field type="FIXED" id="042" bitmapref="000" length="15"/>
+            <field type="FIXED" id="043" bitmapref="000" length="40"/>
+            <field type="VAR" id="044" bitmapref="000" length="25" nl="2"/>
+            <field type="VAR" id="045" bitmapref="000" length="76" nl="2"/>
+            <field type="VAR" id="046" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="047" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="048" bitmapref="000" length="999" nl="3"/>
+            <field type="FIXED" id="049" bitmapref="000" length="3"/>
+            <field type="FIXED" id="050" bitmapref="000" length="3"/>
+            <field type="FIXED" id="051" bitmapref="000" length="3"/>
+            <field type="FIXED" id="052" bitmapref="000" length="16"/>
+            <field type="FIXED" id="053" bitmapref="000" length="18"/>
+            <field type="FIXED" id="054" bitmapref="000" length="120"/>
+            <field type="VAR" id="055" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="056" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="057" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="058" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="059" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="060" bitmapref="000" length="7" nl="2"/>
+            <field type="VAR" id="061" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="062" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="063" bitmapref="000" length="999" nl="3"/>
+            <field type="FIXED" id="064" bitmapref="000" length="16"/>
+            <field type="FIXED" id="065" bitmapref="000" length="16"/>
+            <field type="FIXED" id="066" bitmapref="000" length="1"/>
+            <field type="FIXED" id="067" bitmapref="000" length="2"/>
+            <field type="FIXED" id="068" bitmapref="000" length="3"/>
+            <field type="FIXED" id="069" bitmapref="000" length="3"/>
+            <field type="FIXED" id="070" bitmapref="000" length="3"/>
+            <field type="FIXED" id="071" bitmapref="000" length="4"/>
+            <field type="VAR" id="072" bitmapref="000" length="999" nl="3"/>
+            <field type="FIXED" id="073" bitmapref="000" length="6"/>
+            <field type="FIXED" id="074" bitmapref="000" length="10"/>
+            <field type="FIXED" id="075" bitmapref="000" length="10"/>
+            <field type="FIXED" id="076" bitmapref="000" length="10"/>
+            <field type="FIXED" id="077" bitmapref="000" length="10"/>
+            <field type="FIXED" id="078" bitmapref="000" length="10"/>
+            <field type="FIXED" id="079" bitmapref="000" length="10"/>
+            <field type="FIXED" id="080" bitmapref="000" length="10"/>
+            <field type="FIXED" id="081" bitmapref="000" length="10"/>
+            <field type="FIXED" id="082" bitmapref="000" length="12"/>
+            <field type="FIXED" id="083" bitmapref="000" length="12"/>
+            <field type="FIXED" id="084" bitmapref="000" length="12"/>
+            <field type="FIXED" id="085" bitmapref="000" length="12"/>
+            <field type="FIXED" id="086" bitmapref="000" length="15"/>
+            <field type="FIXED" id="087" bitmapref="000" length="15"/>
+            <field type="FIXED" id="088" bitmapref="000" length="15"/>
+            <field type="FIXED" id="089" bitmapref="000" length="15"/>
+            <field type="FIXED" id="090" bitmapref="000" length="42"/>
+            <field type="FIXED" id="091" bitmapref="000" length="1"/>
+            <field type="FIXED" id="092" bitmapref="000" length="2"/>
+            <field type="FIXED" id="093" bitmapref="000" length="5"/>
+            <field type="FIXED" id="094" bitmapref="000" length="7"/>
+            <field type="FIXED" id="095" bitmapref="000" length="42"/>
+            <field type="FIXED" id="096" bitmapref="000" length="8"/>
+            <field type="FIXED" id="097" bitmapref="000" length="16"/>
+            <field type="FIXED" id="098" bitmapref="000" length="25"/>
+            <field type="VAR" id="099" bitmapref="000" length="11" nl="2"/>
+            <field type="VAR" id="100" bitmapref="000" length="11" nl="2"/>
+            <field type="FIXED" id="101" bitmapref="000" length="17"/>
+            <field type="VAR" id="102" bitmapref="000" length="28" nl="2"/>
+            <field type="VAR" id="103" bitmapref="000" length="28" nl="2"/>
+            <field type="VAR" id="104" bitmapref="000" length="100" nl="3"/>
+            <field type="VAR" id="105" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="106" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="107" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="108" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="109" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="110" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="111" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="112" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="113" bitmapref="000" length="11" nl="2"/>
+            <field type="VAR" id="114" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="115" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="116" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="117" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="118" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="119" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="120" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="121" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="122" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="123" bitmapref="000" length="999" nl="3"/>
+            <field type="VAR" id="124" bitmapref="000" length="255" nl="3"/>
+            <field type="VAR" id="125" bitmapref="000" length="50" nl="2"/>
+            <field type="VAR" id="126" bitmapref="000" length="6" nl="2"/>
+            <field type="VAR" id="127" bitmapref="000" length="999" nl="3"/>
+            <field type="FIXED" id="128" bitmapref="000" length="16"/>
+        </formatter>
+    </formatters>
+</root>

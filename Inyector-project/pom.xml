@@ -1,0 +1,35 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.novatronic.inyector</groupId>
+    <artifactId>Inyector-project</artifactId>
+	<version>2.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Inyector-project</name>
+	
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+	<modules>
+		<module>FrameGenerator-core</module>
+		<module>Inyector-base</module>
+		<module>Inyector-engine</module>
+		<module>Inyector-gui</module>
+		<module>Inyector-report</module>
+		<module>Inyector-sixclient</module>
+		<module>Inyector-tcpclient</module>
+		<module>Inyector-tcpserver</module>
+		<module>Inyector-validator</module>
+		<module>Inyector-db</module>
+		<module>Inyector-xml</module>
+	</modules>
+
+
+
+
+</project>

@@ -1,0 +1,63 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.novatronic.inyector</groupId>
+        <artifactId>Inyector-project</artifactId>
+        <version>2.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>FrameGenerator-core</artifactId>
+    <packaging>jar</packaging>
+    <version>2.0.1-SNAPSHOT</version>
+    <name>FrameGenerator-core</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+        <dependency>
+            <groupId>com.novatronic</groupId>
+            <artifactId>Formatter-core</artifactId>
+            <version>2.1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.novatronic</groupId>
+            <artifactId>Formatter-fields</artifactId>
+            <version>2.1.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connection-config>
+    <connection type="tcp-client">
+        <acquirerBin>007963</acquirerBin>
+        <acquirerName>Procesos MC</acquirerName>
+        <numberTransactions>1</numberTransactions>
+        <connectionMode>CLIENTE</connectionMode>
+        <connectionType>TCP</connectionType>
+        <sleep>0</sleep>
+        <timeOut>10</timeOut>
+        <dateChange>17/09/10</dateChange>
+        <dateIn>17/09/10</dateIn>
+        <host>0</host>
+        <id>7963</id>
+        <ip>172.29.43.116</ip>
+        <port>2092</port>
+        <serverAppl></serverAppl>
+        <sixDriverType></sixDriverType>
+        <userChange>EFTRPLYD</userChange>
+        <userIn>EFTRPLYD</userIn>
+        <userName></userName>
+		<userPassword></userPassword>
+    </connection>
+    <connection type="tcp-server">
+        <acquirerBin>99999999999</acquirerBin>
+        <acquirerName>GlobalNet</acquirerName>
+        <numberTransactions></numberTransactions>
+        <connectionMode>SERVIDOR</connectionMode>
+        <connectionType>TCP</connectionType>
+        <sleep>0</sleep>
+        <timeOut>10</timeOut>
+        <dateChange>17/09/10</dateChange>
+        <dateIn>17/09/10</dateIn>
+        <host>0</host>
+        <id>99999999999</id>
+        <ip>172.29.43.99</ip>
+        <port>9098</port>
+        <serverAppl></serverAppl>
+        <sixDriverType></sixDriverType>
+        <userChange>EFTRPLYD</userChange>
+        <userIn>EFTRPLYD</userIn>
+        <userName></userName>
+		<userPassword></userPassword>
+    </connection>
+    <connection type="six-client">
+        <acquirerBin>500010</acquirerBin>
+        <acquirerName>Boticas FASA</acquirerName>
+        <numberTransactions>2</numberTransactions>
+        <connectionMode>CLIENTE</connectionMode>
+        <connectionType>SIX</connectionType>
+        <sleep>0</sleep>
+        <timeOut>0</timeOut>
+        <dateChange>17/09/10</dateChange>
+        <dateIn>17/09/10</dateIn>
+        <host>0</host>
+        <id>500010</id>
+        <ip>172.29.43.116</ip>
+        <port>2095</port>
+        <serverAppl></serverAppl>
+        <sixDriverType></sixDriverType>
+        <userChange>EFTRPLYD</userChange>
+        <userIn>EFTRPLYD</userIn>
+        <userName></userName>
+		<userPassword></userPassword>
+    </connection>
+</connection-config>

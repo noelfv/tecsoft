@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+<root>
+    <macros>
+        <macro></macro>
+        <macro></macro>
+        <macro></macro>
+    </macros>
+
+    <formatters>
+        <formatter id="001">
+            <field type="FIXED" length="5" id="01" >cinco</field>
+            <field type="FIXED" length="3" id="02" >tre</field>
+            <field type="FIXED" length="1" id="03" >u</field>
+            <field type="FIXED" length="5" id="04" >cinco</field>
+            <field type="FIXED" length="6" id="05" >sseiss</field>
+            <field type="FIXED" length="2" id="06" >do</field>
+            <field type="FIXED" length="3" id="07" >tre</field>
+        </formatter>
+    </formatters>
+</root>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : format.xml
+    Created on : 5 de noviembre de 2010, 07:12 PM
+    Author     : ofernandez
+    Description:
+	
+-->
+<root>
+	<macros>
+        <macro type="DATE" nparams="1" parsename="DATE" />
+        <macro type="SEQ" nparams="0" init="50" parsename="SEQ" />
+    </macros>
+    <formatters>
+        <formatter id="001">
+			<field type="Fixed" id="00" length="4">0200</field>
+            <field type="Fixed" id="01" length="16">FABCC28188E0D008</field>
+			<field type="Fixed" id="02" length="10" format="n" >234</field>
+			<field type="Fixed" id="03" length="10" format="n" parse="true">SEQ()</field>
+            <field type="NVar"   id="04" length="8" nl="2" >5421</field>
+			<field type="Fixed" id="05" length="8" parse="true">DATE(yyyyMMdd)</field>
+			<field type="NVarGroup" id="06" length="12" nl="3">
+				<field type="Fixed" id="01" length="8" >qwerty</field>
+				<field type="Fixed" id="02" length="3" format="n" >89</field>
+				<field type="Fixed" id="03" length="8" parse="true">DATE(yyyyMMdd)</field>
+			</field>
+        </formatter>
+		<formatter id="002">
+			<field type="Fixed" id="00" length="4">0210</field>
+            <field type="NVar"   id="01" length="21" nl="2" >AAAAAAAAA</field>
+			<field type="Fixed" id="02" length="6">22</field>
+        </formatter>
+    </formatters>
+</root>

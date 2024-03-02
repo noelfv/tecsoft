@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!--
+    Document   : log4j.xml
+    Created on : 16 de septiembre de 2010, 05:31 PM
+    Author     : ofernandez
+    Description:
+        Purpose of the document follows.
+-->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c{4} - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="injector-xml.log" />
+        <param name="MaxFileSize" value="1024KB" />
+        <param name="DatePattern" value="'.'yyyyMMdd" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p (%c) - %m%n" />
+        </layout>
+    </appender>
+    <appender name="ROLLFILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="injector-xml.log"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <!-- Keep one backup file -->
+        <param name="MaxBackupIndex" value="20"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p (%c) - %m%n"/>
+        </layout>
+    </appender>   
+    <root>
+        <priority value="DEBUG" />
+        <appender-ref ref="ROLLFILE" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</log4j:configuration>

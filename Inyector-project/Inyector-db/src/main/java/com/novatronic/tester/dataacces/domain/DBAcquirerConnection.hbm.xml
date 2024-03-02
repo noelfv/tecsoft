@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.novatronic.tester.domain">
+  <!--Tablas Maestras -->
+  <class name="AcquirerConnection" table="EFT_TST_CONNECTION">
+    <id column="ID" name="id"/>
+    <property column="ACQUIRER_BIN" name="acquirerBin"/>
+    <property column="ACQUIRER_NAME" name="acquirerName"/>
+    <property column="CONNECTION_TYPE" name="connectionType"/>
+    <property column="CONNECTION_MODE" name="connectionMode"/>
+    <property column="IP" name="ip"/>
+    <property column="PORT" name="port"/>
+    <property column="HOST" name="host"/>
+    <property column="USER_NAME" name="userName"/>
+    <property column="USER_PASSWORD" name="userPassword"/>
+    <property column="SERVER_APPL" name="serverAppl"/>
+    <property column="SIXDRIVER_TYPE" name="sixDriverType"/>
+    <property column="TIMEOUT" name="timeOut"/>
+    <property column="SLEEP" name="sleep"/>
+    <property column="USERIN" name="userIn"/>
+    <property column="DATEIN" name="dateIn"/>
+    <property column="USERCHG" name="userChange"/>
+    <property column="DATECHG" name="dateChange"/>
+  </class>
+</hibernate-mapping>
