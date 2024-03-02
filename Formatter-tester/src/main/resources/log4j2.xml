@@ -2,13 +2,13 @@
 <Configuration status="DEBUG">
     <Appenders>
         <!--<Console name="CONSOLE" target="SYSTEM_OUT">-->
-        <Console name="LogToConsole" target="System.out">
+        <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
     </Appenders>
     <Loggers>
         <!-- avoid duplicated logs with additivity=false -->
-      <Logger name="com.novatronic.formatter" level="info" additivity="false">
+      <Logger name="com.novatronic.formatter.gui" level="info" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
 

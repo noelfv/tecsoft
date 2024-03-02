@@ -57,24 +57,22 @@ public class FindResource {
         URL url;
 
         try {
-            //String x="classpath*:com/novatronic/formatter/resource/"+resource;
-            //url = FindResource.class.getResource(x);
-            url = ClassLoader.getSystemResource(resource);
+
+            /*url = ClassLoader.getSystemResource(resource);
             return url;
-           /* if (classLoader != null) {
+            */
+
+            classLoader=FindResource.class.getClassLoader();
+            if (classLoader != null) {
                 log.trace("Trying to find [" + resource + "] using context classloader "
                         + classLoader + ".");
-               // url = classLoader.getResource("D:\\home\\04.proyectos\\SWP2\\01.Gateway\\0.fuentes\\utils\\tecsoft\\Formatter-tester\\src\\main\\resources\\"+resource);
-                //url = classLoader.getResource("D:\\home\\04.proyectos\\SWP2\\01.Gateway\\0.fuentes\\utils\\tecsoft\\Formatter-tester\\src\\main\\resources\\"+resource);
-                String x="/com/novatronic/formatter/resource/"+resource;
-                url = classLoader.getResource(x);
-                //url = classLoader.resources(resource).collect(Cocllectors.toList()).get(0);
+                url = classLoader.getResource(resource);
                 if (url != null) {
                     return url;
                 }
-            }*/
+            }
 
-            /*
+
             // We could not find resource. Let us now try with the classloader that loaded this class.
             classLoader = FindResource.class.getClassLoader();
             if (classLoader != null) {
@@ -95,7 +93,7 @@ public class FindResource {
                 }
             }
 
-             */
+
         }  catch (Exception t) {
             //
             //  can't be InterruptedException or InterruptedIOException

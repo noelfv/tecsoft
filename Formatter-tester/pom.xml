@@ -16,19 +16,37 @@
 
     <build>
         <resources>
-            <resource>
+           <!-- <resource>
                 <directory>src/main/java/com/novatronic/formatter/img</directory>
                 <includes>
                     <include>*.gif</include>
                     <include>*.png</include>
                 </includes>
                 <targetPath>com/novatronic/formatter/img</targetPath>
+            </resource>-->
+
+            <resource>
+                <directory>src/main/resources/img</directory>
+                <includes>
+                    <include>*.gif</include>
+                    <include>*.png</include>
+                </includes>
+                <filtering>true</filtering>
             </resource>
+          <resource>
+                <directory>src/main/resources/config</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.xml</include>
-                    <include>*.properties</include>
+                    <include>**/*.properties</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>

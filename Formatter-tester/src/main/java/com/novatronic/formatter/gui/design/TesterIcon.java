@@ -58,9 +58,10 @@ public class TesterIcon {
         AbstractButton button;
 
         button = Components.getInstance().get(componentID, AbstractButton.class);
-        log.trace("Componente buscado:" + button);
+        log.info("Componente buscado:" + button);
+        log.info("resourcePath:" + resourcePath);
         if (button != null) {
-         //   button.setIcon(new ImageIcon(clazz.getResource(resourcePath)));
+           //button.setIcon(new ImageIcon(clazz.getResource(resourcePath)));
             button.setIcon(new ImageIcon( resourcePath));
             button.setContentAreaFilled(false);
             button.setFocusPainted(false);

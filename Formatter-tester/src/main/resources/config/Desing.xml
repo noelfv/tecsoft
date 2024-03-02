@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <icons>
-        <icon comp="BT_LOAD_TESTS_FILES" icon="/com/novatronic/formatter/img/read_files_03.png"/>
-        <icon comp="BT_LOAD_SELECT_FILE" icon="/com/novatronic/formatter/img/load_group_01.png"/>
-        <icon comp="BT_SELECT_TEST" icon="/com/novatronic/formatter/img/select_test_01.png"/>
-        <icon comp="BT_SAVE_FRAME_RESULT" icon="/com/novatronic/formatter/img/save.png"/>
+        <icon comp="BT_LOAD_TESTS_FILES" icon="img/read_files_03.png"/>
+        <icon comp="BT_LOAD_SELECT_FILE" icon="img/load_group_01.png"/>
+        <icon comp="BT_SELECT_TEST" icon="img/select_test_01.png"/>
+        <icon comp="BT_SAVE_FRAME_RESULT" icon="img/save.png"/>
         <icon comp="BT_SAVE_FRAME_TEST" icon="/com/novatronic/formatter/img/save.png"/>
         <icon comp="BT_TO_FRAME" icon="/com/novatronic/formatter/img/to_frame_01.png"/>
         <icon comp="BT_TO_INTFORMAT" icon="/com/novatronic/formatter/img/to_if_01.png"/>

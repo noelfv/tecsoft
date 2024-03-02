@@ -20,6 +20,7 @@
 		<module>Formatter-decorators</module>
 		<module>Formatter-filters</module>
 		<module>Formatter-fields</module>
+		<module>mydoggy</module>
 	</modules>
 
 </project>
