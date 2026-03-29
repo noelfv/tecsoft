@@ -1,0 +1,25 @@
+// version 1.0.0
+// category orchestrator
+
+syntax = "proto3";
+
+package b.gateway.v1;
+
+option java_package = "com.bbva.business.gateway.health";
+option java_multiple_files = true;
+
+service HealthService {
+  rpc Check(Empty) returns (HealthCheckResponse);
+}
+
+message Empty {
+
+}
+
+message HealthCheckRequest {
+  string service = 1;
+}
+
+message HealthCheckResponse{
+  string status = 1;
+}

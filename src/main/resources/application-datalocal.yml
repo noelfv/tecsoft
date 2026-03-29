@@ -1,0 +1,383 @@
+datalocal:
+  - network: "PEER01"
+    custom:
+      map_fields_response:
+        - name: "0110"
+          value: '{"2":"M", "3":"M", "4":"M", "5":"O", "6":"O", "7":"M", "9":"O", "10":"O", "11":"M", "15":"M", "16":"O", "20":"O", "32":"M", "37":"O", "38":"O", "39":"M", "41":"O", "44":"O", "48":"O", "49":"M", "50":"O", "51":"O", "54":"O", "55":"O", "56":"O", "62":"O", "63":"M", "120":"O", "121":"O", "127":"O"}'
+        - name: "0410"
+          value: '{"2":"M", "3":"M", "4":"M", "5":"O", "6":"O", "7":"M", "9":"O", "10":"O", "11":"M", "15":"M", "16":"O", "20":"O", "32":"M", "37":"O", "38":"O", "39":"M", "41":"O", "44":"O", "48":"O", "49":"M", "50":"O", "51":"O", "54":"O", "55":"O", "56":"O", "62":"O", "63":"M", "120":"O", "121":"O", "127":"O"}'
+      response_code:
+        - { name: "APPR", value: "00" }
+        - { name: "transaction_error_pending", value: "01" }
+        - { name: "invalid_date_time", value: "02" }
+        - { name: "data_presence_error", value: "02" }
+        - { name: "invalid_mac", value: "02" }
+        - { name: "required_input_field", value: "02" }
+        - { name: "required_field", value: "02" }
+        - { name: "merchant_not_allowed", value: "03" }
+        - { name: "legal_review_retain", value: "04" }
+        - { name: "arqc_error", value: "05" }
+        - { name: "legal_agreement_retain", value: "05" }
+        - { name: "merchant_invalid_data", value: "05" }
+        - { name: "limit_denials_exceeded", value: "05" }
+        - { name: "card_legal_agreement", value: "05" }
+        - { name: "account_logic_block", value: "06" }
+        - { name: "incorrect_amount", value: "06" }
+        - { name: "operation_restrictions", value: "06" }
+        - { name: "account_selection_error", value: "06" }
+        - { name: "card_deactivated", value: "06" }
+        - { name: "card_offus_direct_debit", value: "06" }
+        - { name: "transaction_error", value: "06" }
+        - { name: "installments_not_allowed", value: "06" }
+        - { name: "restricted_operation", value: "06" }
+        - { name: "no_transaction_found", value: "06" }
+        - { name: "card_fraud", value: "07" }
+        - { name: "fraud_retain", value: "07" }
+        - { name: "partial_approval", value: "10" }
+        - { name: "approval_vip", value: "11" }
+        - { name: "invalid_balance", value: "13" }
+        - { name: "unreachable_account", value: "14" }
+        - { name: "canceled_card", value: "14" }
+        - { name: "card_decline_all", value: "14" }
+        - { name: "card_not_found", value: "14" }
+        - { name: "cvv1_error", value: "14" }
+        - { name: "card_delinquent", value: "14" }
+        - { name: "non_operational_card", value: "14" }
+        - { name: "pan_contains_non_digit", value: "14" }
+        - { name: "card", value: "14" }
+        - { name: "card_vault", value: "14" }
+        - { name: "card_not_active", value: "14" }
+        - { name: "canceled_card_bank", value: "14" }
+        - { name: "canceled_card_client", value: "14" }
+        - { name: "card_blocked", value: "14" }
+        - { name: "card_disable", value: "14" }
+        - { name: "transaction_error_pending", value: "17" }
+        - { name: "unreachable_currency", value: "19" }
+        - { name: "currency_not_supported", value: "19" }
+        - { name: "zero_amount_acct_oper", value: "19" }
+        - { name: "prepaid_bin_not_allowed", value: "19" }
+        - { name: "incorrect_installment_number", value: "19" }
+        - { name: "addl_business_card_not_allowed", value: "19" }
+        - { name: "account_type_not_allowed", value: "19" }
+        - { name: "associated_account_no_access", value: "19" }
+        - { name: "sticker_contactless_only", value: "19" }
+        - { name: "service_not_allowed", value: "19" }
+        - { name: "fake_card", value: "19" }
+        - { name: "ecom_not_allowed", value: "19" }
+        - { name: "restriction_not_allowed", value: "19" }
+        - { name: "restricted_operation_channel", value: "19" }
+        - { name: "incorrect_message_format", value: "19" }
+        - { name: "client_denial", value: "19" }
+        - { name: "card_blocked_bank", value: "19" }
+        - { name: "not_allowed_operation", value: "19" }
+        - { name: "invalid_address", value: "19" }
+        - { name: "debit_card_restricted", value: "19" }
+        - { name: "invalid_field", value: "19" }
+        - { name: "message_function", value: "19" }
+        - { name: "no_results_available", value: "25" }
+        - { name: "unreachable_reference", value: "25" }
+        - { name: "account_selection_ok", value: "32" }
+        - { name: "lost_card_retain", value: "41" }
+        - { name: "stolen_card_retain", value: "43" }
+        - { name: "contract_end", value: "46" }
+        - { name: "cancelled_account", value: "46" }
+        - { name: "insufficient_credit_balance", value: "51" }
+        - { name: "exceeded_limits", value: "51" }
+        - { name: "not_enough_balance", value: "51" }
+        - { name: "exceeded_credit_limit", value: "51" }
+        - { name: "insufficient_debit_balance", value: "51" }
+        - { name: "non_existent_account", value: "52" }
+        - { name: "cancelled_account", value: "52" }
+        - { name: "missing_savings_account", value: "53" }
+        - { name: "expiration_date_not_valid", value: "54" }
+        - { name: "expired_card", value: "54" }
+        - { name: "expiration_date", value: "54" }
+        - { name: "card_renewal_error", value: "54" }
+        - { name: "card_expiration_date_error", value: "54" }
+        - { name: "pin_error", value: "55" }
+        - { name: "card_denied_court_order", value: "57" }
+        - { name: "bin_retry_parameter", value: "57" }
+        - { name: "bin_parameters_error", value: "57" }
+        - { name: "bin_id_error", value: "57" }
+        - { name: "bin_type_error", value: "57" }
+        - { name: "fallback_blocked", value: "58" }
+        - { name: "suspect_fraud", value: "59" }
+        - { name: "prev_block_court_order", value: "59" }
+        - { name: "exceeded_daily_card_limit", value: "61" }
+        - { name: "prev_block_payment_due_denial", value: "62" }
+        - { name: "blocked_account", value: "62" }
+        - { name: "closed_account", value: "62" }
+        - { name: "account_blocked", value: "62" }
+        - { name: "exceeded_limit_withdrawal", value: "65" }
+        - { name: "exceeded_pin_retry", value: "75" }
+        - { name: "card_not_delivered", value: "78" }
+        - { name: "annuled_authorization", value: "79" }
+        - { name: "transaction_error_pending", value: "80" }
+        - { name: "cvv2_autentication_error", value: "82" }
+        - { name: "cvv2_not_printed", value: "82" }
+        - { name: "cvv2_not_present", value: "82" }
+        - { name: "cvv2_not_received", value: "82" }
+        - { name: "invalid_parameters", value: "82" }
+        - { name: "cvv2_not_validated", value: "82" }
+        - { name: "exceeded_limit", value: "82" }
+        - { name: "operation_denied", value: "82" }
+        - { name: "cavv_not_valid", value: "82" }
+        - { name: "import_exceeded_limits", value: "82" }
+        - { name: "user_not_authorized", value: "82" }
+        - { name: "unavailable_operation", value: "82" }
+        - { name: "mandatory_parameters_missing", value: "82" }
+        - { name: "outrange_parameter", value: "82" }
+        - { name: "not_authorized", value: "82" }
+        - { name: "cvv2_invalid", value: "82" }
+        - { name: "transaction_error_pending", value: "83" }
+        - { name: "original_transaction_denied", value: "85" }
+        - { name: "transaction_error_pending", value: "86" }
+        - { name: "issuer_not_available", value: "91" }
+        - { name: "non_existent_merchant", value: "91" }
+        - { name: "exceeded_credit_limit", value: "91" }
+        - { name: "deadline_exceeded", value: "91" }
+        - { name: "card_denied_bank", value: "91" }
+        - { name: "cash_withdrawal_blocked", value: "93" }
+        - { name: "internet_purchase_blocked", value: "93" }
+        - { name: "international_purchase_blocked", value: "93" }
+        - { name: "natural_pin_usage", value: "P6" }
+        - { name: "command_error_retrieving_entity", value: "96" }
+        - { name: "chameleon_connection_fail", value: "96" }
+        - { name: "chameleon_null_response", value: "96" }
+        - { name: "chameleon_bad_response_format", value: "96" }
+        - { name: "chameleon_bad_response_body", value: "96" }
+        - { name: "titan_connection_fail", value: "96" }
+        - { name: "titan_transaction_error", value: "96" }
+        - { name: "titan_retrieval_unknown_error", value: "96" }
+        - { name: "titan_write_unknown_error", value: "96" }
+        - { name: "system_error", value: "96" }
+        - { name: "generic_error", value: "96" }
+        - { name: "mandatory_parameters_missing", value: "96" }
+        - { name: "cpay_code", value: "96" }
+        - { name: "cpay_error", value: "96" }
+        - { name: "invalid_timestamp", value: "96" }
+        - { name: "card_cvv", value: "96" }
+        - { name: "card_id", value: "96" }
+        - { name: "date_out_of_range", value: "96" }
+        - { name: "cvv", value: "96" }
+        - { name: "service_code", value: "96" }
+        - { name: "parameters_invalid", value: "96" }
+        - { name: "internal_failure", value: "96" }
+        - { name: "card_cvv_update_failed", value: "96" }
+        - { name: "transaction_error_pending", value: "N7" }
+        - { name: "transaction_error_pending", value: "5C" }
+        - { name: "transaction_error_pending", value: "R3" }
+
+    process:
+      -
+        type: "Transaction"
+        data:
+          -
+            name: "00"
+            value: "Compras"
+    inputLRA:
+      -
+        key: "0700"
+        value: "test"
+    outputLRA:
+      -
+        key: "test"
+        value: "0700"
+
+  - network: "PEER02"
+    custom:
+      map_fields_response:
+        - name: "0110"
+          value: '{"2":"M", "3":"M", "4":"M", "5":"O", "6":"O", "7":"M", "9":"O", "10":"O", "11":"M", "15":"M", "16":"O", "20":"O", "32":"M", "33":"O", "37":"O", "38":"O", "39":"M", "41":"O", "44":"O", "48":"O", "49":"M", "50":"O", "51":"O", "54":"O", "55":"O", "56":"O", "62":"O", "63":"M", "120":"O", "121":"O", "127":"O"}'
+        - name: "0410"
+          value: '{"2":"M", "3":"M", "4":"M", "5":"O", "6":"O", "7":"M", "9":"O", "10":"O", "11":"M", "15":"M", "16":"O", "20":"O", "32":"M", "37":"O", "38":"O", "39":"M", "41":"O", "44":"O", "48":"O", "49":"M", "50":"O", "51":"O", "54":"O", "55":"O", "56":"O", "62":"O", "63":"M", "120":"O", "121":"O", "127":"O"}'
+      response_code:
+        - { name: "APPR", value: "00" }
+        - { name: "transaction_error_pending", value: "01" }
+        - { name: "non_existent_merchant", value: "03" }
+        - { name: "contract_end", value: "04" }
+        - { name: "canceled_card_bank", value: "04" }
+        - { name: "canceled_card_client", value: "04" }
+        - { name: "limit_denials_exceeded", value: "05" }
+        - { name: "merchant_invalid_data", value: "05" }
+        - { name: "card_legal_agreement", value: "05" }
+        - { name: "legal_agreement_retain", value: "05" }
+        - { name: "no_transaction_found", value: "06" }
+        - { name: "partial_approval", value: "10" }
+        - { name: "original_transaction_denied", value: "12" }
+        - { name: "invalid_balance", value: "13" }
+        - { name: "incorrect_amount", value: "13" }
+        - { name: "zero_amount_acct_oper", value: "13" }
+        - { name: "card_not_found", value: "14" }
+        - { name: "card_not_active", value: "14" }
+        - { name: "cvc1_error", value: "14" }
+        - { name: "card_disable", value: "14" }
+        - { name: "non_operational_card", value: "14" }
+        - { name: "card", value: "14" }
+        - { name: "card_vault", value: "14" }
+        - { name: "transaction_error_pending", value: "17" }
+        - { name: "unreachable_reference", value: "25" }
+        - { name: "no_results_available", value: "25" }
+        - { name: "invalid_date_time", value: "30" }
+        - { name: "incorrect_message_format", value: "30" }
+        - { name: "data_presence_error", value: "30" }
+        - { name: "required_input_field", value: "30" }
+        - { name: "invalid_field", value: "30" }
+        - { name: "required_field", value: "30" }
+        - { name: "message_function", value: "30" }
+        - { name: "account_selection_ok", value: "32" }
+        - { name: "reach_issuer_susfraud", value: "34" }
+        - { name: "lost_card_retain", value: "41" }
+        - { name: "stolen_card_retain", value: "43" }
+        - { name: "insufficient_credit_balance", value: "51" }
+        - { name: "exceeded_limits", value: "51" }
+        - { name: "not_enough_balance", value: "51" }
+        - { name: "exceeded_credit_limit", value: "51" }
+        - { name: "insufficient_debit_balance", value: "51" }
+        - { name: "invalid_expiration_date", value: "54" }
+        - { name: "card_deactivated", value: "54" }
+        - { name: "card_renewal_error", value: "54" }
+        - { name: "card_expiration_date_error", value: "54" }
+        - { name: "expiration_date_not_valid", value: "54" }
+        - { name: "expiration_date", value: "54" }
+        - { name: "expired_card", value: "54" }
+        - { name: "pin_error", value: "55" }
+        - { name: "bin_retry_parameter", value: "57" }
+        - { name: "import_exceeded_limits", value: "57" }
+        - { name: "user_not_authorized", value: "57" }
+        - { name: "invalid_parameters", value: "57" }
+        - { name: "unavailable_operation", value: "57" }
+        - { name: "mandatory_parameters_missing", value: "57" }
+        - { name: "not_authorized", value: "57" }
+        - { name: "outrange_parameter", value: "57" }
+        - { name: "unreachable_currency", value: "57" }
+        - { name: "blocked_account", value: "57" }
+        - { name: "restriction_not_allowed", value: "57" }
+        - { name: "card_not_delivered", value: "57" }
+        - { name: "restricted_operation_channel", value: "57" }
+        - { name: "merchant_not_allowed", value: "57" }
+        - { name: "ecom_not_allowed", value: "57" }
+        - { name: "operation_denied", value: "57" }
+        - { name: "account_blocked", value: "57" }
+        - { name: "missing_savings_account", value: "57" }
+        - { name: "incorrect_installment_number", value: "57" }
+        - { name: "addl_business_card_not_allowed", value: "57" }
+        - { name: "account_type_not_allowed", value: "57" }
+        - { name: "cvv2_not_printed", value: "57" }
+        - { name: "cvv2_not_present", value: "57" }
+        - { name: "cvv2_not_received", value: "57" }
+        - { name: "cvv2_not_validated", value: "57" }
+        - { name: "associated_account_no_access", value: "57" }
+        - { name: "cash_withdrawal_blocked", value: "57" }
+        - { name: "internet_purchase_blocked", value: "57" }
+        - { name: "fallback_blocked", value: "57" }
+        - { name: "prepaid_bin_not_allowed", value: "57" }
+        - { name: "international_purchase_blocked", value: "57" }
+        - { name: "cvv2_autentication_error", value: "57" }
+        - { name: "currency_not_supported", value: "57" }
+        - { name: "bin_id_error", value: "57" }
+        - { name: "bin_type_error", value: "57" }
+        - { name: "bin_parameters_error", value: "57" }
+        - { name: "blocked_operation", value: "57" }
+        - { name: "sticker_contactless_only", value: "58" }
+        - { name: "exceeded_daily_card_limit", value: "61" }
+        - { name: "exceeded_limit", value: "61" }
+        - { name: "card_denied_bank", value: "61" }
+        - { name: "debit_card_restricted", value: "61" }
+        - { name: "pan_contains_non_digit", value: "62" }
+        - { name: "card_blocked_bank", value: "62" }
+        - { name: "canceled_card", value: "62" }
+        - { name: "invalid_address", value: "62" }
+        - { name: "prev_block_payment_due_denial", value: "62" }
+        - { name: "prev_block_MCC_denial", value: "62" }
+        - { name: "restricted_operation", value: "62" }
+        - { name: "prev_block_court_order", value: "62" }
+        - { name: "card_blocked", value: "62" }
+        - { name: "client_denial", value: "62" }
+        - { name: "card_decline_all", value: "62" }
+        - { name: "legal_review_retain", value: "62" }
+        - { name: "card_denied_court_order", value: "62" }
+        - { name: "card_delinquent", value: "62" }
+        - { name: "operation_restrictions", value: "62" }
+        - { name: "invalid_mac", value: "63" }
+        - { name: "suspect_fraud", value: "63" }
+        - { name: "not_allowed_operation", value: "63" }
+        - { name: "service_not_allowed", value: "63" }
+        - { name: "expired_card", value: "63" }
+        - { name: "exceeded_limit_withdrawal", value: "65" }
+        - { name: "transaction_error_pending", value: "68" }
+        - { name: "natural_pin_usage", value: "71" }
+        - { name: "exceeded_pin_retry", value: "75" }
+        - { name: "account_selection_error", value: "76" }
+        - { name: "closed_account", value: "76" }
+        - { name: "account_logic_block", value: "76" }
+        - { name: "non_existent_account", value: "76" }
+        - { name: "cancelled_account", value: "76" }
+        - { name: "unreachable_account", value: "77" }
+        - { name: "transaction_error_pending", value: "80" }
+        - { name: "transaction_error_pending", value: "82" }
+        - { name: "transaction_error_pending", value: "83" }
+        - { name: "denied_operation", value: "84" }
+        - { name: "chip_arqc_error", value: "88" }
+        - { name: "dcvv2_expired", value: "88" }
+        - { name: "dcvv2_not_match", value: "88" }
+        - { name: "dcvv2_invalid", value: "88" }
+        - { name: "cavv_not_valid", value: "88" }
+        - { name: "fake_card", value: "88" }
+        - { name: "dcvv2_attempts_exceeded", value: "88" }
+        - { name: "dcvv2_exceeded_uses", value: "88" }
+        - { name: "no_cvv2_retries_left", value: "88" }
+        - { name: "no_dcvv_retries_left", value: "88" }
+        - { name: "no_usages_left", value: "88" }
+        - { name: "dcvv_out_of_validity_window", value: "88" }
+        - { name: "dcvv_window_time_not_valid", value: "88" }
+        - { name: "invalid_cvv_type", value: "88" }
+        - { name: "invalid_generation_cvv_type", value: "88" }
+        - { name: "cvv2_invalid", value: "88" }
+        - { name: "issuer_not_available", value: "91" }
+        - { name: "deadline_exceeded", value: "91" }
+        - { name: "annuled_authorization", value: "94" }
+        - { name: "system_error", value: "96" }
+        - { name: "transaction_error", value: "96" }
+        - { name: "internal_failure", value: "96" }
+        - { name: "card_offus_direct_debit", value: "96" }
+        - { name: "card_fraud", value: "96" }
+        - { name: "fraud_retain", value: "96" }
+        - { name: "installments_not_allowed", value: "96" }
+        - { name: "generic_error", value: "96" }
+        - { name: "date_out_of_range", value: "96" }
+        - { name: "no_transaction_found", value: "96" }
+        - { name: "command_error_retrieving_entity", value: "96" }
+        - { name: "chameleon_connection_fail", value: "96" }
+        - { name: "chameleon_null_response", value: "96" }
+        - { name: "chameleon_bad_response_format", value: "96" }
+        - { name: "chameleon_bad_response_body", value: "96" }
+        - { name: "titan_connection_fail", value: "96" }
+        - { name: "titan_transaction_error", value: "96" }
+        - { name: "titan_retrieval_unknown_error", value: "96" }
+        - { name: "titan_write_unknown_error", value: "96" }
+        - { name: "cpay_code", value: "96" }
+        - { name: "cpay_error", value: "96" }
+        - { name: "invalid_timestamp", value: "96" }
+        - { name: "card_cvv_update_failed", value: "96" }
+        - { name: "card_cvv", value: "96" }
+        - { name: "card_id", value: "96" }
+        - { name: "cvv", value: "96" }
+        - { name: "service_code", value: "96" }
+        - { name: "parameters_invalid", value: "96" }
+        - { name: "system_error", value: "96" }
+
+    process:
+      -
+        type: "Transaction"
+        data:
+          -
+            name: "00"
+            value: "Compras"
+    inputLRA:
+      - key: "test"
+        value: "0"
+    outputLRA:
+      -
+        key: "0"
+        value: "test"

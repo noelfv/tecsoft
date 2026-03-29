@@ -1,0 +1,450 @@
+data:
+  #Cuando existe un cero a la izquierda, se debe colocar entre comillas simples
+  currency:
+    - { numericCurrencyId: 604, currencyCode: PEN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 840, currencyCode: USD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 978, currencyCode: EUR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 986, currencyCode: BRL, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 170, currencyCode: COP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 152, currencyCode: CLP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "032", currencyCode: ARS, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 826, currencyCode: GBP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 484, currencyCode: MXN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 124, currencyCode: CAD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 392, currencyCode: JPY, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 156, currencyCode: CNY, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "036", currencyCode: AUD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 214, currencyCode: DOP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 928, currencyCode: VES, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 756, currencyCode: CHF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 949, currencyCode: TRY, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 188, currencyCode: CRC, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 600, currencyCode: PYG, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 858, currencyCode: UYU, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 320, currencyCode: GTQ, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 752, currencyCode: SEK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 784, currencyCode: AED, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 410, currencyCode: KRW, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "068", currencyCode: BOB, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 985, currencyCode: PLN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 344, currencyCode: HKD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 203, currencyCode: CZK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 348, currencyCode: HUF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 578, currencyCode: NOK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 208, currencyCode: DKK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 764, currencyCode: THB, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 360, currencyCode: IDR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 376, currencyCode: ILS, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 702, currencyCode: SGD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 710, currencyCode: ZAR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 818, currencyCode: EGP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 946, currencyCode: RON, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 952, currencyCode: XOF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 554, currencyCode: NZD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 458, currencyCode: MYR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 608, currencyCode: PHP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 340, currencyCode: HNL, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 682, currencyCode: SAR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 980, currencyCode: UAH, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 356, currencyCode: INR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 860, currencyCode: UZS, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 704, currencyCode: VND, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 901, currencyCode: TWD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 634, currencyCode: QAR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 404, currencyCode: KES, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 941, currencyCode: RSD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 352, currencyCode: ISK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 967, currencyCode: ZMW, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 504, currencyCode: MAD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 242, currencyCode: FJD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 558, currencyCode: NIO, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 975, currencyCode: BGN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "044", currencyCode: BSD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 400, currencyCode: JOD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 933, currencyCode: BYN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 780, currencyCode: TTD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 388, currencyCode: JMD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "008", currencyCode: ALL, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 977, currencyCode: BAM, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 398, currencyCode: KZT, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 807, currencyCode: MKD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 944, currencyCode: AZN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "048", currencyCode: BHD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 834, currencyCode: TZS, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "084", currencyCode: BZD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 936, currencyCode: GHS, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 512, currencyCode: OMR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 144, currencyCode: LKR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 566, currencyCode: NGN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 496, currencyCode: MNT, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "012", currencyCode: DZD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 950, currencyCode: XAF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 548, currencyCode: VUV, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 951, currencyCode: XCD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 586, currencyCode: PKR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 976, currencyCode: CDF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 532, currencyCode: ANG, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 498, currencyCode: MDL, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 690, currencyCode: SCR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 328, currencyCode: GYD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 643, currencyCode: RUB, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 480, currencyCode: MUR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 590, currencyCode: PAB, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 116, currencyCode: KHR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 981, currencyCode: GEL, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 788, currencyCode: TND, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 418, currencyCode: LAK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 973, currencyCode: AOA, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 270, currencyCode: GMD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 446, currencyCode: MOP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 953, currencyCode: XPF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 943, currencyCode: MZN, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 262, currencyCode: DJF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "052", currencyCode: BBD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 533, currencyCode: AWG, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "072", currencyCode: BWP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 969, currencyCode: MGA, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 524, currencyCode: NPR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 368, currencyCode: IQD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 132, currencyCode: CVE, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 598, currencyCode: PGK, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 414, currencyCode: KWD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 800, currencyCode: UGX, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 646, currencyCode: RWF, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "051", currencyCode: AMD, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: "050", currencyCode: BDT, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 462, currencyCode: MVR, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 230, currencyCode: ETB, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 654, currencyCode: SHP, decimalCurrencyNumber: 2 }
+    - { numericCurrencyId: 136, currencyCode: KYD, decimalCurrencyNumber: 2 }
+  bins:
+    - key: PEER01
+      fields:
+        - { name: 428597, value: "DEBITO EMPRESARIAL" }
+        - { name: 438168, value: "VIP ELECTRON" }
+        - { name: 455103, value: "COMPRAS" }
+        - { name: 455170, value: "MUNDO SUELDO" }
+        - { name: 477113, value: "PREPAGO DISEÑO" }
+        - { name: 404293, value: "CUOTA CERO" }
+        - { name: 414064, value: "LIFEMILES ORO" }
+        - { name: 414068, value: "LIFEMILES PLATINUM" }
+        - { name: 414075, value: "INFINITE" }
+        - { name: 414089, value: "SIGNATURE LIFEMILES" }
+        - { name: 414791, value: "SIGNATURE" }
+        - { name: 491909, value: "BFREE" }
+        - { name: 491910, value: "CLASICA REPSOL" }
+        - { name: 491911, value: "ORO" }
+        - { name: 491914, value: "PLATINUM" }
+        - { name: 491931, value: "CUOTA FIJA" }
+        - { name: 491913, value: "EMPRESARIAL ORO" }
+        - { name: 491912, value: "CAPITAL DE TRABAJO" }
+        - { name: 491947, value: "CORPORATE" }
+        - { name: 491946, value: "CUENTA VIAJES" }
+    - key: PEER02
+      fields:
+        - { name: 519348, value: "TARJETA HINCHA" }
+        - { name: 511578, value: "PLATINUM" }
+        - { name: 512312, value: "CLASICA" }
+        - { name: 512409, value: "ORO" }
+        - { name: 553650, value: "BLACK" }
+  custom:
+    bank_p2p:
+      - { name: 650036704, value: "BBVA" }
+      - { name: 650036525, value: "INTERBANK" }
+      - { name: 650039140, value: "SCOTIABANK" }
+      - { name: 650161120, value: "BANBIF" }
+      - { name: 100047268, value: "BCP" }
+      - { name: 650181632, value: "CAJA AREQUIPA" }
+      - { name: 650192246, value: "CAJA SULLANA" }
+      - { name: 650197514, value: "CAJA ICA" }
+      - { name: 650184942, value: "CAJA PIURA" }
+      - { name: 650184943, value: "CAJA TACNA" }
+      - { name: 650187926, value: "CAJA SULLANA YAPE" }
+      - { name: 650189314, value: "CAJA TRUJILLO YAPE" }
+      - { name: 650184944, value: "BANCO NACION" }
+      - { name: 650180877, value: "YAPE CARD" }
+      - { name: 650212662, value: "MI BANCO" }
+      - { name: 650196944, value: "CAJA HUANCAYO" }
+      - { name: 650241569, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650240708, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650218369, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650238611, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650190321, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650195861, value: "ENTIDAD_NO_FOUND" }
+      - { name: 651008214, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650173712, value: "ENTIDAD_NO_FOUND" }
+      - { name: 650246823, value: "ENTIDAD_NO_FOUND" }
+    merchant_type:
+      - { name: 6012, value: "INSTITUCIONES FINANCIERAS 6 MERCADERIA" }
+      - { name: 4829, value: "TRANSFERENCIAS DE DINERO" }
+      - { name: 6011, value: "INSTITUCIONES FINANCIERAS 6 DESEMBOLSOS AUTOMATI." }
+      - { name: 5411, value: "TIENDAS DE COMESTIBLES Y SUPERMERCADOS" }
+      - { name: 7372, value: "PROGRAMACION DE COMPUTADORAS Y PROCESAMIENTO" }
+      - { name: 5812, value: "RESTAURANTES" }
+      - { name: 5541, value: "ESTACIONES DE SERVICIO Y GASOLINERAS" }
+      - { name: 5499, value: "TIENDAS DE PRODUCTOS ALIMENTICIOS DIVERSOS" }
+      - { name: 5300, value: "TIENDAS MAYORISTAS DE MERCADERIA GENERAL" }
+      - { name: 5462, value: "PANADERIAS Y PASTELERIAS" }
+      - { name: 5814, value: "RESTAURANTES DE COMIDA RAPIDA" }
+      - { name: 5912, value: "BOTICAS Y FARMACIAS" }
+      - { name: 5818, value: "VENTAS VIRTUALES COMERCIOS DE PRODUCTOS DIGITALES" }
+      - { name: 4784, value: "AUTOPISTAS, PUENTES Y TUNELES DE PEAJE" }
+      - { name: 7995, value: "APUESTAS" }
+      - { name: 4899, value: "SERVICIO DE CABLE, SATELITE, DE TELEVISION, RADIO" }
+      - { name: 4121, value: "SERVICIO DE TAXIS Y LIMOSINAS" }
+      - { name: 6300, value: "VENTAS DE SEGUROS,SUSCRIPCION DE SEGUROS Y PRIMAS" }
+      - { name: 5311, value: "TIENDAS POR DEPARTAMENTOS" }
+      - { name: 5816, value: "VENTAS VIRTUALES JUEGOS DIGITALES" }
+      - { name: 8062, value: "HOSPITALES" }
+      - { name: 7523, value: "PLAYAS DE ESTACIONAMIENTO, PARQUIMETROS Y GARAJES" }
+      - { name: 7399, value: "SERVICIOS COMERCIALES" }
+      - { name: 5200, value: "TIENDAS DE PRODUCTOS PARA EL HOGAR" }
+      - { name: 9311, value: "PAGOS DE IMPUESTOS" }
+      - { name: 5817, value: "VENTAS VIRTUALES DE APLICACIONES" }
+      - { name: 5813, value: "BARES, CLUBES NOCTURNOS Y DISCOTECAS" }
+      - { name: 7311, value: "SERVICIOS DE PUBLICIDAD" }
+      - { name: 5137, value: "MAYORISTA (PRENDAS DE VESTIR)" }
+      - { name: 7011, value: "HOSPEDAJE Y HOTELES" }
+      - { name: 5734, value: "TIENDAS DE COMPUTADORAS Y SOFTWARE" }
+      - { name: 7997, value: "CLUBES DEPORTIVOS, RECREATIVOS Y CAMPESTRES" }
+      - { name: 4789, value: "SERVICIOS DE TRANSPORTE" }
+      - { name: 7832, value: "CINES" }
+      - { name: 4900, value: "SERVICIOS PUBLICOS 6 GAS, ELECTRICIDAD, ETC" }
+      - { name: 4814, value: "SERVICIOS DE TELECOMUNICACIONES" }
+      - { name: 5111, value: "MAYORISTA (PAPELERIA, ARTICULOS DE OFICINA)" }
+      - { name: 5441, value: "CONFITERIAS, DULCERIAS Y TIENDAS DE FRUTOS SECOS" }
+      - { name: 8099, value: "SERVICIOS MEDICOS Y PROFESIONALES DE LA SALUD" }
+      - { name: 8220, value: "INSTITUTOS DE EDUCACION SUPERIOR, UNIVERSIDADES" }
+      - { name: 5139, value: "CALZADO COMERCIAL" }
+      - { name: 4111, value: "TRANSPORTE LOCAL, DE CERCANIAS Y SUBURBANO" }
+      - { name: 5815, value: "VENTAS VIRTUALES LIBROS, PELICULAS, MUSICA" }
+      - { name: 8398, value: "ORGANIZACIONES DE SERVICIO SOCIAL Y CARITATIVO" }
+      - { name: 5451, value: "TIENDAS DE PRODUCTOS LACTEOS" }
+      - { name: 7230, value: "PELUQUERIAS Y BARBERIAS" }
+      - { name: 5651, value: "TIENDAS DE ROPA PARA TODA LA FAMILIA" }
+      - { name: 5942, value: "LIBRERIAS" }
+      - { name: 5199, value: "MAYORISTA (MERCANCIAS PERECEDERAS)" }
+      - { name: 8299, value: "ESCUELAS Y SERVICIOS EDUCATIVOS" }
+      - { name: 5699, value: "TIENDAS DE PRENDAS DE VESTIR Y ACCESORIOS" }
+      - { name: 5065, value: "MAYORISTA (EQUIPOS Y COMPONENTES ELECTRICOS)" }
+      - { name: 8999, value: "SERVICIOS PROFESIONALES" }
+      - { name: 5331, value: "BAZARES" }
+      - { name: 5999, value: "TIENDAS DE VENTA MINORISTA ESPECIALIZADAS" }
+      - { name: 4131, value: "LINEAS DE AUTOBUSES" }
+      - { name: 7999, value: "SERVICIOS DE RECREACION" }
+      - { name: 7922, value: "PRODUCTORES TEATRALES Y VENTA DE ENTRADAS" }
+      - { name: 5533, value: "TIENDAS DE AUTOPARTES Y ACCESORIOS AUTOMOTRICES" }
+      - { name: 4722, value: "AGENCIAS DE VIAJE Y OPERADORES TURISTICOS" }
+      - { name: "0742", value: "SERVICIOS VETERINARIOS" }
+      - { name: 5422, value: "CARNES CONGELADAS Y EMPAQUETADAS" }
+      - { name: 5921, value: "LICORERIAS 6 CERVEZAS, VINOS Y LICORES" }
+      - { name: 5621, value: "TIENDAS DE PRENDAS PARA DAMAS" }
+      - { name: 4215, value: "SERVICIOS DE CORREO AEREO Y TERRESTRE" }
+      - { name: 4511, value: "AEROLINEAS Y EMPRESAS DE TRANSPORTE AEREO" }
+      - { name: 8021, value: "DENTISTAS Y ORTODONCISTAS" }
+      - { name: 7996, value: "PARQUES DE DIVERSIONES, CIRCOS Y CARNAVALES" }
+      - { name: 5661, value: "TIENDAS DE CALZADO" }
+      - { name: 5719, value: "TIENDAS DE ARTICULOS PARA EL HOGAR" }
+      - { name: 5947, value: "TIENDAS DE REGALOS, TARJETAS Y RECUERDOS" }
+      - { name: 5039, value: "MAYORISTA (MATERIALES DE CONSTRUCCION)" }
+      - { name: 5099, value: "MAYORISTA (MERCANCIAS NO PERECEDERAS)" }
+      - { name: 4816, value: "SERVICIOS DE REDES DE COMPUTADORAS E INTERNET" }
+      - { name: 5977, value: "TIENDAS DE COSMETICOS" }
+      - { name: 7841, value: "TIENDAS DE ALQUILER DE VIDEOS" }
+      - { name: 5399, value: "TIENDAS DE MERCANCIAS DIVERSAS EN GENERAL" }
+      - { name: 8011, value: "DOCTORES Y MEDICOS" }
+      - { name: 5691, value: "TIENDAS DE VESTIMENTA PARA DAMAS Y CABALLEROS" }
+      - { name: 9399, value: "SERVICIOS GUBERNAMENTALES" }
+      - { name: 5732, value: "TIENDAS DE EQUIPOS ELECTRONICOS" }
+      - { name: 2741, value: "IMPRESION, EDICION Y ENCUADERNACION DE DOCUMENTOS" }
+      - { name: 7299, value: "SERVICIOS PERSONALES" }
+      - { name: 5251, value: "FERRETERIAS" }
+      - { name: 5072, value: "MAYORISTA (FERRETERIA)" }
+      - { name: 5811, value: "PROVEEDORES DE SERVICIO DE CATERING" }
+      - { name: 4812, value: "VENTAS DE EQUIPOS DE TELECOMUNICACIONES" }
+      - { name: 5722, value: "TIENDAS DE ELECTRODOMESTICOS" }
+      - { name: 8071, value: "LABORATORIOS MEDICOS Y DENTALES" }
+      - { name: 7032, value: "CAMPAMENTOS DEPORTIVOS Y RECREACIONALES" }
+      - { name: 5310, value: "TIENDAS DE DESCUENTOS" }
+      - { name: 7211, value: "LAVADORAS Y SECADORAS DE AUTOSERVICIO" }
+      - { name: 5045, value: "MAYORISTA (HARDWARE Y SOFTWARE DE COMPUTADORAS)" }
+      - { name: 7538, value: "TALLERES DE REPARACION AUTOMOTRIZ" }
+      - { name: 7298, value: "SPAS DE SALUD Y BELLEZA" }
+      - { name: 5511, value: "CONCESIONARIOS DE AUTOMOVILES (NUEVOS Y USADOS)" }
+      - { name: 8111, value: "SERVICIOS JURIDICOS Y ABOGADOS" }
+      - { name: 5944, value: "JOYERIAS, RELOJERIAS Y PLATERIAS" }
+      - { name: 7333, value: "FOTOGRAFIA COMERCIAL, ARTE E ILUSTRACIONES" }
+      - { name: 5631, value: "LINEA GENERAL DE VESTIMENTAS PARA EVENTOS" }
+      - { name: 8042, value: "OPTOMETRAS Y OFTALMOLOGOS" }
+      - { name: 7994, value: "ESTABLECIMIENTOS Y SALAS DE VIDEOJUEGOS" }
+      - { name: 1520, value: "CONSTRUCCION Y REMODELACION DE EDIFICACIONES" }
+      - { name: 8211, value: "ESCUELAS DE PRIMARIA Y SECUNDARIA" }
+      - { name: 5945, value: "TIENDAS DE JUGUETES, JUEGOS Y ARTICULOS DE OCIO" }
+      - { name: 8043, value: "OCULISTAS, ACCESORIOS DE OPTICA Y LENTES" }
+      - { name: 5995, value: "TIENDAS DE ARTICULOS Y ALIMENTOS PARA MASCOTAS" }
+      - { name: 7991, value: "ATRACCIONES Y EXHIBICIONES TURISTICAS" }
+      - { name: 5655, value: "TIENDAS DE PRENDAS DEPORTIVAS Y ROPA ECUESTRE" }
+      - { name: 6051, value: "INSTITUCIONES NO FINANCIERAS, CHEQUES DE VIAJERO" }
+      - { name: 7993, value: "MAQUINAS TRAGAMONEDAS PARA ENTRETENIMIENTO" }
+      - { name: 5611, value: "TIENDAS DE PRENDAS PARA CABALLEROS Y NINOS" }
+      - { name: 5941, value: "TIENDAS DE ARTICULOS DEPORTIVOS" }
+      - { name: 7361, value: "AGENCIAS DE EMPLEOS, SERV TRABAJADORES TEMPORALES" }
+      - { name: 7392, value: "SERVICIOS DE CONSULTORIA Y RELACIONES PUBLICAS" }
+      - { name: 7929, value: "BANDAS, ORQUESTAS Y ARTISTAS" }
+      - { name: 8699, value: "ORGANIZACIONES EXCLUSIVAS PARA SOCIOS" }
+      - { name: 5046, value: "MAYORISTA (EQUIPOS COMERCIALES)" }
+      - { name: 5309, value: "TIENDAS LIBRES DE IMPUESTOS (DUTY FREE)" }
+      - { name: 7531, value: "TALLERES DE REPARACION DE CARROCERIAS" }
+      - { name: 5970, value: "TIENDA DE MATERIALES PARA ARTISTAS Y MANUALIDADES" }
+      - { name: 5992, value: "FLORERIAS" }
+      - { name: 5641, value: "TIENDAS DE PRENDAS DE VESTIR PARA NINOS Y BEBES" }
+      - { name: 4112, value: "TRENES DE PASAJEROS" }
+      - { name: 5131, value: "MAYORISTA (PRODUCTOS TEXTILES)" }
+      - { name: 7297, value: "SALONES DE MASAJES" }
+      - { name: 5712, value: "TIENDAS DE EQUIPOS PARA EL HOGAR (NO ARTEFACTOS)" }
+      - { name: 7542, value: "LAVADOS DE AUTOMOVILES" }
+      - { name: 5122, value: "MAYORISTA (MEDICAMENTOS Y ARTICULOS FARMACEUT.)" }
+      - { name: 8049, value: "PODOLOGOS Y QUIROPEDISTAS" }
+      - { name: 4214, value: "TRANSPORTE TERRESTRE DE CARGA Y MERCANCIAS" }
+      - { name: 5994, value: "VENDEDORES DE PERIODICOS Y KIOSCOS" }
+      - { name: 5983, value: "VENTA Y SERVICIO DE COMBUSTIBLES Y LUBRICANTES" }
+      - { name: 5542, value: "DISPENSADORES AUTOMATICOS DE COMBUSTIBLE" }
+      - { name: 7941, value: "CLUBES Y EVENTOS DEPORTIVOS" }
+      - { name: 7321, value: "AGENCIAS DE INFORMES CREDITICIOS DEL CONSUMIDOR" }
+      - { name: 5169, value: "MAYORISTA (PRODUCTOS QUIMICOS)" }
+      - { name: 7379, value: "MANTENIMIENTO Y REPARACION DE COMPUTADORAS" }
+      - { name: 8641, value: "ASOCIACIONES CIVILES, SOCIALES Y FRATERNAS" }
+      - { name: 8661, value: "ORGANIZACIONES RELIGIOSAS" }
+      - { name: 5085, value: "MAYORISTA (SUMINISTROS INDUSTRIALES)" }
+      - { name: 6211, value: "CORREDORES, OPERADORES DE TITULOS VALORES" }
+      - { name: 6513, value: "ALQUILER DE BIENES INMOBILIARIOS" }
+      - { name: 7512, value: "AGENCIAS DE ALQUILER DE AUTOMOVILES" }
+      - { name: 5571, value: "TIENDAS Y CONCESIONARIOS DE MOTOCICLETAS" }
+      - { name: 7210, value: "LAVANDERIA, LIMPIEZA Y PRENDAS" }
+      - { name: 5681, value: "TIENDAS DE PIELES" }
+      - { name: 7273, value: "SERVICIOS DE CITAS" }
+      - { name: 5948, value: "TIENDAS DE MALETAS Y ARTICULOS DE CUERO" }
+      - { name: 7933, value: "PISTAS DE BOWLING" }
+      - { name: 5963, value: "VENTA A DOMICILIO" }
+      - { name: 7261, value: "SERVICIOS FUNERARIOS Y CREMATORIOS" }
+      - { name: 7278, value: "SERVICIOS Y CLUBES DE PERSONAL PARA COMPRAS" }
+      - { name: 4225, value: "ALMACENAMIENTO DE PROD. AGRICOLAS, REFRIGERADOS" }
+      - { name: 5047, value: "MAYORISTA (SUMINISTROS MEDICOS, DENTALES, OFTAL.)" }
+      - { name: 5943, value: "TIENDAS DE ARTICULOS DE OFICINA, UTILES ESCOLARES" }
+      - { name: 7629, value: "TALLERES DE REPARACION DE APARATOS ELECTRONICOS" }
+      - { name: 5192, value: "MAYORISTA (LIBROS, REVISTAS Y PERIODICOS)" }
+      - { name: 5946, value: "TIENDAS DE CAMARAS Y SUMINISTROS FOTOGRAFICOS" }
+      - { name: "0780", value: "SERVICIOS DE JARDINERIA Y HORTICULTURA" }
+      - { name: 7393, value: "AGENCIAS DE DETECTIVES, SERVICIOS DE PROTECCION" }
+      - { name: 5021, value: "MAYORISTA (MUEBLES COMERCIALES Y DE OFICINA)" }
+      - { name: 5949, value: "TIENDAS DE COSTURA, ARTICULOS PARA MODISTERIA" }
+      - { name: 7277, value: "SERVICIOS DE CONSEJERIA 6 DEUDAS, MATRIMONIOS" }
+      - { name: 8050, value: "CENTROS GERIATRICOS Y ATENCION PERSONAL" }
+      - { name: 5697, value: "SASTRES, COSTURERAS, REPARACIONES" }
+      - { name: 7375, value: "SERVICIOS DE RECUPERACION DE INFORMACION" }
+      - { name: 5971, value: "GALERIAS DE ARTE Y COMERCIANTES DE PINTURAS" }
+      - { name: 5211, value: "TIENDAS DE MADERA Y MATERIALES DE CONSTRUCCION" }
+      - { name: "0763", value: "COOPERATIVAS AGRICOLAS" }
+      - { name: 5172, value: "MAYORISTA (PETROLEOS Y PRODUCTOS PETROLIFEROS)" }
+      - { name: 8249, value: "ESCUELAS VOCACIONALES Y DE FORMACION PROFESIONAL" }
+      - { name: 5231, value: "TIENDA DE PINTURA, VIDRIO Y PAPEL MURAL" }
+      - { name: 1799, value: "CONTRATISTAS ESPECIALIZADOS" }
+      - { name: 5733, value: "TIENDAS DE MUSICA 6 INSTRUMENTOS MUSICALES" }
+      - { name: 7394, value: "ALQUILER Y ARRENDAMIENTO DE EQUIPOS, HERRAMIENTAS" }
+      - { name: 5976, value: "PRODUCTOS ORTOPEDICOS Y PROTESIS" }
+      - { name: 8041, value: "QUIROPRACTICOS" }
+      - { name: 5940, value: "TIENDAS DE BICICLETAS" }
+      - { name: 5735, value: "TIENDAS DE DISCOS" }
+      - { name: 7296, value: "ALQUILER DE VESTIMENTA, DISFRACES, UNIFORMES" }
+      - { name: 4411, value: "NAVIOS A VAPOR Y EMPRESAS DE CRUCERO" }
+      - { name: 7338, value: "SERVICIOS DE FOTOCOPIAS, REPRODUCCION Y PLOTEOS" }
+      - { name: 8241, value: "ESCUELAS A DISTANCIA" }
+      - { name: 5532, value: "TIENDAS DE NEUMATICOS AUTOMOTRICES" }
+      - { name: 7534, value: "TALLERES DE REPARACION, REENCAUCHADO DE VEHICULOS" }
+      - { name: 7012, value: "TIEMPO COMPARTIDO" }
+      - { name: 5013, value: "MAYORISTA (PIEZAS PARA VEHICULOS MOTORIZADOS)" }
+      - { name: 5950, value: "CRISTALERIAS Y TIENDAS DE OBJETOS DE CRISTAL" }
+      - { name: 5261, value: "TIENDAS DE SUMINISTROS PARA CESPED Y JARDIN" }
+      - { name: 7911, value: "SALONES, ESTUDIOS Y ESCUELAS DE BAILE" }
+      - { name: 5973, value: "TIENDAS DE ARTICULOS RELIGIOSOS" }
+      - { name: 5198, value: "MAYORISTA (PINTURAS, BARNICES Y SUMINISTROS)" }
+      - { name: 8675, value: "ORGANIZACIONES DE AUTOMOVILES" }
+      - { name: 5932, value: "TIENDAS DE ANTIGUEDADES,REPARACION Y RESTAURACION" }
+      - { name: 5931, value: "TIENDAS DE MERCADERIAS USADAS" }
+      - { name: 8244, value: "ESCUELAS DE SECRETARIADO Y AFINES" }
+      - { name: 7221, value: "ESTUDIOS FOTOGRAFICOS" }
+      - { name: 8734, value: "LABORATORIOS DE PRUEBAS" }
+      - { name: 5521, value: "CONCESIONARIOS DE AUTOMOVILES (SOLO USADOS)" }
+      - { name: 5996, value: "PISCINAS, JACUZZIS 6 VENTA Y SERVICIO" }
+      - { name: 5074, value: "MAYORISTA (SUMINISTROS DE GASFITERIA Y CALEFAC.)" }
+      - { name: 7216, value: "LIMPIEZA EN SECO" }
+      - { name: 5599, value: "CONCESIONARIOS DE EQUIPOS AUTOMOTRICES, AEREOS" }
+      - { name: 8911, value: "SERVICIOS DE ARQUITECTURA,INGENIERIA Y TOPOGRAFIA" }
+      - { name: 7349, value: "SERVICIOS EN EDIFICIOS: LIMPIEZA, MANTENIMIENTO" }
+      - { name: 8031, value: "OSTEOPATAS" }
+      - { name: 5094, value: "MAYORISTA (JOYERIA Y RELOJERIA)" }
+      - { name: 7932, value: "ESTABLECIMIENTOS DE BILLAR Y BILLAS" }
+      - { name: 5051, value: "MAYORISTA (CENTROS DE SERVICIOS METALURGICOS)" }
+      - { name: 5933, value: "CASA DE EMPENOS" }
+      - { name: 6540, value: "INSTITUCIONES NO FINANCIERAS 6 COMPRA" }
+      - { name: 1711, value: "CONTRATISTAS DE SERVICIOS DE CALEFACCION" }
+      - { name: 5714, value: "TIENDAS DE COLGADURAS, CORTINAS Y TAPICERIA" }
+      - { name: 1750, value: "CONTRATISTAS DE CARPINTERIA" }
+      - { name: 8931, value: "SERVICIOS DE CONTABILIDAD, AUDITORIA Y TENEDURIA" }
+      - { name: 5713, value: "TIENDAS DE REVESTIMIENTOS PARA SUELOS" }
+      - { name: 7339, value: "SERVICIOS SECRETARIALES Y ESTENOGRAFIA" }
+      - { name: 7395, value: "LABORATORIOS FOTOGRAFICOS Y REVELADO" }
+      - { name: 4582, value: "AEROPUERTOS, CAMPOS DE VUELO Y TERMINALES AEREOS" }
+      - { name: 7519, value: "ALQUILER DE CASAS RODANTES Y VEHICULOS" }
+      - { name: 7998, value: "ZOOLOGICOS Y ACUARIOS" }
+      - { name: 4119, value: "SERVICIO DE AMBULANCIAS" }
+      - { name: 8351, value: "SERVICIOS DE CUIDADO DE MENORES" }
+      - { name: 5193, value: "MAYORISTA (FLORES Y SUMINISTROS PARA FLORERIAS)" }
+      - { name: 5044, value: "MAYORISTA (EQUIPOS Y SUMINISTROS FOTOGRAFICOS)" }
+      - { name: 5972, value: "TIENDAS DE ESTAMPILLAS Y MONEDAS" }
+      - { name: 4011, value: "TRENES DE CARGA" }
+      - { name: 1771, value: "CONTRATISTAS DE TRABAJOS CON CONCRETO" }
+      - { name: 7631, value: "REPARACION DE RELOJES Y JOYAS" }
+      - { name: 7641, value: "RETAPIZADO Y REPARACION DE MUEBLES" }
+      - { name: 7251, value: "TIENDAS DE REPARACION, LUSTRADO DE ZAPATOS" }
+      - { name: 7217, value: "LIMPIEZA DE ALFOMBRAS Y TAPIZADOS" }
+      - { name: 7623, value: "REPARACION DE APARATOS DE REFRIGERACION Y AIRE" }
+      - { name: 2842, value: "LIMPIEZA, PULIDO Y PREPARACIONES SANITARIAS" }
+      - { name: 4468, value: "PUERTOS PRIVADOS, SERVICIOS MARITIMOS" }
+      - { name: 5998, value: "TIENDAS DE CARPAS Y TOLDOS" }
+      - { name: 4457, value: "RENTA Y ALQUILER DE EMBARCACIONES" }
+      - { name: 9402, value: "EMPRESAS DE SERVICIO POSTAL (PUBLICAS)" }
+      - { name: 7535, value: "TALLERES DE PINTADO DE AUTOMOVILES" }
+      - { name: 9222, value: "MULTAS" }
+      - { name: 5975, value: "AYUDA AUDITIVA VENTA Y SUMINISTRO" }
+      - { name: 7622, value: "TALLERES DE REPARACION DE APARATOS ELECTRONICOS" }
+      - { name: 7699, value: "TALLERES DE REPARACION Y SERVICIOS AFINES" }
+      - { name: 7033, value: "PARQUES Y CAMPOS PARA CASAS RODANTES" }
+      - { name: 7829, value: "PRODUCCION Y DISTRIBUCION DE PELICULAS DE CINTAS" }
+      - { name: 1761, value: "CONTRATISTAS DE CONSTRUCCION DE TECHOS" }
+      - { name: 7549, value: "SERVICIOS DE REMOLQUE" }
+      - { name: 1731, value: "CONTRATISTAS ELECTRICOS" }
+      - { name: 5698, value: "TIENDAS DE PELUCAS Y POSTIZOS" }
+      - { name: 7513, value: "ALQUILERES DE CAMIONES Y REMOLQUES" }
+      - { name: 9950, value: "COMPRAS DENTRO DE EMPRESAS" }
+      - { name: 6010, value: "INSTITUCIONES FINANCIERAS 6 DESEMBOLSOS MANUALES" }
+      - { name: 5561, value: "CONCESIONARIOS DE CAMPERS(VEHICULO RECREACIONAL)" }
+      - { name: 5551, value: "CONCESIONARIOS DE EMBARCACIONES" }
+      - { name: 1740, value: "CONTRATISTAS DE ALBANILERIA, CANTERIA" }
+      - { name: 7342, value: "SERVICIOS DE EXTERMINACION Y DESINFECCION" }
+      - { name: 5997, value: "TIENDAS DE RASURADORAS ELECTRICAS" }
+      - { name: 2791, value: "TIPOGRAFIA, FABRICACION DE PLANCHAS DE IMPRESION" }
+      - { name: 5718, value: "TIENDAS DE CHIMENEAS Y ACCESORIOS" }
+      - { name: 7992, value: "CAMPOS DE GOLF PUBLICOS" }
+      - { name: 5592, value: "CONCESIONARIOS DE CASAS RODANTES" }
+      - { name: 9211, value: "COSTAS JUDICIALES, INCLUYENDO ALIMENTOS" }
+      - { name: 7276, value: "SERVICIOS DE DECLARACION DE IMPUESTOS" }
+      - { name: 5271, value: "CONCESIONARIOS DE CASAS RODANTES" }
+      - { name: 8651, value: "ORGANIZACIONES POLITICAS" }
+      - { name: 7692, value: "SERVICIOS DE SOLDADURA" }
+      - { name: 5937, value: "REPRODUCCION DE ANTIGUEDADES" }
+      - { name: 5598, value: "CONCESIONARIOS DE MOTOS DE NIEVE" }
+      - { name: 5978, value: "TIENDAS DE MAQUINAS DE ESCRIBIR 6 VENTA, ALQUILER" }
+      - { name: 4821, value: "SERVICIOS DE COMUNICACIONES TELEGRAFICAS" }
+      - { name: 5935, value: "DESGUACE Y CHATARRERO" }
+      - { name: 9223, value: "PAGOS DE CAUCION Y FIANZA" }

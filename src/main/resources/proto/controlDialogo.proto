@@ -1,0 +1,34 @@
+// version 1.0.0
+// category controldialogo
+
+syntax = "proto3";
+
+package b.gateway.v1;
+
+option java_package = "com.bbva.business.gateway.controldialogo";
+option java_multiple_files = true;
+
+service ControlDialogoService {
+  rpc  ControlDialogoProcessMessage (Iso20022ControlRequest) returns (Iso20022ControlResponse){}
+}
+
+message Iso20022ControlRequest{
+  string messageFunction = 1;
+  string header= 2;
+  string transmissionDateTime = 3;
+  string systemTraceAuditNumber = 4;
+  string settlementDate = 5;
+  string additionalId = 6;
+  string networkManagementInfoCode = 7;
+}
+
+message Iso20022ControlResponse{
+  string messageFunction = 1;
+  string header= 2;
+  string transmissionDateTime = 3;
+  string systemTraceAuditNumber = 4;
+  string settlementDate = 5;
+  string additionalId = 6;
+  string networkManagementInfoCode = 7;
+  string result = 8;
+}

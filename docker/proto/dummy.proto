@@ -1,0 +1,26 @@
+// version 1.0.0
+// Category DummyService
+syntax = "proto3";
+package b.gateway.v1;
+
+option java_package = "com.bbva.business.gateway.dummy";
+option java_multiple_files = true;
+
+service DummyResponseService {
+  rpc GetDummyResponse (Iso20022DummyRequest) returns (Iso20022DummyResponse){}
+}
+
+message Iso20022DummyRequest{
+  string messageFunction = 1;
+  string header= 2;
+  string systemTraceAuditNumber = 3;
+  string retrievalReferenceNumber = 4;
+}
+
+message Iso20022DummyResponse{
+  string messageFunction = 1;
+  string header= 2;
+  string systemTraceAuditNumber = 3;
+  string retrievalReferenceNumber = 4;
+  string result = 5;
+}

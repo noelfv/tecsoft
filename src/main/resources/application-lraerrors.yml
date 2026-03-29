@@ -1,0 +1,12 @@
+lraerrors:
+  - name: INTERNAL
+    orch: host
+  - name: NOTFOUND
+    orch: host
+  - name: FAILEDPRECONDITION
+    orch: processor
+    exceptions:
+      - blocked_account
+      - restricted_operation
+  - name: INVALID_ARGUMENT
+    orch: host

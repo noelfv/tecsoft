@@ -1,0 +1,162 @@
+local:
+  filterLabels:
+    pan: Environment/Card/Pan
+    transactionType: Transaction/TransactionType
+    merchantCategoryCode: Context/TransactionContext/MerchantCategoryCode
+    messageType: AddendumData/AdditionalData("UNSP")/Value
+    binDescription: ProtocolVersion # este campo se utiliza para identificar si la tarjeta es BBVA o no, ya que en el campo binDescription se tiene el valor de BIN_NO_BBVA para las tarjetas que no son de BBVA
+  orchestrations:
+    - network: PEER01
+      rules:
+        # Casos Tarjeta foranea cajero bbva - Retiro
+        - filter:
+            - condition:
+                - name: transactionType
+                  operation: Equals
+                  value: "01"
+                - name: merchantCategoryCode
+                  operation: Equals
+                  value: "6011"
+                - name: messageType
+                  operation: In
+                  value: "0100,0400"
+                - name: binDescription
+                  operation: Equals
+                  value: "BIN_NO_BBVA"
+          function: monitor,processor
+
+        - filter:
+            - condition:
+                - name: transactionType
+                  operation: Equals
+                  value: "01"
+                - name: merchantCategoryCode
+                  operation: Equals
+                  value: "6011"
+                - name: messageType
+                  operation: In
+                  value: "0110,0410"
+                - name: binDescription
+                  operation: Equals
+                  value: "BIN_NO_BBVA"
+          function: updatemonitor,host
+        # Casos Pass-through - Compras
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0100,0120,0400,0420,0101,0401"
+          function: monitor,host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0110,0130,0410,0430"
+          function: updatemonitor,processor
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0000"
+          function: updatemonitor,host
+        # Casos Pass-through
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0312"
+          function: host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0302"
+          function: processor
+        # Casos Mensajes de Red
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0800"
+          function: processor
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0810"
+          function: host
+    - network: PEER02
+
+      rules:
+        # Casos Tarjeta foranea cajero bbva - Retiro
+        - filter:
+            - condition:
+                - name: transactionType
+                  operation: Equals
+                  value: "01"
+                - name: merchantCategoryCode
+                  operation: Equals
+                  value: "6011"
+                - name: messageType
+                  operation: In
+                  value: "0100,0400"
+                - name: binDescription
+                  operation: Equals
+                  value: "BIN_NO_BBVA"
+          function: monitor,processor
+
+        - filter:
+            - condition:
+                - name: transactionType
+                  operation: Equals
+                  value: "01"
+                - name: merchantCategoryCode
+                  operation: Equals
+                  value: "6011"
+                - name: messageType
+                  operation: In
+                  value: "0110,0410"
+                - name: binDescription
+                  operation: Equals
+                  value: "BIN_NO_BBVA"
+          function: updatemonitor,host
+        # Casos Pass-through - Compras
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0100,0120,0400,0420"
+          function: crypto,monitor,host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0110,0130,0410,0430"
+          function: updatemonitor,processor
+        # Casos Pass-through
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0312,0190"
+          function: host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0302"
+          function: processor
+        # Casos Mensajes de Red
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0800"
+          function: processor
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0810"
+          function: host
+  validations:

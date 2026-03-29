@@ -1,0 +1,22 @@
+// version 1.0.0
+// category proxy
+
+syntax = "proto3";
+
+package b.gateway.v1;
+
+option java_package = "com.bbva.business.gateway.proxy";
+option java_multiple_files = true;
+
+service ProxyService {
+  rpc GetData (Empty) returns (MessageRequest){}
+  rpc PostData (MessageRequest) returns (Empty){}
+}
+
+message MessageRequest {
+  string message = 1;
+}
+
+message Empty {
+
+}

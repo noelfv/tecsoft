@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-deploy-jenkins
+spec:
+  securityContext:
+        runAsUser: 1000
+  containers:
+  - name: test-deploy-jenkins
+    image: artifactory.globaldevtools.bbva.com:443/pe-cbs-pgwp-swp2-docker-local/build/pgwp-orchestrator:latest
+    imagePullPolicy: Always
+    env:
+      - name: ATENEA_MRID
+        value: mr_pe
+      - name: ATENEA_NAMESPACE
+        value: gateway.payauth.pe
+      - name: ATENEA_UUAA
+        value: PGWP
+      - name: ATENEA_SERVICE
+        value: pgwp-orchestrator
+      - name: ATENEA_ENVIRONMENT
+        value: PAAS
+      - name: NETWORK
+        value: PEER02
+      - name: PORT
+        value: 9097
+      - name: GRPC_SERVER_ADDRESS
+        value: 0.0.0.0
+      - name: GRPC_SERVER_PORT
+        value: 9097
+      - name: GRPC_SERVER_KEEP_ALIVE_ENABLE
+        value: true
+      - name: GRPC_SERVER_KEEP_ALIVE_WITHOUT_CALLS
+        value: true
+      - name: GRPC_SERVER_KEEP_ALIVE_TIME
+        value: 120s
+      - name: GRPC_SERVER_KEEP_ALIVE_TIMEOUT
+        value: 60s
+      - name: GRPC_SERVER_KEEP_ALIVE_PERMIT_TIME
+        value: 30s
+      - name: GRPC_CLIENT_KEEP_ALIVE_ENABLE
+        value: true
+      - name: GRPC_CLIENT_KEEP_ALIVE_WITHOUT_CALLS
+        value: true
+      - name: GRPC_CLIENT_KEEP_ALIVE_TIME
+        value: 120s
+      - name: GRPC_CLIENT_KEEP_ALIVE_TIMEOUT
+        value: 60s
+      - name: GRPC_CLIENT_KEEP_ALIVE_PERMIT_TIME
+        value: 30s
+      - name: ORCHESTRATION_FLOWHANDLER_ADDRESS
+        value: pgwp-flowhandler
+      - name: ORCHESTRATION_FLOWHANDLER_PORT
+        value: 9092
+      - name: ORCHESTRATION_MONITOR_ADDRESS
+        value: pgwp-monitor
+      - name: ORCHESTRATION_MONITOR_PORT
+        value: 9096
+      - name: ORCHESTRATION_DIALOG_ADDRESS
+        value: pgwp-dialog
+      - name: ORCHESTRATION_DIALOG_PORT
+        value: 9098
+      - name: ORCHESTRATION_DUMMYPROCESSOR_ADDRESS
+        value: pgwp-dummyprocessor
+      - name: ORCHESTRATION_DUMMYPROCESSOR_PORT
+        value: 9099
+      - name: ORCHESTRATION_FRAUD_ADDRESS
+        value: pgwp-fraud
+      - name: ORCHESTRATION_FRAUD_PORT
+        value: 9095
+      - name: ORCHESTRATION_CRYPTO_ADDRESS
+        value: pgwp-crypto
+      - name: ORCHESTRATION_CRYPTO_PORT
+        value: 9094
+      - name: ORCHESTRATION_APICONNECTOR_ADDRESS
+        value: pgwp-apiconnector
+      - name: ORCHESTRATION_APICONNECTOR_PORT
+        value: 9093
+      - name: ORCHESTRATION_EVENTS_ADDRESS
+        value: kgwy-events
+      - name: ORCHESTRATION_EVENTS_PORT
+        value: 9091
+      - name: ORCHESTRATION_PROXYPROCESSOR_ADDRESS_7003
+        value: pgwp-proxyprocessor-peer02-6034
+      - name: ORCHESTRATION_PROXYPROCESSOR_PORT_7003
+        value: 9240
+      - name: ORCHESTRATION_PROXYHOST_ADDRESS_7003
+        value: pgwp-proxyhost-peer02-6034
+      - name: ORCHESTRATION_PROXYHOST_PORT_7003
+        value: 9260
+      - name: ORCHESTRATION_PROXYPROCESSOR_ADDRESS_1234
+        value: pgwp-proxyprocessor-peer01-1234
+      - name: ORCHESTRATION_PROXYPROCESSOR_PORT_1234
+        value: 9200
+      - name: ORCHESTRATION_PROXYHOST_ADDRESS_1234
+        value: pgwp-proxyprocessor-peer01-1234
+      - name: ORCHESTRATION_PROXYHOST_PORT_1234
+        value: 9220
+      - name: ORCHESTRATION_PROXY_GRPC_CLIENT_KEEP_ALIVE_TIME
+        value: 1200
+      - name: ORCHESTRATION_PROXY_GRPC_CLIENT_KEEP_ALIVE_TIMEOUT
+        value: 60
+      - name: ORCHESTRATION_PROXY_GRPC_CLIENT_KEEP_ALIVE_WITHOUT_CALLS
+        value: TRUE
+      - name: ORCHESTRATION_DIALOGCONTROL_GRPC_CLIENT_KEEP_ALIVE_TIME
+        value: 1200
+      - name: ORCHESTRATION_DIALOGCONTROL_GRPC_CLIENT_KEEP_ALIVE_TIMEOUT
+        value: 60
+      - name: ORCHESTRATION_DIALOGCONTROL_GRPC_CLIENT_KEEP_ALIVE_WITHOUT_CALLS
+        value: TRUE
+      - name: ORCHESTRATION_MONITOR_GRPC_CLIENT_KEEP_ALIVE_TIME
+        value: 1200
+      - name: ORCHESTRATION_MONITOR_GRPC_CLIENT_KEEP_ALIVE_TIMEOUT
+        value: 60
+      - name: ORCHESTRATION_MONITOR_GRPC_CLIENT_KEEP_ALIVE_WITHOUT_CALLS
+        value: TRUE
+  imagePullSecrets:
+  - name: registrypullsecret

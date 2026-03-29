@@ -1,0 +1,83 @@
+spring:
+  profiles:
+    group:
+      gw: global, local, data, datalocal, validations, sensitivedata
+grpc:
+  server:
+    address: ${GRPC_SERVER_ADDRESS}
+    port: ${GRPC_SERVER_PORT}
+    enable-keep-alive: true
+    permit-keep-alive-without-calls: true
+    keep-alive-time: 1200s
+    keep-alive-timeout: 60s
+    permit-keep-alive-time: 30s
+  client:
+    GLOBAL:
+      enable-keep-alive: true
+      permit-keep-alive-without-calls: true
+      keep-alive-time: 1200s
+      keep-alive-timeout: 60s
+      permit-keep-alive-time: 30s
+      services:
+        flowhandler:
+          channel-server: ${ORCHESTRATION_FLOWHANDLER_ADDRESS}
+          channel-port: ${ORCHESTRATION_FLOWHANDLER_PORT}
+        monitor:
+          channel-server: ${ORCHESTRATION_MONITOR_ADDRESS}
+          channel-port: ${ORCHESTRATION_MONITOR_PORT}
+        fraud:
+          channel-server: ${ORCHESTRATION_FRAUD_ADDRESS}
+          channel-port: ${ORCHESTRATION_FRAUD_PORT}
+        crypto:
+          channel-server: ${ORCHESTRATION_CRYPTO_ADDRESS}
+          channel-port: ${ORCHESTRATION_CRYPTO_PORT}
+        apiconnector:
+          channel-server: ${ORCHESTRATION_APICONNECTOR_ADDRESS}
+          channel-port: ${ORCHESTRATION_APICONNECTOR_PORT}
+        dialogcontrol:
+          channel-server: ${ORCHESTRATION_DIALOG_ADDRESS}
+          channel-port: ${ORCHESTRATION_DIALOG_PORT}
+        events:
+          channel-server: ${ORCHESTRATION_EVENTS_ADDRESS}
+          channel-port: ${ORCHESTRATION_EVENTS_PORT}
+        dummyprocessor:
+          channel-server: ${ORCHESTRATION_DUMMYPROCESSOR_ADDRESS}
+          channel-port: ${ORCHESTRATION_DUMMYPROCESSOR_PORT}
+        processor:
+          - channel-server: ${ORCHESTRATION_PROXYPROCESSOR_ADDRESS_7003}
+            channel-port: ${ORCHESTRATION_PROXYPROCESSOR_PORT_7003}
+          - channel-server: ${ORCHESTRATION_PROXYPROCESSOR_ADDRESS_1234}
+            channel-port: ${ORCHESTRATION_PROXYPROCESSOR_PORT_1234}
+        host:
+          - channel-server: ${ORCHESTRATION_PROXYHOST_ADDRESS_7003}
+            channel-port: ${ORCHESTRATION_PROXYHOST_PORT_7003}
+          - channel-server: ${ORCHESTRATION_PROXYHOST_ADDRESS_1234}
+            channel-port: ${ORCHESTRATION_PROXYHOST_PORT_1234}
+
+lombok:
+  addLombokGeneratedAnnotation: true
+
+management:
+  health:
+    elasticsearch:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: info, health, readiness, liveness
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readiness:
+          include: readinessIndicator
+        liveness:
+          include: livenessIndicator
+
+logging:
+  pattern:
+    console: "%m%n"
+
+server:
+  port: 8083
+

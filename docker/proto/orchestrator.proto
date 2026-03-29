@@ -1,0 +1,26 @@
+// category orchestrator
+
+syntax = "proto3";
+
+package b.gateway.v1;
+
+option java_package = "com.bbva.business.gateway.orchestrator";
+option java_multiple_files = true;
+
+service OrchestratorService {
+  rpc PostProcessMessage (PostProcessMessageRequest) returns (PostProcessMessageResponse){}
+  rpc PostProcessMessageAsync (PostProcessMessageRequest) returns (Empty) {}
+}
+
+message PostProcessMessageRequest {
+  string originalMessage = 1;
+}
+
+message PostProcessMessageResponse {
+  string messageResponse = 1;
+}
+
+message Empty {
+
+}
+

@@ -1,0 +1,88 @@
+local:
+  filterLabels:
+    pan: Environment/Card/Pan
+    messageType: AddendumData/AdditionalData("UNSP")/Value
+  orchestrations:
+    - network: PEER01
+      rules:
+        # Casos Pass-through - Compras
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0100,0120,0400,0420,0101,0401"
+          function: monitor,host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0110,0130,0410,0430"
+          function: updatemonitor,processor
+        # Casos Pass-through
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0312"
+          function: host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0302"
+          function: processor
+        # Casos Mensajes de Red
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0800"
+          function: processor
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0810"
+          function: host
+    - network: PEER02
+      rules:
+        # Casos Pass-through - Compras
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0100,0120,0400,0420"
+          function: monitor,host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0110,0130,0410,0430"
+          function: updatemonitor,processor
+        # Casos Pass-through
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0312,0190"
+          function: host
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: In
+                  value: "0302"
+          function: processor
+        # Casos Mensajes de Red
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0800"
+          function: processor
+        - filter:
+            - condition:
+                - name: messageType
+                  operation: Equals
+                  value: "0810"
+          function: host
+  validations:
