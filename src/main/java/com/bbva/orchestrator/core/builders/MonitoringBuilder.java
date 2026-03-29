@@ -4,10 +4,10 @@ import com.bbva.gateway.dto.iso20022.*;
 import com.bbva.gateway.interceptors.GrpcHeadersInfo;
 import com.bbva.gateway.utils.LogsTraces;
 import com.bbva.orchestrator.configuration.ApplicationDataCache;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.enums.ChannelOperator;
 import com.bbva.orchestrator.core.enums.FilterOperator;
 import com.bbva.orchestrator.core.enums.TransactionType;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.utils.FieldUtil;
 import org.springframework.stereotype.Component;
 import java.time.Instant;
@@ -32,19 +32,19 @@ public class MonitoringBuilder {
         this.applicationDataCache = applicationDataCache;
     }
 
-    public MonitoringDTO build(ISO8583 input, TransactionDTO transaction,EnvironmentDTO environment,ContextDTO context) {
+    public MonitoringDTO build(CanonicalFields fields, TransactionDTO transaction,EnvironmentDTO environment,ContextDTO context) {
 
         MonitoringDTO monitoring = MonitoringDTO.builder().build();
-        String networkName = input.getNetworkName();
-        String envAcceptorNameAndLocation = input.getCardAcceptorNameLocation();
-        String envAcquirerId = input.getAcquiringInstitutionIdentificationCode();
-        String envAcceptorId = input.getCardAcceptorIdentificationCode();
-        String merchantCategory = input.getMerchantType();
+        String networkName = fields.getNetworkName();
+        String envAcceptorNameAndLocation = fields.getCardAcceptorNameLocation();
+        String envAcquirerId = fields.getAcquiringInstitutionIdentificationCode();
+        String envAcceptorId = fields.getCardAcceptorIdentificationCode();
+        String merchantCategory = fields.getMerchantType();
         try {
             String currentTime = String.valueOf(Instant.now().toEpochMilli());
-            if(FieldUtil.requiredProcess(input.getMessageType())){
+            if(FieldUtil.requiredProcess(fields.getMessageType())){
 
-                String binCode = extractBinCode(input.getPrimaryAccountNumber());
+                String binCode = extractBinCode(fields.getPrimaryAccountNumber());
                 String merchantName = extractMerchantName(envAcceptorNameAndLocation);
                 monitoring.setStartDateMs(currentTime);
                 monitoring.setBinCode(binCode);
@@ -64,17 +64,17 @@ public class MonitoringBuilder {
                     monitoring.setChannelFilter("P2PP");//TODO este dato se deberia calcular a partir del ecommerce indicator y el terminal key .channelFilterDescription
                 }
             } else {
-                if (MTI_OUTPUT.contains(input.getMessageType())) {
+                if (MTI_OUTPUT.contains(fields.getMessageType())) {
                     monitoring.setEndDateMs(currentTime);
                     monitoring.setIsNextGen(false);
 
-                    if(LIST_CODE_APPROVED.contains(input.getResponseCode())){
+                    if(LIST_CODE_APPROVED.contains(fields.getResponseCode())){
                         monitoring.setTransactionStatus(APPROVED);
                     }else{
                         monitoring.setTransactionStatus(DENIED);
                     }
                 } else {
-                    LogsTraces.writeInfo("No requiere generar bloque monitoreo messageType= "  + input.getMessageType());
+                    LogsTraces.writeInfo("No requiere generar bloque monitoreo messageType= "  + fields.getMessageType());
                     //TODO Validarlo en el tiempo, ya que se seteamos este valor para controlar el nullpointer para mensajes que no se estan monitoreando
                     monitoring.setIsNextGen(false);
                     return monitoring;

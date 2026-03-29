@@ -2,9 +2,9 @@ package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.TraceDataDTO;
 import com.bbva.gateway.interceptors.GrpcHeadersInfo;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,19 +16,19 @@ public class TraceDataMappingStrategy implements SectionMappingStrategy<List<Tra
 
 
     @Override
-    public List<TraceDataDTO> mapper(ISO8583 input, Map<String, String> subFields) {
+    public List<TraceDataDTO> mapper(CanonicalFields fields) {
 
         try{
             // ======== FIELD 63 (MAPPED AS POS ADDITIONAL DATA) ========
             TraceDataDTO posAdditionalData = TraceDataDTO.builder()
                     .key("posAdditionalData")
-                    .value(input.getNetworkData())
+                    .value(fields.getNetworkData())
                     .build();
 
             // ======== HEADER OF ISO ========
             TraceDataDTO originHeader = TraceDataDTO.builder()
                     .key("header")
-                    .value(input.getHeader())
+                    .value(fields.getHeader())
                     .build();
 
             // ======== ID PURCHASE ========

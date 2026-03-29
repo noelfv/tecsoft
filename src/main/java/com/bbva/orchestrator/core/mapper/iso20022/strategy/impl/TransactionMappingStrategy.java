@@ -1,12 +1,12 @@
 package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.*;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.enums.CardholderVerificationCapability;
 import com.bbva.orchestrator.core.enums.MessageFunction;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingResponseStrategy;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.network.mastercard.MastercardAxisOperator;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import org.springframework.stereotype.Component;
@@ -22,58 +22,57 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
     }
 
     @Override
-    public TransactionDTO mapper(ISO8583 input, Map<String, String> subFields) {
+    public TransactionDTO mapper(CanonicalFields fields) {
         try {
 
-            String networkName = input.getNetworkName();
+            String networkName = fields.getNetworkName();
 
             // ======== FIELD 3 (CODE PROCESS) ========
             // 03.01 TRANSACTION TYPE
-            //String transactionType = subFields.get("03.01");
-            String transactionType = input.getTransactionType();
+            String transactionType = fields.getTransactionType();
             // 03.02 ACCOUNT FROM
-            String accountFromType = subFields.get("03.02");
+            String accountFromType = fields.get("03.02");
             // 03.03 ACCOUNT TO
-            String accountToType = subFields.get("03.03");
+            String accountToType = fields.get("03.03");
 
             AccountToDTO accountTo = AccountToDTO.builder()
                     // ======== FIELD 102 (ACCOUNT IDENTIFICATION) ========
-                    .accountId(input.getAccountIdentification1())
+                    .accountId(fields.getAccountIdentification1())
                     .accountType(accountToType)
                     .build();
 
             AccountFromDTO accountFrom = AccountFromDTO.builder()
                     // ======== FIELD 103 (ACCOUNT IDENTIFICATION) ========
-                    .accountId(input.getAccountIdentification2())
+                    .accountId(fields.getAccountIdentification2())
                     .accountType(accountFromType)
                     .build();
 
             // Transaction Amount
             TransactionAmountDTO transactionAmount = TransactionAmountDTO.builder()
                     // ======== FIELD 4 (TRANSACTION AMOUNT) ========
-                    .amount(mapperUtil.convertAmountDouble(input.getTransactionAmount()))
+                    .amount(mapperUtil.convertAmountDouble(fields.getTransactionAmount()))
                     // ======== FIELD 49 (TRANSACTION CURRENCY CODE) ========
-                    .currency(mapperUtil.convertCurrencyIdToCurrencyCode(input.getTransactionCurrencyCode()))
+                    .currency(mapperUtil.convertCurrencyIdToCurrencyCode(fields.getTransactionCurrencyCode()))
                     .build();
 
             // Reconciliation Amount
             ReconciliationAmountDTO reconciliationAmount = ReconciliationAmountDTO.builder()
                     // ======== FIELD 5 (RECONCILIATION AMOUNT) ========
-                    .amount(mapperUtil.convertAmountDouble(input.getSettlementAmount()))
+                    .amount(mapperUtil.convertAmountDouble(fields.getSettlementAmount()))
                     // ======== FIELD 9 (RECONCILIATION EXCHANGE RATE) ========
-                    .effectiveExchangeRate(mapperUtil.convertEffectiveExchangeRate(input.getConversionRateSettlement()))
+                    .effectiveExchangeRate(mapperUtil.convertEffectiveExchangeRate(fields.getConversionRateSettlement()))
                     // ======== FIELD 50 (SETTLEMENT CURRENCY CODE) ========
-                    .currency(mapperUtil.convertCurrencyIdToCurrencyCode(input.getSettlementCurrencyCode()))
+                    .currency(mapperUtil.convertCurrencyIdToCurrencyCode(fields.getSettlementCurrencyCode()))
                     .build();
 
             // ======== FIELD 6 (CARD HOLDER BILLING AMOUNT) ========
             CardholderBillingAmountDTO cardholderBillingAmount = CardholderBillingAmountDTO.builder()
                     // ======== FIELD 6 (CARDHOLDER BILLING AMOUNT) ========
-                    .amount(mapperUtil.convertAmountDouble(input.getCardHolderBillingAmount()))
+                    .amount(mapperUtil.convertAmountDouble(fields.getCardHolderBillingAmount()))
                     // ======== FIELD 10 (CARDHOLDER BILLING EXCHANGE RATE) ========
-                    .effectiveExchangeRate(mapperUtil.convertEffectiveExchangeRate(input.getConversionRate()))
+                    .effectiveExchangeRate(mapperUtil.convertEffectiveExchangeRate(fields.getConversionRate()))
                     // ======== FIELD 51 (CARDHOLDER BILLING CURRENCY CODE) ========
-                    .currency(mapperUtil.convertCurrencyIdToCurrencyCode(input.getCardholderBillingCurrencyCode()))
+                    .currency(mapperUtil.convertCurrencyIdToCurrencyCode(fields.getCardholderBillingCurrencyCode()))
                     .build();
 
             // ======== FIELD 4 (TRANSACTION AMOUNT) ========
@@ -84,7 +83,7 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
                     .build();
 
             // ======== FIELD 90 (ORIGINAL DATA ELEMENTS) ========
-            String oriDataElementsStr = input.getOriginalDataElements();
+            String oriDataElementsStr = fields.getOriginalDataElements();
             OriginalDataElementsDTO originalDataElements = null;
             if (oriDataElementsStr != null && !oriDataElementsStr.isEmpty()) {
                 originalDataElements = OriginalDataElementsDTO.builder()
@@ -104,22 +103,22 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
             // Transaction ID
             TransactionIdDTO transactionId = TransactionIdDTO.builder()
                     // ======== FIELD 11 (SYSTEM TRACE AUDIT NUMBER) ========
-                    .systemTraceAuditNumber(input.getSystemTraceAuditNumber())
+                    .systemTraceAuditNumber(fields.getSystemTraceAuditNumber())
                     // ======== FIELD 12 (LOCAL TRANSACTION TIME) ========
-                    .localDate(input.getLocalTransactionDate())
+                    .localDate(fields.getLocalTransactionDate())
                     // ======== FIELD 13 (LOCAL TRANSACTION DATE) ========
-                    .localTime(input.getLocalTransactionTime())
+                    .localTime(fields.getLocalTransactionTime())
                     // ======== FIELD CALCULATED FIELD 12 + FIELD 13 ========
-                    .localDateTime(mapperUtil.convertFormatDateTime(input.getLocalTransactionDate()+input.getLocalTransactionTime()))
+                    .localDateTime(mapperUtil.convertFormatDateTime(fields.getLocalTransactionDate()+fields.getLocalTransactionTime()))
                     // ======== FIELD 37 (RETRIEVAL REFERENCE NUMBER) ========
-                    .retrievalReferenceNumber(input.getRetrievalReferenceNumber())
+                    .retrievalReferenceNumber(fields.getRetrievalReferenceNumber())
                     // ======== FIELD 90 (ORIGINAL DATA ELEMENTS) ========
                     .originalDataElements(originalDataElements)
                     // ======== FIELD 7 (TRANSMISSION DATE & TIME) ========
-                    .transmissionDateTime(mapperUtil.convertFormatDateTime(input.getTransmissionDateTime()))
+                    .transmissionDateTime(mapperUtil.convertFormatDateTime(fields.getTransmissionDateTime()))
                     // ======== ID MONITOR ========
                     .transactionReference(mapperUtil.generateTransactionReferenceFromSeed(
-                            mapperUtil.createTransactionReference(input)
+                            mapperUtil.createTransactionReference(fields)
                     ))
                     .build();
 
@@ -146,8 +145,8 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
             AdditionalAmountDTO additionalAmount = AdditionalAmountDTO.builder()
                     .key("BLNCHECK")
                     .amount(AmountDTO.builder()
-                            .amount(subFields.containsKey("ADDITIONAL_AMOUNT_DOUBLE") ?
-                                    mapperUtil.convertAmountDouble(subFields.get("ADDITIONAL_AMOUNT_DOUBLE")) : null)
+                            .amount(fields.containsKey("ADDITIONAL_AMOUNT_DOUBLE") ?
+                                    mapperUtil.convertAmountDouble(fields.get("ADDITIONAL_AMOUNT_DOUBLE")) : null)
                             .build())
                     .build();
             additionalAmountList.add(additionalAmount);
@@ -158,16 +157,16 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
             // ======== FIELD 3 (PROCESSING CODE) ========
             additionalTransactionDataList.add(AdditionalDataDTO.builder()
                     .key("opera")
-                    .value(input.getProcessingCode())
+                    .value(fields.getProcessingCode())
                     .build());
 
             // ======== FIELD 58 (REDEMPTION POINTS) ========
             additionalTransactionDataList.add(AdditionalDataDTO.builder()
                     .key("redemptionPoints")
-                    .value(input.getRedemptionPoints())
+                    .value(fields.getRedemptionPoints())
                     .build());
 
-            String eciValue = mapperUtil.electronicCommerceIndicators(networkName,subFields);
+            String eciValue = mapperUtil.electronicCommerceIndicators(networkName, fields.asMap());
 
             // ======== FIELD 48.42 (ADDITIONAL DATA 48) ========
             additionalTransactionDataList.add(AdditionalDataDTO.builder()
@@ -185,27 +184,27 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
             // ======== FIELD 44 (ADDITIONAL RESPONSE DATA) ========
             additionalTransactionDataList.add(AdditionalDataDTO.builder()
                     .key("additionalResponseData")
-                    .value(input.getAdditionalResponseData())
+                    .value(fields.getAdditionalResponseData())
                     .build());
 
 
             // FIELD 54 - Se mapea los 4 primeros subcampos a esta variable AdditionalData temporalmente
-            addAdditionalData(additionalTransactionDataList, subFields, "ADDITIONAL_ACCOUNT_TYPE", "accountType");
-            addAdditionalData(additionalTransactionDataList, subFields, "ADDITIONAL_AMOUNT_TYPE", "amountType");
-            addAdditionalData(additionalTransactionDataList, subFields, "ADDITIONAL_CURRENCY_CODE", "currencyCode");
-            addAdditionalData(additionalTransactionDataList, subFields, "ADDITIONAL_INDICATOR", "indicator");
+            addAdditionalData(additionalTransactionDataList, fields, "ADDITIONAL_ACCOUNT_TYPE", "accountType");
+            addAdditionalData(additionalTransactionDataList, fields, "ADDITIONAL_AMOUNT_TYPE", "amountType");
+            addAdditionalData(additionalTransactionDataList, fields, "ADDITIONAL_CURRENCY_CODE", "currencyCode");
+            addAdditionalData(additionalTransactionDataList, fields, "ADDITIONAL_INDICATOR", "indicator");
 
             //FIELD 48
-            addAdditionalData(additionalTransactionDataList, subFields, "48.01", "transaction_category_code");
-            //addAdditionalData(additionalTransactionDataList, subFields, "48.42", "electronic_commerce_indicators");
-            addAdditionalData(additionalTransactionDataList, subFields, "48.43", "universal_cardholder_authentication_field");
-            addAdditionalData(additionalTransactionDataList, subFields, "48.51", "merchant_on_behalf_services");
-            addAdditionalData(additionalTransactionDataList, subFields, "48.71", "on_behalf_services");
-            addAdditionalData(additionalTransactionDataList, subFields, "48.72", "issuer_chip_authentication");
+            addAdditionalData(additionalTransactionDataList, fields, "48.01", "transaction_category_code");
+            //addAdditionalData(additionalTransactionDataList, fields, "48.42", "electronic_commerce_indicators");
+            addAdditionalData(additionalTransactionDataList, fields, "48.43", "universal_cardholder_authentication_field");
+            addAdditionalData(additionalTransactionDataList, fields, "48.51", "merchant_on_behalf_services");
+            addAdditionalData(additionalTransactionDataList, fields, "48.71", "on_behalf_services");
+            addAdditionalData(additionalTransactionDataList, fields, "48.72", "issuer_chip_authentication");
 
             DetailDTO detail = DetailDTO.builder()
                     .name(mapperUtil.generateSpecialProgrammeQualificationDetailName(networkName))
-                    .value(subFields.getOrDefault("48.95",null))
+                    .value(fields.getOrDefault("48.95",null))
                     .build();
 
             SpecialProgrammeQualificationDTO specialProgrammeQualification = SpecialProgrammeQualificationDTO.builder()
@@ -219,15 +218,15 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
                     .transactionAmounts(transactionAmounts)
                     .transactionId(transactionId)
                     .transactionAttribute(0L)
-                    .messageReason(input.getPointServiceConditionCode())
+                    .messageReason(fields.getPointServiceConditionCode())
                     .additionalFee(additionalFeesList)
                     .additionalAmount(additionalAmountList)
                     .additionalData(additionalTransactionDataList)
                     .otherTransactionAttribute(
                             CardholderVerificationCapability.mapPointOfServiceContext_CardDataEntryMode(
-                                    subFields.getOrDefault("61.04",null)
+                                    fields.getOrDefault("61.04",null)
                             ).getOrDefault("otherTransactionAttribute",null))
-                    .transactionSubtype(subFields.getOrDefault("48.77",null))
+                    .transactionSubtype(fields.getOrDefault("48.77",null))
                     .specialProgrammeQualification(List.of(specialProgrammeQualification))
                     .build();
         } catch (RuntimeException e) {
@@ -324,9 +323,9 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
                 mapperUtil.getFieldValue(origData, OriginalDataElementsDTO::getSenderIdentification, "");
     }
 
-    private void addAdditionalData(List<AdditionalDataDTO> list, Map<String, String> subFields,
+    private void addAdditionalData(List<AdditionalDataDTO> list, CanonicalFields fields,
                                    String subFieldKey, String keyName) {
-        String value = subFields.getOrDefault(subFieldKey, null);
+        String value = fields.getOrDefault(subFieldKey, null);
         if (value != null) {
             list.add(AdditionalDataDTO.builder()
                     .key(keyName)
@@ -357,17 +356,17 @@ public class TransactionMappingStrategy implements SectionMappingStrategy<Transa
 
 
     @Override
-    public TransactionDTO mapperResponse(ISO8583 input) {
+    public TransactionDTO mapperResponse(CanonicalFields fields) {
 
         TransactionIdDTO transactionId = TransactionIdDTO.builder()
                 // ======== ID MONITOR ========
                 .transactionReference(mapperUtil.generateTransactionReferenceFromSeed(
-                        mapperUtil.createTransactionReference(input)
+                        mapperUtil.createTransactionReference(fields)
                 ))
                 .build();
 
         return TransactionDTO.builder()
-                .transactionType(input.getTransactionType())
+                .transactionType(fields.getTransactionType())
                 .transactionId(transactionId)
                 .build();
     }

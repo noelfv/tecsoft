@@ -4,8 +4,8 @@ import com.bbva.gateway.dto.iso20022.AdditionalIdDTO;
 import com.bbva.gateway.utils.LogsTraces;
 import com.bbva.orchestrator.configuration.ApplicationDataCache;
 import com.bbva.orchestrator.configuration.ApplicationDataLocalCache;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.network.mastercard.MastercardAxisOperator;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.network.visa.VisaAxisOperator;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -141,12 +141,11 @@ public class MapperUtil {
         return "POS";
     }
 
-    public String entryModeValue(ISO8583 iso8583, Map<String, String> subFields, String cardDataEntryMode) {
-        if("peer02".equalsIgnoreCase(iso8583.getNetworkName())){
-            return MastercardAxisOperator.entryModeIndicator(subFields, cardDataEntryMode);
+    public String entryModeValue(CanonicalFields fields, String cardDataEntryMode) {
+        if("peer02".equalsIgnoreCase(fields.getNetworkName())){
+            return MastercardAxisOperator.entryModeIndicator(fields.asMap(), cardDataEntryMode);
         }else {
-            //return ProcessSubFieldsVisa.entryModeIndicator(subFields, values.getMerchantType());
-            return VisaAxisOperator.entryModeIndicator(subFields, cardDataEntryMode);
+            return VisaAxisOperator.entryModeIndicator(fields.asMap(), cardDataEntryMode);
         }
     }
 
@@ -159,14 +158,14 @@ public class MapperUtil {
     }
 
     //TODO revisar la nueva estructura de los mensajes
-    public  String createTransactionReference(ISO8583 inputObject){
+    public String createTransactionReference(CanonicalFields fields){
         StringBuilder transactionReference = new StringBuilder();
 
-        String P07 = isNullOrEmpty(inputObject.getTransmissionDateTime());
-        String P11 = isNullOrEmpty(inputObject.getSystemTraceAuditNumber());
-        String P32 = isNullOrEmpty(inputObject.getAcquiringInstitutionIdentificationCode());
-        String P37 = isNullOrEmpty(inputObject.getRetrievalReferenceNumber());
-        String P41 = isNullOrEmpty(inputObject.getCardAcceptorTerminalIdentification());
+        String P07 = isNullOrEmpty(fields.getTransmissionDateTime());
+        String P11 = isNullOrEmpty(fields.getSystemTraceAuditNumber());
+        String P32 = isNullOrEmpty(fields.getAcquiringInstitutionIdentificationCode());
+        String P37 = isNullOrEmpty(fields.getRetrievalReferenceNumber());
+        String P41 = isNullOrEmpty(fields.getCardAcceptorTerminalIdentification());
 
         transactionReference.append(P07)
                     .append(P11)
@@ -180,11 +179,11 @@ public class MapperUtil {
         return value == null || value.trim().isEmpty() ? "" : value;
     }
 
-    public String channelTPVIndicator(ISO8583 iso8583, Map<String, String> subFields) {
-        if("peer02".equalsIgnoreCase(iso8583.getNetworkName())){
-            return MastercardAxisOperator.channelTPVIndicator(subFields, iso8583.getMerchantType());
+    public String channelTPVIndicator(CanonicalFields fields) {
+        if("peer02".equalsIgnoreCase(fields.getNetworkName())){
+            return MastercardAxisOperator.channelTPVIndicator(fields.asMap(), fields.getMerchantType());
         }else {
-            return VisaAxisOperator.channelTPVIndicator(subFields, iso8583.getMerchantType());
+            return VisaAxisOperator.channelTPVIndicator(fields.asMap(), fields.getMerchantType());
         }
     }
 

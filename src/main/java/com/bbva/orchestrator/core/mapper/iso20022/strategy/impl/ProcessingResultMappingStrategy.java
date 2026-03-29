@@ -1,10 +1,10 @@
 package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.*;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.enums.ResultaDataType;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,24 +19,24 @@ public class ProcessingResultMappingStrategy implements SectionMappingStrategy<P
     private final MapperUtil mapperUtil;
 
     @Override
-    public ProcessingResultDTO mapper(ISO8583 input, Map<String, String> subFields) {
+    public ProcessingResultDTO mapper(CanonicalFields fields) {
 
         try {
-            if (input == null || !mapperUtil.isOutputMti(input.getMessageType())) {
+            if (fields == null || !mapperUtil.isOutputMti(fields.getMessageType())) {
                 return null;
             }
 
-            final String result = ResultaDataType.convertResultDataType(input.getMessageType());
+            final String result = ResultaDataType.convertResultDataType(fields.getMessageType());
             final String otherResult = mapperUtil.convertResponseCodeToLabelData(
-                    input.getNetworkName(),
-                    input.getResponseCode()
+                    fields.getNetworkName(),
+                    fields.getResponseCode()
             );
-            final String additionalValue = mapperUtil.getAdditionalInfoValue(input.getResponseCode());
+            final String additionalValue = mapperUtil.getAdditionalInfoValue(fields.getResponseCode());
 
             final ResultDataDTO resultData = ResultDataDTO.builder()
                     .result(result)
                     .otherResult(otherResult)
-                    .otherResultDetails(input.getResponseCode())
+                    .otherResultDetails(fields.getResponseCode())
                     .build();
 
             final AdditionalInformationDTO additionalInformation = AdditionalInformationDTO.builder()
@@ -46,7 +46,7 @@ public class ProcessingResultMappingStrategy implements SectionMappingStrategy<P
 
             return ProcessingResultDTO.builder()
                     .resultData(resultData)
-                    .approvalCode(input.getAuthorizationIdentificationResponse())
+                    .approvalCode(fields.getAuthorizationIdentificationResponse())
                     .additionalInformation(List.of(additionalInformation))
                     .build();
         } catch (RuntimeException e) {

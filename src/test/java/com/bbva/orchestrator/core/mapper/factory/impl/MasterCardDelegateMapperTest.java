@@ -1,7 +1,7 @@
 package com.bbva.orchestrator.core.mapper.factory.impl;
 
 import com.bbva.gateway.dto.iso20022.ISO20022;
-import com.bbva.orchestrator.core.dto.ISO8583;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,32 +24,28 @@ class MasterCardDelegateMapperTest {
 
     @Test
     void mapper_shouldDelegateCallToDefaultMapper() {
-        ISO8583 input = ISO8583.builder().build();
-        Map<String, String> subFields = Collections.emptyMap();
+        CanonicalFields input = CanonicalFields.of(Collections.emptyMap());
         ISO20022 expectedResult = ISO20022.builder().build();
 
-        when(mockDelegate.mapper(input, subFields)).thenReturn(expectedResult);
+        when(mockDelegate.mapper(input)).thenReturn(expectedResult);
 
-        ISO20022 actualResult = masterCardDelegateMapper.mapper(input, subFields);
+        ISO20022 actualResult = masterCardDelegateMapper.mapper(input);
 
         assertEquals(expectedResult, actualResult);
-        verify(mockDelegate, times(1)).mapper(input, subFields);
+        verify(mockDelegate, times(1)).mapper(input);
     }
 
     @Test
     void mapper_shouldDelegateCallToDefaultMapper_0110() {
-        ISO8583 input = ISO8583.builder()
-                .messageType("0100")
-                .build();
-        Map<String, String> subFields = Collections.emptyMap();
+        CanonicalFields input = CanonicalFields.of(Map.of("messageType", "0100"));
         ISO20022 expectedResult = ISO20022.builder().build();
 
-        when(mockDelegate.mapper(input, subFields)).thenReturn(expectedResult);
+        when(mockDelegate.mapper(input)).thenReturn(expectedResult);
 
-        ISO20022 actualResult = masterCardDelegateMapper.mapper(input, subFields);
+        ISO20022 actualResult = masterCardDelegateMapper.mapper(input);
 
         assertEquals(expectedResult, actualResult);
-        verify(mockDelegate, times(1)).mapper(input, subFields);
+        verify(mockDelegate, times(1)).mapper(input);
     }
 
     @Test

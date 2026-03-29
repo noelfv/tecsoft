@@ -1,10 +1,10 @@
 package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.*;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingResponseStrategy;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class AddendumDataMappingStrategy implements SectionMappingStrategy<Adden
     }
 
     @Override
-    public AddendumDataDTO mapper(ISO8583 input, Map<String, String> subFields) {
+    public AddendumDataDTO mapper(CanonicalFields fields) {
 
         try {
             List<AdditionalDataDTO> additionalDataList = new ArrayList<>();
@@ -29,7 +29,7 @@ public class AddendumDataMappingStrategy implements SectionMappingStrategy<Adden
             // los objetos addendumData y customData con la siguiente logica:
             // 1. AddendumData:    MGSTYPE, ISO8583_HOST, ISO8583
             // 2. CustomDataLocal: MGSTYPE, ISO8583, FLOWTYPE(para el caso de flowType siempre seria ASYNC)
-            String response = "0000".equals(input.getRejectFlag()) ? input.getRejectFlag() : input.getMessageType();
+            String response = "0000".equals(fields.getRejectFlag()) ? fields.getRejectFlag() : fields.getMessageType();
             additionalDataList.add(AdditionalDataDTO.builder()
                     .key("UNSP")
                     .value(response)
@@ -37,12 +37,12 @@ public class AddendumDataMappingStrategy implements SectionMappingStrategy<Adden
 
             additionalDataList.add(AdditionalDataDTO.builder()
                     .key("ISO8583_HOST")
-                    .value(input.getOriginalMessage())
+                    .value(fields.getOriginalMessage())
                     .build());
 
             additionalDataList.add(AdditionalDataDTO.builder()
                     .key("ISO8583")
-                    .value(mapperUtil.getBinDescription(input.getNetworkName(),input.getBinCode()))
+                    .value(mapperUtil.getBinDescription(fields.getNetworkName(), fields.getBinCode()))
                     .build());
 
             return AddendumDataDTO.builder()
@@ -56,21 +56,21 @@ public class AddendumDataMappingStrategy implements SectionMappingStrategy<Adden
     }
 
     @Override
-    public AddendumDataDTO mapperResponse(ISO8583 input) {
+    public AddendumDataDTO mapperResponse(CanonicalFields fields) {
 
         List<AdditionalDataDTO> additionalDataList = new ArrayList<>();
 
         additionalDataList.add(AdditionalDataDTO.builder()
                 .key("ISO8583_HOST")
-                .value(input.getOriginalMessage())
+                .value(fields.getOriginalMessage())
                 .build());
 
         additionalDataList.add(AdditionalDataDTO.builder()
                 .key("ISO8583")
-                .value(input.getPlainTextPCI())
+                .value(fields.getPlainTextPCI())
                 .build());
 
-        String response = "0000".equals(input.getRejectFlag()) ? input.getRejectFlag() : input.getMessageType();
+        String response = "0000".equals(fields.getRejectFlag()) ? fields.getRejectFlag() : fields.getMessageType();
         additionalDataList.add(AdditionalDataDTO.builder()
                 .key("UNSP")
                 .value(response)

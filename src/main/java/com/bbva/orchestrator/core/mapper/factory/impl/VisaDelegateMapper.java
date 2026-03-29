@@ -1,8 +1,8 @@
 package com.bbva.orchestrator.core.mapper.factory.impl;
 
 import com.bbva.gateway.dto.iso20022.ISO20022;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.mapper.factory.ISO20022DelegateMapper;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import org.springframework.stereotype.Component;
 import java.util.Map;
 
@@ -16,10 +16,10 @@ public class VisaDelegateMapper implements ISO20022DelegateMapper {
     }
 
     @Override
-    public ISO20022 mapper(ISO8583 input, Map<String, String> subFields) {
+    public ISO20022 mapper(CanonicalFields fields) {
         // Puedes personalizar el comportamiento para Visa
         // Ej: modificar ciertos campos, agregar reglas de negocio, etc.
-        return delegate.mapper(input, subFields);
+        return delegate.mapper(fields);
     }
 
     @Override

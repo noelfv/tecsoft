@@ -2,9 +2,9 @@ package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.MacDataDTO;
 import com.bbva.gateway.dto.iso20022.SecurityTrailerDTO;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
@@ -20,10 +20,10 @@ public class SecurityTrailerMappingStrategy implements SectionMappingStrategy<Se
     }
 
     @Override
-    public SecurityTrailerDTO mapper(ISO8583 input, Map<String, String> subFields) {
+    public SecurityTrailerDTO mapper(CanonicalFields fields) {
 
         try {
-            String secControlInformation = input.getSecurityControlInformation();
+            String secControlInformation = fields.getSecurityControlInformation();
 
             if (secControlInformation == null || secControlInformation.isEmpty()) {
                 return null; // Retorna null si no hay información de control de seguridad

@@ -1,11 +1,11 @@
 package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.*;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.enums.CardholderVerificationCapability;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingResponseStrategy;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
@@ -23,65 +23,65 @@ public class EnvironmentMappingStrategy implements SectionMappingStrategy<Enviro
     }
 
     @Override
-    public EnvironmentDTO mapper(ISO8583 input, Map<String, String> subFields) {
+    public EnvironmentDTO mapper(CanonicalFields fields) {
 
         try {
 
             // ======== FIELD 35 (TRACK 2 DATA) ========
             Track2DTO track2 = Track2DTO
                     .builder()
-                    .textValue(input.getTrackTwoData())
+                    .textValue(fields.getTrackTwoData())
                     .build();
 
            // ======== FIELD 14 (EXPIRATION DATE) ========
-            String dateExpiration = mapperUtil.convertFormatExpiryDate(input.getDateExpiration());
+            String dateExpiration = mapperUtil.convertFormatExpiryDate(fields.getDateExpiration());
 
             CardDTO card = CardDTO.builder()
                     // ======== FIELD 23 (CARD SEQUENCE NUMBER) ========
-                    .cardSequenceNumber(input.getCardSequenceNumber())
+                    .cardSequenceNumber(fields.getCardSequenceNumber())
                     // ======== FIELD 14 (EXPIRATION DATE) ========
                     .expiryDate(dateExpiration)
                     // ======== FIELD 2 (PAN) ========
-                    .pan(input.getPrimaryAccountNumber())
+                    .pan(fields.getPrimaryAccountNumber())
                     // ======== FIELD 40 (SERVICE RESTRICTION CODE) ========
-                    .serviceCode(input.getServiceRestrictionCode())
+                    .serviceCode(fields.getServiceRestrictionCode())
                     // ======== FIELD 45 (TRACK 1 DATA) ========
-                    .track1(input.getTrackOneData())
+                    .track1(fields.getTrackOneData())
                     .track2(track2)
                     .build();
 
             CardholderVerificationCapabilityDTO cvCapability = CardholderVerificationCapabilityDTO.builder()
-                    .capability(CardholderVerificationCapability.convertCardholderVerificationCapability(subFields.getOrDefault("22.02",null)))
+                    .capability(CardholderVerificationCapability.convertCardholderVerificationCapability(fields.getOrDefault("22.02",null)))
                     .build();
 
             CardReadingCapabilityDTO cardReadingCapability = CardReadingCapabilityDTO.builder()
                     .capability(CardholderVerificationCapability.mapCardReadingCapability_Capability(
-                                    subFields.getOrDefault("61.11", null))
+                                    fields.getOrDefault("61.11", null))
                                     .getOrDefault("capability",null))
                     .build();
 
             CapabilitiesDTO capabilities = CapabilitiesDTO.builder()
                     .cardholderVerificationCapabilities(List.of(cvCapability))
                     .cardCaptureCapable(CardholderVerificationCapability.mapCapabilities_CardCaptureCapable(
-                            subFields.getOrDefault("61.06", null)))
+                            fields.getOrDefault("61.06", null)))
                     .cardReadingCapabilities(List.of(cardReadingCapability))
                     .build();
 
             TerminalIdDTO terminalId = TerminalIdDTO.builder()
                     // ======== FIELD 41 (CARD ACCEPTOR TERMINAL IDENTIFICATION) ========
-                    .id(input.getCardAcceptorTerminalIdentification())
+                    .id(fields.getCardAcceptorTerminalIdentification())
                     // ======== FIELD 60 (POS TERMINAL DATA) ========
-                    .assigner(input.getPosTerminalData())
+                    .assigner(fields.getPosTerminalData())
                     // ======== FIELD 61_13 (POS COUNTRY CODE) ========
-                    .country(subFields.getOrDefault("61.13", null))
+                    .country(fields.getOrDefault("61.13", null))
                     .build();
 
             // ... resto del mapeo
-            String type = mapperUtil.channelTPVIndicator(input, subFields);
+            String type = mapperUtil.channelTPVIndicator(fields);
 
             Map<String,String> posTerminalLocation = CardholderVerificationCapability.mapPosTerminalLocation(
-                    subFields.getOrDefault("61.03", null),
-                    subFields.getOrDefault("61.02", null), type);
+                    fields.getOrDefault("61.03", null),
+                    fields.getOrDefault("61.02", null), type);
 
             TerminalDTO terminal = TerminalDTO.builder()
                     .capabilities(capabilities)
@@ -97,32 +97,32 @@ public class EnvironmentMappingStrategy implements SectionMappingStrategy<Enviro
             // ======== FIELD 62 (MAPPED AS POSTAL CODE) ========
             AdditionalIdDTO postalCodeData = AdditionalIdDTO.builder()
                     .key("postalCode")
-                    .value(input.getPostalCode())
+                    .value(fields.getPostalCode())
                     .build();
 
             AcquirerDTO acquirer = AcquirerDTO.builder()
                     // ======== FIELD 32 (ACQUIRING INSTITUTION IDENTIFICATION CODE) ========
-                    .id(input.getAcquiringInstitutionIdentificationCode())
+                    .id(fields.getAcquiringInstitutionIdentificationCode())
                     .additionalId(postalCodeData)
                     // ======== FIELD 19 (ACQUIRING INSTITUTION COUNTRY CODE) ========
-                    .country(input.getAcquirerCountryCode())
+                    .country(fields.getAcquirerCountryCode())
                     .build();
 
 
             // ======== FIELD 48 (ADDITIONAL DATA RETAILER) ========
             AdditionalIdDTO additionalDataRetailer = AdditionalIdDTO.builder()
                     .key("additionalDataRetailer")
-                    .value(input.getAdditionalDataRetailer())
+                    .value(fields.getAdditionalDataRetailer())
                     .build();
 
             SenderDTO sender = SenderDTO.builder()
                     // ======== FIELD 33 (FORWARDING INSTITUTION IDENTIFICATION CODE) ========
-                    .id(input.getForwardingInstitutionIdentificationCode())
+                    .id(fields.getForwardingInstitutionIdentificationCode())
                     .additionalId(additionalDataRetailer)
                     .build();
 
             AddressDTO address = AddressDTO.builder()
-                    .postalCode(subFields.getOrDefault("61.14", null))
+                    .postalCode(fields.getOrDefault("61.14", null))
                     .build();
 
             LocalDataDTO localData = LocalDataDTO.builder()
@@ -131,19 +131,19 @@ public class EnvironmentMappingStrategy implements SectionMappingStrategy<Enviro
 
             AcceptorDTO acceptor = AcceptorDTO.builder()
                     // ======== FIELD 42 (CARD ACCEPTOR IDENTIFICATION CODE) ========
-                    .id(input.getCardAcceptorIdentificationCode())
+                    .id(fields.getCardAcceptorIdentificationCode())
                     // ======== FIELD 43 (CARD ACCEPTOR NAME AND LOCATION) ========
-                    .nameAndLocation(input.getCardAcceptorNameLocation())
+                    .nameAndLocation(fields.getCardAcceptorNameLocation())
                     // ======== FIELD 61_14 (POS Postal Code (or Sub-Merchant Information, if applicable)) ========
                     .localData(localData)
                     .build();
 
             IssuerDTO issuer = IssuerDTO.builder()
                     // ======== FIELD 61 (POS CARD ISSUER / OTHER AMOUNTS) ========
-                    .assigner(input.getPosCardIssuer())
+                    .assigner(fields.getPosCardIssuer())
                     .build();
 
-            if(!Set.of("0110","0130","0410","0430","0210","0810","0312","0800").contains(input.getMessageType())){
+            if(!Set.of("0110","0130","0410","0430","0210","0810","0312","0800").contains(fields.getMessageType())){
                 return EnvironmentDTO.builder()
                         .card(card)
                         .terminal(terminal)
@@ -214,9 +214,9 @@ public class EnvironmentMappingStrategy implements SectionMappingStrategy<Enviro
     }
 
     @Override
-    public EnvironmentDTO mapperResponse(ISO8583 input) {
+    public EnvironmentDTO mapperResponse(CanonicalFields fields) {
         CardDTO card = CardDTO.builder()
-                .pan(input.getPrimaryAccountNumber())
+                .pan(fields.getPrimaryAccountNumber())
                 .build();
         return EnvironmentDTO.builder()
                 .card(card)

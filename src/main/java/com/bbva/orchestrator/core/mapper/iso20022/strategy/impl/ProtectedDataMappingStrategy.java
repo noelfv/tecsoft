@@ -1,9 +1,9 @@
 package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.*;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import org.springframework.stereotype.Component;
 import java.util.*;
@@ -19,12 +19,12 @@ public class ProtectedDataMappingStrategy implements SectionMappingStrategy<List
     }
 
     @Override
-    public List<ProtectedDataDTO> mapper(ISO8583 input, Map<String, String> subFields) {
+    public List<ProtectedDataDTO> mapper(CanonicalFields fields) {
         List<ProtectedDataDTO> protectedDataList = new ArrayList<>();
 
         try {
 
-            String cryptographicServiceMessage = input.getCryptographicServiceMessage();
+            String cryptographicServiceMessage = fields.getCryptographicServiceMessage();
             if (cryptographicServiceMessage == null || cryptographicServiceMessage.isEmpty()) {
                 return protectedDataList; // Retorna lista vacía si no hay datos
             }

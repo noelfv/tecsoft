@@ -4,7 +4,7 @@ import com.bbva.gateway.dto.iso20022.AdditionalIdDTO;
 import com.bbva.gateway.utils.LogsTraces;
 import com.bbva.orchestrator.configuration.ApplicationDataCache;
 import com.bbva.orchestrator.configuration.ApplicationDataLocalCache;
-import com.bbva.orchestrator.core.dto.ISO8583;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,9 +30,6 @@ class MapperUtilTest {
 
     @InjectMocks
     private MapperUtil service;
-
-    @InjectMocks
-    private ISO8583 iso8583;
 
     private MockedStatic<LogsTraces> mockedLogsTraces;
 
@@ -93,102 +90,89 @@ class MapperUtilTest {
 
     @Test
     void testChannelTPVIndicator_Invalid() {
-        Map<String, String> subFields = Map.of();
-        Boolean isEcommerce = false;
-        assertNotNull(service.channelTPVIndicator(iso8583, subFields));
+        CanonicalFields fields = CanonicalFields.of(Map.of());
+        assertNotNull(service.channelTPVIndicator(fields));
     }
 
     @Test
     void shouldReturnPOSTWhenSubfieldsAreValid() {
-        Map<String, String> subFields = new HashMap<>();
-        subFields.put("22.01", "05"); // En VALID_VALUES_TPV
-        subFields.put("60.01", "3");  // En VALID_VALUES_6001
-        subFields.put("60.02", "1");  // En VALID_VALUES_6002
+        Map<String, String> map = new HashMap<>();
+        map.put("networkName", "peer01");
+        map.put("merchantType", "CUALQUIERA");
+        map.put("22.01", "05");
+        map.put("60.01", "3");
+        map.put("60.02", "1");
+        CanonicalFields fields = CanonicalFields.of(map);
 
-        ISO8583 iso85831 = ISO8583.builder()
-                .networkName("peer01")
-                .merchantType("CUALQUIERA")
-                .build();
-
-        String result = service.channelTPVIndicator(iso85831,subFields);
+        String result = service.channelTPVIndicator(fields);
 
         assertEquals("POST", result);
     }
 
     @Test
     void shouldReturnATMTWhenConditionsMatch() {
-        Map<String, String> subFields = new HashMap<>();
-        subFields.put("03.01", "01");
-        // No ponemos los campos de TPV para que pase al siguiente else if
-        ISO8583 iso85831 = ISO8583.builder()
-                .networkName("peer01")
-                .merchantType("6011")
-                .build();
+        Map<String, String> map = new HashMap<>();
+        map.put("networkName", "peer01");
+        map.put("merchantType", "6011");
+        map.put("03.01", "01");
+        CanonicalFields fields = CanonicalFields.of(map);
 
-        String result = service.channelTPVIndicator(iso85831,subFields);
+        String result = service.channelTPVIndicator(fields);
 
         assertEquals("ATMT", result);
     }
 
     @Test
     void shouldReturnOTHPWhenConditionsMatch() {
-        Map<String, String> subFields = new HashMap<>();
-        subFields.put("03.01", "01");
+        Map<String, String> map = new HashMap<>();
+        map.put("networkName", "peer01");
+        map.put("merchantType", "6010");
+        map.put("03.01", "01");
+        CanonicalFields fields = CanonicalFields.of(map);
 
-        ISO8583 iso85831 = ISO8583.builder()
-                .networkName("peer01")
-                .merchantType("6010")
-                .build();
-
-        String result = service.channelTPVIndicator(iso85831,subFields);
+        String result = service.channelTPVIndicator(fields);
 
         assertEquals("OTHP", result);
     }
 
     @Test
     void shouldReturnUNSPDefault() {
-        Map<String, String> subFields = new HashMap<>();
-        subFields.put("03.01", "99"); // No es "01"
+        Map<String, String> map = new HashMap<>();
+        map.put("networkName", "peer01");
+        map.put("merchantType", "XXXX");
+        map.put("03.01", "99");
+        CanonicalFields fields = CanonicalFields.of(map);
 
-        ISO8583 iso85831 = ISO8583.builder()
-                .networkName("peer01")
-                .merchantType("XXXX")
-                .build();
-
-        String result = service.channelTPVIndicator(iso85831,subFields);
+        String result = service.channelTPVIndicator(fields);
 
         assertEquals("UNSP", result);
     }
 
     @Test
     void shouldReturnUNSPWhenMerchantTypeIsNull() {
-        Map<String, String> subFields = new HashMap<>();
-        subFields.put("03.01", "01");
+        Map<String, String> map = new HashMap<>();
+        map.put("networkName", "peer01");
+        // merchantType absent → getOrDefault returns null
+        map.put("03.01", "01");
+        CanonicalFields fields = CanonicalFields.of(map);
 
-        ISO8583 iso85831 = ISO8583.builder()
-                .networkName("peer01")
-                .merchantType(null)
-                .build();
-
-        String result = service.channelTPVIndicator(iso85831,subFields);
+        String result = service.channelTPVIndicator(fields);
 
         assertEquals("UNSP", result);
     }
 
     @Test
     void shouldSkipTPVWhenAFieldIsMissing() {
-        Map<String, String> subFields = new HashMap<>();
-        subFields.put("22.01", "05");
-        subFields.put("60.01", "3");
+        Map<String, String> map = new HashMap<>();
+        map.put("networkName", "peer01");
+        map.put("merchantType", "6011");
+        map.put("22.01", "05");
+        map.put("60.01", "3");
         // Falta 60.02, por lo tanto no entra en TPV
-        subFields.put("03.01", "01");
+        map.put("03.01", "01");
+        CanonicalFields fields = CanonicalFields.of(map);
 
-        ISO8583 iso85831 = ISO8583.builder()
-                .networkName("peer01")
-                .merchantType("6011")
-                .build();
-
-        String result = service.channelTPVIndicator(iso85831,subFields);
+        String result = service.channelTPVIndicator(fields);
 
         assertEquals("ATMT", result);
     }
@@ -310,33 +294,28 @@ class MapperUtilTest {
 
     @Test
     void testCreateTransactionReference_PEER01() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getSystemTraceAuditNumber()).thenReturn("11");
-        when(isoMock.getAcquiringInstitutionIdentificationCode()).thenReturn("32");
-        when(isoMock.getRetrievalReferenceNumber()).thenReturn("37");
-        when(isoMock.getCardAcceptorTerminalIdentification()).thenReturn("41");
-        when(isoMock.getTransmissionDateTime()).thenReturn("00");
-        Map<String, String> subFields = Map.of("63.01", "07");
-        String result = service.createTransactionReference(isoMock);
+        CanonicalFields fields = CanonicalFields.of(Map.of(
+                "systemTraceAuditNumber", "11",
+                "acquiringInstitutionIdentificationCode", "32",
+                "retrievalReferenceNumber", "37",
+                "cardAcceptorTerminalIdentification", "41",
+                "transmissionDateTime", "00"
+        ));
+        String result = service.createTransactionReference(fields);
         assertEquals("0011323741", result);
     }
 
     @Test
     void testCreateTransactionReference_PEER02() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getSystemTraceAuditNumber()).thenReturn("11");
-        when(isoMock.getAcquiringInstitutionIdentificationCode()).thenReturn("32");
-        when(isoMock.getRetrievalReferenceNumber()).thenReturn("37");
-        when(isoMock.getCardAcceptorTerminalIdentification()).thenReturn("41");
-        when(isoMock.getTransmissionDateTime()).thenReturn("00");
-        // --- LÍNEA ELIMINADA ---
-        // El método createTransactionReference NO usa NetworkData para PEER02,
-        // por eso Mockito se quejaba.
-        // when(isoMock.getNetworkData()).thenReturn("07");
+        CanonicalFields fields = CanonicalFields.of(Map.of(
+                "systemTraceAuditNumber", "11",
+                "acquiringInstitutionIdentificationCode", "32",
+                "retrievalReferenceNumber", "37",
+                "cardAcceptorTerminalIdentification", "41",
+                "transmissionDateTime", "00"
+        ));
 
-        Map<String, String> subFields = Map.of();
-
-        String result = service.createTransactionReference(isoMock);
+        String result = service.createTransactionReference(fields);
 
         assertEquals("0011323741", result);
     }
@@ -592,25 +571,15 @@ class MapperUtilTest {
 
     @Test
     void testEntryModeValue_Peer02() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getNetworkName()).thenReturn("peer02");
-        Map<String, String> subFields = new HashMap<>();
-
-        // Nota: Asumimos que MastercardAxisOperator.entryModeIndicator no lanza excepción
-        // y devuelve un valor (o null) al ejecutarse.
-        String result = service.entryModeValue(isoMock, subFields, "010");
-        // No podemos asertar el valor exacto sin mockear el estático,
-        // pero asertar que no falla cubre la línea.
-        // Si retorna algo concreto en tu lógica real, ajusta el assertEquals.
+        CanonicalFields fields = CanonicalFields.of(Map.of("networkName", "peer02"));
+        // Nota: MastercardAxisOperator.entryModeIndicator puede retornar null, cubre la línea.
+        service.entryModeValue(fields, "010");
     }
 
     @Test
     void testEntryModeValue_OtherNetwork() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getNetworkName()).thenReturn("peer01");
-        Map<String, String> subFields = new HashMap<>();
-
-        String result = service.entryModeValue(isoMock, subFields, "010");
+        CanonicalFields fields = CanonicalFields.of(Map.of("networkName", "peer01"));
+        service.entryModeValue(fields, "010");
     }
 
     @Test
@@ -671,22 +640,14 @@ class MapperUtilTest {
 
     @Test
     void testChannelTPVIndicator_Peer02() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getNetworkName()).thenReturn("peer02");
-        when(isoMock.getMerchantType()).thenReturn("5411");
-        Map<String, String> subFields = new HashMap<>();
-
-        service.channelTPVIndicator(isoMock, subFields);
+        CanonicalFields fields = CanonicalFields.of(Map.of("networkName", "peer02", "merchantType", "5411"));
+        service.channelTPVIndicator(fields);
     }
 
     @Test
     void testChannelTPVIndicator_OtherNetwork() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getNetworkName()).thenReturn("peer01");
-        when(isoMock.getMerchantType()).thenReturn("5411");
-        Map<String, String> subFields = new HashMap<>();
-
-        service.channelTPVIndicator(isoMock, subFields);
+        CanonicalFields fields = CanonicalFields.of(Map.of("networkName", "peer01", "merchantType", "5411"));
+        service.channelTPVIndicator(fields);
     }
 
     // ===================== isOutputMti =====================
@@ -770,27 +731,22 @@ class MapperUtilTest {
 
     @Test
     void testCreateTransactionReference_WithNullFields() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getSystemTraceAuditNumber()).thenReturn(null);
-        when(isoMock.getAcquiringInstitutionIdentificationCode()).thenReturn(null);
-        when(isoMock.getRetrievalReferenceNumber()).thenReturn(null);
-        when(isoMock.getCardAcceptorTerminalIdentification()).thenReturn(null);
-        when(isoMock.getTransmissionDateTime()).thenReturn(null);
-
-        String result = service.createTransactionReference(isoMock);
+        // All fields absent → all getters return null
+        CanonicalFields fields = CanonicalFields.of(new HashMap<>());
+        String result = service.createTransactionReference(fields);
         assertEquals("", result);
     }
 
     @Test
     void testCreateTransactionReference_WithEmptyFields() {
-        ISO8583 isoMock = mock(ISO8583.class);
-        when(isoMock.getSystemTraceAuditNumber()).thenReturn("   ");
-        when(isoMock.getAcquiringInstitutionIdentificationCode()).thenReturn("   ");
-        when(isoMock.getRetrievalReferenceNumber()).thenReturn("   ");
-        when(isoMock.getCardAcceptorTerminalIdentification()).thenReturn("   ");
-        when(isoMock.getTransmissionDateTime()).thenReturn("   ");
-
-        String result = service.createTransactionReference(isoMock);
+        Map<String, String> map = new HashMap<>();
+        map.put("systemTraceAuditNumber", "   ");
+        map.put("acquiringInstitutionIdentificationCode", "   ");
+        map.put("retrievalReferenceNumber", "   ");
+        map.put("cardAcceptorTerminalIdentification", "   ");
+        map.put("transmissionDateTime", "   ");
+        CanonicalFields fields = CanonicalFields.of(map);
+        String result = service.createTransactionReference(fields);
         assertEquals("", result);
     }
 

@@ -1,9 +1,9 @@
 package com.bbva.orchestrator.core.mapper.iso20022.strategy.impl;
 
 import com.bbva.gateway.dto.iso20022.*;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.SectionMappingStrategy;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Map;
 public class CustomDataLocalMappingStrategy implements SectionMappingStrategy<CustomDataLocalDTO> {
 
     @Override
-    public CustomDataLocalDTO mapper(ISO8583 input, Map<String, String> subFields) {
+    public CustomDataLocalDTO mapper(CanonicalFields fields) {
 
         try {
             //TODO Se debe considerar la siguiente logica, para los mensaje de entrada se debe de crear los
@@ -25,17 +25,17 @@ public class CustomDataLocalMappingStrategy implements SectionMappingStrategy<Cu
             // 1. Crear y añadir el primer par (MSGTYPE)
             RequestDTO msgTypeRequest = RequestDTO.builder()
                     .key("MSGTYPE")
-                    .value(input.getMessageType())
+                    .value(fields.getMessageType())
                     .build();
             // 2. Crear y añadir el segundo par (ISO8583)
             RequestDTO iso8583Request = RequestDTO.builder()
                     .key("ISO8583")
-                    .value(input.getPlainTextPCI())
+                    .value(fields.getPlainTextPCI())
                     .build();
             // 3. Guardar el campo 48 original
             RequestDTO iso8583AdditionalData_DE48 = RequestDTO.builder()
                     .key("DE_48")
-                    .value(input.getAdditionalDataRetailer())
+                    .value(fields.getAdditionalDataRetailer())
                     .build();
 
             additionalDataCustomDataLocalList.add(AdditionalDataCustomDataLocalDTO.builder()

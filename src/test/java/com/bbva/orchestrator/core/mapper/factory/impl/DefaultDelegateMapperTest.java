@@ -3,10 +3,10 @@ package com.bbva.orchestrator.core.mapper.factory.impl;
 import com.bbva.gateway.dto.iso20022.*;
 import com.bbva.gateway.interceptors.GrpcHeadersInfo;
 import com.bbva.gateway.utils.LogsTraces;
-import com.bbva.orchestrator.core.dto.ISO8583;
 import com.bbva.orchestrator.core.enums.MessageFunction;
 import com.bbva.orchestrator.core.exception.MapperFieldsException;
 import com.bbva.orchestrator.core.mapper.iso20022.strategy.impl.*;
+import com.bbva.orchestrator.core.mapper.model.CanonicalFields;
 import com.bbva.orchestrator.core.builders.MonitoringBuilder;
 import com.bbva.orchestrator.core.utils.MapperUtil;
 import org.junit.jupiter.api.AfterEach;
@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -58,27 +57,30 @@ public class DefaultDelegateMapperTest {
 
     private MockedStatic<GrpcHeadersInfo> mockedHeaders;
 
-    private ISO8583 iso8583Input;
-    private Map<String, String> subFields;
+    private CanonicalFields canonicalInput;
+
+    private static TransactionDTO txnWithRef(String ref) {
+        return TransactionDTO.builder()
+                .transactionId(TransactionIdDTO.builder()
+                        .transactionReference(ref)
+                        .build())
+                .build();
+    }
 
     @BeforeEach
     void setUp() {
         mockedHeaders = mockStatic(GrpcHeadersInfo.class);
 
-        // Inicializar los objetos de prueba antes de cada test
-        iso8583Input = ISO8583.builder()
-                .networkName("PEER02")
-                .messageType("0200")
-                .originalMessage("originalMessage")
-                .primaryAccountNumber("123456789")
-                .build();
-        subFields = new HashMap<>();
+        canonicalInput = CanonicalFields.of(Map.of(
+                "networkName", "PEER02",
+                "messageType", "0200",
+                "originalMessage", "originalMessage",
+                "primaryAccountNumber", "123456789"
+        ));
 
-        // Configurar los mocks de los métodos estáticos
         mockedHeaders.when(GrpcHeadersInfo::getNetwork).thenReturn("networkTest");
         mockedHeaders.when(GrpcHeadersInfo::getTraceId).thenReturn("trace123");
         mockedHeaders.when(GrpcHeadersInfo::getPort).thenReturn("portTest");
-
     }
 
     @AfterEach
@@ -89,34 +91,34 @@ public class DefaultDelegateMapperTest {
     @Test
     void testMapper_successfulMapping_returnsISO20022Object() {
         // Arrange
-        when(environmentStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(EnvironmentDTO.builder().build());
-        when(transactionStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(TransactionDTO.builder().build());
-        when(contextStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(ContextDTO.builder().build());
-        when(supplementaryDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(SupplementaryDataDTO.builder().build()));
-        when(traceDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(TraceDataDTO.builder().build()));
-        when(protectedDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(ProtectedDataDTO.builder().build()));
-        when(securityTrailerStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(SecurityTrailerDTO.builder().build());
-        when(addendumDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(AddendumDataDTO.builder().build());
-        when(customDataLocalStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(CustomDataLocalDTO.builder().build());
+        when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(EnvironmentDTO.builder().build());
+        when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txnWithRef("REF-001"));
+        when(contextStrategy.mapper(any(CanonicalFields.class))).thenReturn(ContextDTO.builder().build());
+        when(supplementaryDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(SupplementaryDataDTO.builder().build()));
+        when(traceDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(TraceDataDTO.builder().build()));
+        when(protectedDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(ProtectedDataDTO.builder().build()));
+        when(securityTrailerStrategy.mapper(any(CanonicalFields.class))).thenReturn(SecurityTrailerDTO.builder().build());
+        when(addendumDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(AddendumDataDTO.builder().build());
+        when(customDataLocalStrategy.mapper(any(CanonicalFields.class))).thenReturn(CustomDataLocalDTO.builder().build());
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(iso8583Input, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInput);
 
         // Assert
         assertNotNull(result);
         assertEquals("PEER02", result.getNetworkName());
 
-        Mockito.verify(environmentStrategy).mapper(any(ISO8583.class), anyMap());
-        Mockito.verify(transactionStrategy).mapper(any(ISO8583.class), anyMap());
+        Mockito.verify(environmentStrategy).mapper(any(CanonicalFields.class));
+        Mockito.verify(transactionStrategy).mapper(any(CanonicalFields.class));
     }
 
     @Test
     void testMapper_mapperLocalException_returnsFallbackResponse() {
         // Arrange
-        doThrow(new MapperFieldsException("Mapper local exception")).when(environmentStrategy).mapper(any(), anyMap());
+        doThrow(new MapperFieldsException("Mapper local exception")).when(environmentStrategy).mapper(any(CanonicalFields.class));
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(iso8583Input, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInput);
 
         // Assert
         assertNotNull(result);
@@ -129,17 +131,17 @@ public class DefaultDelegateMapperTest {
     @Test
     void testMapper_mapperLocalException_returnsFallbackResponse_0100() {
         // Arrange
-        doThrow(new MapperFieldsException("Mapper local exception")).when(environmentStrategy).mapper(any(), anyMap());
+        doThrow(new MapperFieldsException("Mapper local exception")).when(environmentStrategy).mapper(any(CanonicalFields.class));
 
-        ISO8583 iso8583Input_ = ISO8583.builder()
-                .networkName("PEER02")
-                .messageType("0100")
-                .originalMessage("originalMessage")
-                .primaryAccountNumber("123456789")
-                .build();
+        CanonicalFields canonicalInput_ = CanonicalFields.of(Map.of(
+                "networkName", "PEER02",
+                "messageType", "0100",
+                "originalMessage", "originalMessage",
+                "primaryAccountNumber", "123456789"
+        ));
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(iso8583Input_, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInput_);
 
         // Assert
         assertNotNull(result);
@@ -152,10 +154,10 @@ public class DefaultDelegateMapperTest {
     @Test
     void testMapper_unexpectedException_returnsFallbackResponse() {
         // Arrange
-        doThrow(new RuntimeException("Unexpected exception")).when(environmentStrategy).mapper(any(), anyMap());
+        doThrow(new RuntimeException("Unexpected exception")).when(environmentStrategy).mapper(any(CanonicalFields.class));
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(iso8583Input, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInput);
 
         // Assert
         assertNotNull(result);
@@ -173,11 +175,10 @@ public class DefaultDelegateMapperTest {
                 .environment(EnvironmentDTO.builder().build())
                 .build();
 
-        when(addendumDataStrategy.unMapper(any(),any(AddendumDataDTO.class))).thenReturn(Map.of("key1", "value1"));
-        when(environmentStrategy.unMapper(any(),any(EnvironmentDTO.class))).thenReturn(Map.of("key2", "value2"));
+        when(addendumDataStrategy.unMapper(any(), any(AddendumDataDTO.class))).thenReturn(Map.of("key1", "value1"));
+        when(environmentStrategy.unMapper(any(), any(EnvironmentDTO.class))).thenReturn(Map.of("key2", "value2"));
 
-        // CORREGIDO: Usar lenient() para evitar UnnecessaryStubbingException
-        lenient().when(processingResultMappingStrategy.unMapper(any(),any())).thenReturn(new HashMap<>());
+        lenient().when(processingResultMappingStrategy.unMapper(any(), any())).thenReturn(new HashMap<>());
 
         // Act
         Map<String, String> result = defaultDelegateMapper.unMapper(input);
@@ -193,77 +194,65 @@ public class DefaultDelegateMapperTest {
     @Test
     void testMapper_withNullOptionalFields_buildsCorrectly() {
         // Arrange
-        // Mockear las respuestas de las estrategias para que algunos devuelvan null
-        when(environmentStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(EnvironmentDTO.builder().build());
-        when(transactionStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(TransactionDTO.builder().build());
+        when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(EnvironmentDTO.builder().build());
+        when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txnWithRef("REF-002"));
 
-        // Simular que estos mappers devuelven null para cubrir los "if" condicionales
-        when(contextStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(null);
-        when(protectedDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(null);
-        when(securityTrailerStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(null);
-        when(supplementaryDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(null);
+        when(contextStrategy.mapper(any(CanonicalFields.class))).thenReturn(null);
+        when(protectedDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(null);
+        when(securityTrailerStrategy.mapper(any(CanonicalFields.class))).thenReturn(null);
+        when(supplementaryDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(null);
 
-        // Los otros mappers pueden devolver objetos o ser nulos, el objetivo es cubrir las líneas de los "if"
-        when(traceDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(TraceDataDTO.builder().build()));
-        when(addendumDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(AddendumDataDTO.builder().build());
-        when(customDataLocalStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(CustomDataLocalDTO.builder().build());
+        when(traceDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(TraceDataDTO.builder().build()));
+        when(addendumDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(AddendumDataDTO.builder().build());
+        when(customDataLocalStrategy.mapper(any(CanonicalFields.class))).thenReturn(CustomDataLocalDTO.builder().build());
 
-        // CORREGIDO: Usar lenient() para evitar UnnecessaryStubbingException
-        lenient().when(monitoringService.build(any(), any(),any(), any())).thenReturn(MonitoringDTO.builder().build());
+        lenient().when(monitoringService.build(any(), any(), any(), any())).thenReturn(MonitoringDTO.builder().build());
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(iso8583Input, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInput);
 
         // Assert
         assertNotNull(result);
-
-        // Verificar que los campos que se mockearon como null no se incluyeron en el objeto final
         assertNull(result.getContext());
         assertNull(result.getProtectedData());
         assertNull(result.getSecurityTrailer());
         assertNull(result.getSupplementaryData());
-
-        // Verificar que los campos no nulos sí se incluyeron
         assertNotNull(result.getEnvironment());
     }
 
     @Test
     void testMapper_withResponseMessageType_addsProcessingResult() {
         // Arrange
-        // Configurar el tipo de mensaje para que cumpla la condición del "if"
-        ISO8583 iso8583Input2 = ISO8583.builder()
-                .messageType("0120") // Tipo de mensaje de respuesta
-                .originalMessage("originalMessage")
-                .primaryAccountNumber("123456789")
-                .build();
+        CanonicalFields canonicalInput2 = CanonicalFields.of(Map.of(
+                "messageType", "0120",
+                "originalMessage", "originalMessage",
+                "primaryAccountNumber", "123456789"
+        ));
 
-        // Mockear el resto de las dependencias para que el flujo sea exitoso
-        when(environmentStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(EnvironmentDTO.builder().build());
-        when(transactionStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(TransactionDTO.builder().build());
-        when(contextStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(ContextDTO.builder().build());
-        when(supplementaryDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(SupplementaryDataDTO.builder().build()));
-        when(traceDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(TraceDataDTO.builder().build()));
-        when(protectedDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(List.of(ProtectedDataDTO.builder().build()));
-        when(securityTrailerStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(SecurityTrailerDTO.builder().build());
-        when(addendumDataStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(AddendumDataDTO.builder().build());
-        when(customDataLocalStrategy.mapper(any(ISO8583.class), anyMap())).thenReturn(CustomDataLocalDTO.builder().build());
+        when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(EnvironmentDTO.builder().build());
+        when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txnWithRef("REF-003"));
+        when(contextStrategy.mapper(any(CanonicalFields.class))).thenReturn(ContextDTO.builder().build());
+        when(supplementaryDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(SupplementaryDataDTO.builder().build()));
+        when(traceDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(TraceDataDTO.builder().build()));
+        when(protectedDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(List.of(ProtectedDataDTO.builder().build()));
+        when(securityTrailerStrategy.mapper(any(CanonicalFields.class))).thenReturn(SecurityTrailerDTO.builder().build());
+        when(addendumDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(AddendumDataDTO.builder().build());
+        when(customDataLocalStrategy.mapper(any(CanonicalFields.class))).thenReturn(CustomDataLocalDTO.builder().build());
 
-        // CORREGIDO: Usar lenient() para evitar UnnecessaryStubbingException
-        lenient().when(monitoringService.build(any(), any(),any(), any())).thenReturn(MonitoringDTO.builder().build());
+        lenient().when(monitoringService.build(any(), any(), any(), any())).thenReturn(MonitoringDTO.builder().build());
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(iso8583Input2, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInput2);
 
         // Assert
         assertNotNull(result);
-
     }
 
     @Test
     void testMapper_builderBlocks_fullCoverage() {
         // Arrange
         EnvironmentDTO env = EnvironmentDTO.builder().build();
-        TransactionDTO txn = TransactionDTO.builder().build();
+        TransactionDTO txn = txnWithRef("TXN-FULL");
         ContextDTO ctx = ContextDTO.builder().build();
         List<SupplementaryDataDTO> supp = List.of(SupplementaryDataDTO.builder().build());
         List<TraceDataDTO> trace = List.of(TraceDataDTO.builder().build());
@@ -273,55 +262,47 @@ public class DefaultDelegateMapperTest {
         CustomDataLocalDTO custom = CustomDataLocalDTO.builder().build();
         MonitoringDTO monitoring = MonitoringDTO.builder().build();
 
-        // The key change is to use 'lenient()' to avoid UnnecessaryStubbingException
-        lenient().when(environmentStrategy.mapper(any(), anyMap())).thenReturn(env);
-        lenient().when(transactionStrategy.mapper(any(), anyMap())).thenReturn(txn);
-        lenient().when(contextStrategy.mapper(any(), anyMap())).thenReturn(ctx);
-        lenient().when(supplementaryDataStrategy.mapper(any(), anyMap())).thenReturn(supp);
-        lenient().when(traceDataStrategy.mapper(any(), anyMap())).thenReturn(trace);
-        lenient().when(protectedDataStrategy.mapper(any(), anyMap())).thenReturn(prot);
-        lenient().when(securityTrailerStrategy.mapper(any(), anyMap())).thenReturn(sec);
-        lenient().when(addendumDataStrategy.mapper(any(), anyMap())).thenReturn(add);
-        lenient().when(customDataLocalStrategy.mapper(any(), anyMap())).thenReturn(custom);
-        lenient().when(monitoringService.build(any(), any(), any(),any())).thenReturn(monitoring);
+        lenient().when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(env);
+        lenient().when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txn);
+        lenient().when(contextStrategy.mapper(any(CanonicalFields.class))).thenReturn(ctx);
+        lenient().when(supplementaryDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(supp);
+        lenient().when(traceDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(trace);
+        lenient().when(protectedDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(prot);
+        lenient().when(securityTrailerStrategy.mapper(any(CanonicalFields.class))).thenReturn(sec);
+        lenient().when(addendumDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(add);
+        lenient().when(customDataLocalStrategy.mapper(any(CanonicalFields.class))).thenReturn(custom);
+        lenient().when(monitoringService.build(any(), any(), any(), any())).thenReturn(monitoring);
 
-        ISO8583 input = ISO8583.builder().messageType("0200").build();
-        Map<String, String> subFields = new HashMap<>();
+        CanonicalFields input = CanonicalFields.of(Map.of("messageType", "0200"));
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(input, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(input);
 
         // Assert
         assertNotNull(result);
-        // Use Mockito to verify the interactions instead of comparing the objects directly
-        verify(environmentStrategy).mapper(input, subFields);
-        verify(transactionStrategy).mapper(input, subFields);
-        verify(contextStrategy).mapper(input, subFields);
-        verify(supplementaryDataStrategy).mapper(input, subFields);
-        verify(traceDataStrategy).mapper(input, subFields);
-        verify(protectedDataStrategy).mapper(input, subFields);
-        verify(securityTrailerStrategy).mapper(input, subFields);
-        verify(addendumDataStrategy).mapper(input, subFields);
-        verify(customDataLocalStrategy).mapper(input, subFields);
-
+        verify(environmentStrategy).mapper(any(CanonicalFields.class));
+        verify(transactionStrategy).mapper(any(CanonicalFields.class));
+        verify(contextStrategy).mapper(any(CanonicalFields.class));
+        verify(supplementaryDataStrategy).mapper(any(CanonicalFields.class));
+        verify(traceDataStrategy).mapper(any(CanonicalFields.class));
+        verify(protectedDataStrategy).mapper(any(CanonicalFields.class));
+        verify(securityTrailerStrategy).mapper(any(CanonicalFields.class));
+        verify(addendumDataStrategy).mapper(any(CanonicalFields.class));
+        verify(customDataLocalStrategy).mapper(any(CanonicalFields.class));
     }
 
     @Test
     void testMapper_builderBlocks_conditionalCoverage() {
-        // Arrange: Preparación de DTOs con builders
+        // Arrange
         EnvironmentDTO env = EnvironmentDTO.builder().build();
-
-        // Configurar TransactionDTO para evitar NullPointerException en LogsTraces
         TransactionDTO txn = TransactionDTO.builder()
                 .transactionId(TransactionIdDTO.builder()
                         .transactionReference("TXN-REF-123")
                         .build())
                 .build();
-
         ContextDTO ctx = ContextDTO.builder()
                 .saleContext(SaleContextDTO.builder().build())
                 .build();
-
         List<SupplementaryDataDTO> supp = List.of(SupplementaryDataDTO.builder().build());
         List<TraceDataDTO> trace = List.of(TraceDataDTO.builder().build());
         List<ProtectedDataDTO> prot = List.of(ProtectedDataDTO.builder().build());
@@ -330,30 +311,26 @@ public class DefaultDelegateMapperTest {
         CustomDataLocalDTO custom = CustomDataLocalDTO.builder().build();
         MonitoringDTO monitoring = MonitoringDTO.builder().build();
 
-        // Configurar el comportamiento de los mocks de estrategia
-        when(environmentStrategy.mapper(any(), anyMap())).thenReturn(env);
-        when(transactionStrategy.mapper(any(), anyMap())).thenReturn(txn);
-        when(contextStrategy.mapper(any(), anyMap())).thenReturn(ctx);
-        when(supplementaryDataStrategy.mapper(any(), anyMap())).thenReturn(supp);
-        when(traceDataStrategy.mapper(any(), anyMap())).thenReturn(trace);
-        when(protectedDataStrategy.mapper(any(), anyMap())).thenReturn(prot);
-        when(securityTrailerStrategy.mapper(any(), anyMap())).thenReturn(sec);
-        when(addendumDataStrategy.mapper(any(), anyMap())).thenReturn(add);
-        when(customDataLocalStrategy.mapper(any(), anyMap())).thenReturn(custom);
+        when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(env);
+        when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txn);
+        when(contextStrategy.mapper(any(CanonicalFields.class))).thenReturn(ctx);
+        when(supplementaryDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(supp);
+        when(traceDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(trace);
+        when(protectedDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(prot);
+        when(securityTrailerStrategy.mapper(any(CanonicalFields.class))).thenReturn(sec);
+        when(addendumDataStrategy.mapper(any(CanonicalFields.class))).thenReturn(add);
+        when(customDataLocalStrategy.mapper(any(CanonicalFields.class))).thenReturn(custom);
         when(monitoringService.build(any(), any(), any(), any())).thenReturn(monitoring);
 
-        // Mockear el método estático LogsTraces.writeInfo
         try (MockedStatic<LogsTraces> mockedLogs = mockStatic(LogsTraces.class)) {
-            // Definir comportamiento del mock estático
             mockedLogs.when(() -> LogsTraces.writeInfo(anyString())).thenAnswer(invocation -> null);
 
-            ISO8583 input = ISO8583.builder().messageType("0100").build();
-            Map<String, String> subFields = new HashMap<>();
+            CanonicalFields input = CanonicalFields.of(Map.of("messageType", "0100"));
 
-            // Act: Ejecución del método a probar
-            ISO20022 result = defaultDelegateMapper.mapper(input, subFields);
+            // Act
+            ISO20022 result = defaultDelegateMapper.mapper(input);
 
-            // Assert: Verificación de que los campos fueron mapeados correctamente
+            // Assert
             assertAll("Verificación de mapeo completo",
                     () -> assertNotNull(result.getContext(), "Context no debería ser nulo"),
                     () -> assertNotNull(result.getProtectedData(), "ProtectedData no debería ser nulo"),
@@ -367,9 +344,6 @@ public class DefaultDelegateMapperTest {
                     () -> assertNotNull(result.getMonitoring(), "Monitoring no debería ser nulo")
             );
 
-            // CORRECCIÓN PARA JENKINS:
-            // Se usa atLeastOnce() porque Jenkins detectó que el código llama al log
-            // en las líneas 53 y 67 (2 veces), mientras que el test original esperaba solo 1.
             mockedLogs.verify(() -> LogsTraces.writeInfo(anyString()), atLeastOnce());
         }
     }
@@ -377,87 +351,73 @@ public class DefaultDelegateMapperTest {
     @Test
     void testMapper_HostResponseFlow_0110_ShouldCallOnlyRequiredStrategies() {
         // Arrange
-        ISO8583 inputHost = ISO8583.builder()
-                .networkName("PEER02")
-                .messageType("0110")
-                .originalMessage("origMsg")
-                .primaryAccountNumber("123456789")
-                .rejectFlag("")
-                .processingCode("000000")
-                .build();
+        CanonicalFields canonicalHost = CanonicalFields.of(Map.of(
+                "networkName", "PEER02",
+                "messageType", "0110",
+                "originalMessage", "origMsg",
+                "primaryAccountNumber", "123456789",
+                "processingCode", "000000"
+        ));
 
-        TransactionDTO txn = TransactionDTO.builder()
-                .transactionId(TransactionIdDTO.builder().transactionReference("REF123").build())
-                .build();
+        TransactionDTO txn = txnWithRef("REF123");
 
-        when(environmentStrategy.mapper(eq(inputHost), anyMap())).thenReturn(EnvironmentDTO.builder().build());
-        when(transactionStrategy.mapper(eq(inputHost), anyMap())).thenReturn(txn);
-        when(contextStrategy.mapperResponse(eq(inputHost))).thenReturn(ContextDTO.builder().build());
-        when(addendumDataStrategy.mapperResponse(eq(inputHost))).thenReturn(AddendumDataDTO.builder().build());
-        when(monitoringService.build(eq(inputHost), any(), any(), any())).thenReturn(MonitoringDTO.builder().build());
+        when(environmentStrategy.mapperResponse(any(CanonicalFields.class))).thenReturn(EnvironmentDTO.builder().build());
+        when(transactionStrategy.mapperResponse(any(CanonicalFields.class))).thenReturn(txn);
+        when(contextStrategy.mapperResponse(any(CanonicalFields.class))).thenReturn(ContextDTO.builder().build());
+        when(addendumDataStrategy.mapperResponse(any(CanonicalFields.class))).thenReturn(AddendumDataDTO.builder().build());
+        when(monitoringService.build(any(CanonicalFields.class), any(), any(), any())).thenReturn(MonitoringDTO.builder().build());
+        when(processingResultMappingStrategy.mapper(any(CanonicalFields.class))).thenReturn(ProcessingResultDTO.builder().build());
 
-        // Mockear MapperUtil ya que se usa dentro de createISO20022ResponseFromHost
-        when(processingResultMappingStrategy.mapper(eq(inputHost),any())).thenReturn(ProcessingResultDTO.builder().build());
-
-        // Mock estático de LogsTraces para evitar NPE o ruido
         try (MockedStatic<LogsTraces> mockedLogs = mockStatic(LogsTraces.class)) {
 
             // Act
-            ISO20022 result = defaultDelegateMapper.mapper(inputHost, subFields);
+            ISO20022 result = defaultDelegateMapper.mapper(canonicalHost);
 
             // Assert
             assertNotNull(result);
 
-            // VERIFICACIÓN CLAVE:
-            // Asegurar que SÍ se llamaron a las estrategias de respuesta
-            verify(addendumDataStrategy).mapperResponse(eq(inputHost));
-            verify(contextStrategy).mapperResponse(eq(inputHost));
+            verify(addendumDataStrategy).mapperResponse(any(CanonicalFields.class));
+            verify(contextStrategy).mapperResponse(any(CanonicalFields.class));
 
-            // Asegurar que NO se llamaron a estrategias exclusivas del flujo principal
-            // Esto confirma que el código entró al if(isResponseHost) y retornó ahí.
-            verify(supplementaryDataStrategy, never()).mapper(any(), any());
-            verify(protectedDataStrategy, never()).mapper(any(), any());
-            verify(securityTrailerStrategy, never()).mapper(any(), any());
+            verify(supplementaryDataStrategy, never()).mapper(any(CanonicalFields.class));
+            verify(protectedDataStrategy, never()).mapper(any(CanonicalFields.class));
+            verify(securityTrailerStrategy, never()).mapper(any(CanonicalFields.class));
         }
     }
 
     @Test
     void testMapper_MainFlow_0420_ShouldAddProcessingResult() {
         // Arrange
-        ISO8583 input = ISO8583.builder()
-                .messageType("0420") // Segundo caso del OR
-                .networkName("NET")
-                .build();
+        CanonicalFields input = CanonicalFields.of(Map.of(
+                "messageType", "0420",
+                "networkName", "NET"
+        ));
 
-        when(environmentStrategy.mapper(any(), any())).thenReturn(EnvironmentDTO.builder().build());
-        when(transactionStrategy.mapper(any(), any())).thenReturn(TransactionDTO.builder()
-                .transactionId(TransactionIdDTO.builder().transactionReference("REF").build()).build());
-
-        when(processingResultMappingStrategy.mapper(any(),any())).thenReturn(ProcessingResultDTO.builder().build());
-
-        when(contextStrategy.mapper(any(), any())).thenReturn(null);
+        when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(EnvironmentDTO.builder().build());
+        when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txnWithRef("REF"));
+        when(processingResultMappingStrategy.mapper(any(CanonicalFields.class))).thenReturn(ProcessingResultDTO.builder().build());
+        when(contextStrategy.mapper(any(CanonicalFields.class))).thenReturn(null);
 
         try (MockedStatic<LogsTraces> mockedLogs = mockStatic(LogsTraces.class)) {
             // Act
-            ISO20022 result = defaultDelegateMapper.mapper(input, subFields);
+            ISO20022 result = defaultDelegateMapper.mapper(input);
 
             // Assert
             assertNotNull(result.getProcessingResult());
-            verify(processingResultMappingStrategy).mapper(input,subFields);
+            verify(processingResultMappingStrategy).mapper(any(CanonicalFields.class));
         }
     }
 
     @Test
     void testMapper_NullMessageType_ShouldReturnFallbackResponse() {
-        // Arrange
-        ISO8583 inputInvalid = ISO8583.builder()
-                .messageType(null) // Esto provocará retorno false en isResponseHost y luego error en main flow
-                .primaryAccountNumber("9999")
-                .originalMessage("raw")
-                .build();
+        // Arrange — messageType absent so getMessageType() returns null
+        Map<String, String> mapInvalid = new HashMap<>();
+        mapInvalid.put("primaryAccountNumber", "9999");
+        mapInvalid.put("originalMessage", "raw");
+        CanonicalFields canonicalInvalid = CanonicalFields.of(mapInvalid);
 
         // Act
-        ISO20022 result = defaultDelegateMapper.mapper(inputInvalid, subFields);
+        ISO20022 result = defaultDelegateMapper.mapper(canonicalInvalid);
 
         // Assert
         assertNotNull(result);
@@ -469,22 +429,21 @@ public class DefaultDelegateMapperTest {
     @Test
     void testMapper_ShortMessageType_ShouldNotBeHostResponse() {
         // Arrange
-        ISO8583 inputShort = ISO8583.builder()
-                .messageType("010") // Longitud < 4
-                .networkName("NET")
-                .build();
+        CanonicalFields inputShort = CanonicalFields.of(Map.of(
+                "messageType", "010",
+                "networkName", "NET"
+        ));
 
-        when(environmentStrategy.mapper(any(), any())).thenReturn(EnvironmentDTO.builder().build());
-        when(transactionStrategy.mapper(any(), any())).thenReturn(TransactionDTO.builder()
-                .transactionId(TransactionIdDTO.builder().transactionReference("REF").build()).build());
+        when(environmentStrategy.mapper(any(CanonicalFields.class))).thenReturn(EnvironmentDTO.builder().build());
+        when(transactionStrategy.mapper(any(CanonicalFields.class))).thenReturn(txnWithRef("REF-SHORT"));
 
         try (MockedStatic<LogsTraces> mockedLogs = mockStatic(LogsTraces.class)) {
             // Act
-            ISO20022 result = defaultDelegateMapper.mapper(inputShort, subFields);
+            ISO20022 result = defaultDelegateMapper.mapper(inputShort);
 
             // Assert
             assertNotNull(result);
-            verify(transactionStrategy).mapper(any(), any());
+            verify(transactionStrategy).mapper(any(CanonicalFields.class));
         }
     }
 }
